@@ -2,7 +2,7 @@
 
 int main() {
    
-   char nome = "Joel Tavares Miranda";
+   char nome = "David Pinheiro de Sousa";
    int matricula = 202206840054;
    
    printf("Nome: %s\nMatricula: %d\n", nome, matricula);
