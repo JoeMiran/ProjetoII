@@ -1,11 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-   
-   char nome = "David Pinheiro de Sousa";
-   int matricula = 202206840054;
-   
-   printf("Nome: %s\nMatricula: %d\n", nome, matricula);
-   
-   return 0;
+int main()
+{
+    char nome[] = {"Joel Miranda", "Kelton Cantao", "David Sousa", "Carolyn"};
+    char matricula[] = {"202206840054", "202007040033","202007040033","202007040033"};
+
+    printf("Nome dos integrantes:");
+        for(int i = 0; i < 4 ; i++ )
+            printf("Nome: %s",nome[]);
+    printf("matricula dos integrantes:");
+        for(int i = 0; i < 4 ; i++ )
+            printf("matricula: %s",matricula[]);
+    return 0;
+
 }
