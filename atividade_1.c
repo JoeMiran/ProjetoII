@@ -2,13 +2,13 @@
 
 int main() {
     int i;  
-    char nomes[3][30] = {
+    char nomes[4][30] = {
       "Joel Tavares", 
       "David Sousa", 
       "Kelton Cantao",
       "Carolyn Aviz"
     };
-    char matriculas[3][30] = {
+    char matriculas[4][30] = {
       "202206840054", 
       "202207040045", 
       "202007040033", 
@@ -16,7 +16,7 @@ int main() {
     };  
     
     printf("Nomes completos e matriculas dos alunos:\n");
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 4; i++) {
         printf("%s - %s\n", nomes[i], matriculas[i]);
     }
 
