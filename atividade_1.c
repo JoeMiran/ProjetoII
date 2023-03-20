@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/*O código a baixo também poderia ser escrito apenas usando quatro vezes o comando "printf", 
+um para cada membro do grupo. No entanto, na visão da equipe, o modelo abaixo é mais limpo, 
+ajustável e dinâmico.*/
+
 int main() {
     int i;  
     char nomes[4][30] = {
