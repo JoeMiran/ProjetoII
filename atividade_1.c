@@ -6,11 +6,13 @@ int main() {
       "Joel Tavares", 
       "David Sousa", 
       "Kelton Cantao",
+      "Carolyn Aviz"
     };
     char matriculas[3][30] = {
       "202206840054", 
       "202207040045", 
       "202007040033", 
+      "202106840046",
     };  
     
     printf("Nomes completos e matriculas dos alunos:\n");
