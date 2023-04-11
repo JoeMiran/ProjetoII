@@ -6,7 +6,7 @@ ajustável e dinâmico.*/
 
 int main() {
     // Inicio da apresentação da equipe.
-    int i;  
+    int i, m, n, o, p;
     char nomes[4][30] = {"Joel Tavares", "David Sousa", "Kelton Cantao", "Carolyn Aviz"};
     char matriculas[4][30] = {"202206840054", "202207040045", "202007040033", "202106840046"};
     
@@ -21,6 +21,19 @@ int main() {
     scanf("%d%d", &m, &n);
     printf("\nDimensões da Matriz B: ");
     scanf("%d%d", &o, &p);
+    
+    if (n=p)	/*Verificação da possibilidade de multiplicação entre as matrizes. O indice n deve ser igual a p, caso contrário, deve ser impresso uma mensagem de erro.
+				   Inserção dos dados da matriz A por parte do usuário.*/
+		for (m=1; m=<aux1; m++){		// Variação da linha.
+			for(n=1; n=<aux2; n++){		// Variação da coluna.
+				printf("Insira um valor em Matriz A [%d,%d]: ", m, n);
+				scanf ("%d", );			// Armazenamento do valor em determinada posição.
+			}
+		}
+	else printf("Não é possível multiplicar as matrizes");	// Negação do if de verificação.
+    
+	return 0;
+}
     
     return 0;
 }
