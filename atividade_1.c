@@ -5,6 +5,7 @@ um para cada membro do grupo. No entanto, na visão da equipe, o modelo abaixo �
 ajustável e dinâmico.*/
 
 int main() {
+    // Inicio da apresentação da equipe.
     int i;  
     char nomes[4][30] = {
       "Joel Tavares", 
@@ -23,6 +24,7 @@ int main() {
     for (i = 0; i < 4; i++) {
         printf("%s - %s\n", nomes[i], matriculas[i]);
     }
+    // Fim da apresentação da equipe.
 
     return 0;
 }
