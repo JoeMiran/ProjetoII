@@ -25,6 +25,12 @@ int main() {
         printf("%s - %s\n", nomes[i], matriculas[i]);
     }
     // Fim da apresentação da equipe.
-
+    
+    int A[m][n], B[o][p], C[m][p];	// Perceba que, se o número de colunas na matriz A (n) é igual ao numero de linhas na matriz B (p), a matriz resultante C será de dimensão m,p.
+    printf("\nDimensões da Matriz A: ");
+	scanf("%d%d", &m, &n);
+	printf("\nDimensões da Matriz B; ");
+	scanf("%d%d", &o, &p);
+    
     return 0;
 }
