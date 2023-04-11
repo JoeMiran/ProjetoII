@@ -23,17 +23,15 @@ int main() {
     scanf("%d%d", &o, &p);
     
     if (n=p)	/*Verificação da possibilidade de multiplicação entre as matrizes. O indice n deve ser igual a p, caso contrário, deve ser impresso uma mensagem de erro.
-				   Inserção dos dados da matriz A por parte do usuário.*/
-		for (m=1; m=<aux1; m++){		// Variação da linha.
-			for(n=1; n=<aux2; n++){		// Variação da coluna.
-				printf("Insira um valor em Matriz A [%d,%d]: ", m, n);
-				scanf ("%d", );			// Armazenamento do valor em determinada posição.
-			}
+		  Inserção dos dados da matriz A por parte do usuário.*/
+	for (m=1; m=<aux1; m++){	// Variação da linha.
+		for(n=1; n=<aux2; n++){	// Variação da coluna.
+			printf("Insira um valor em Matriz A [%d,%d]: ", m, n);
+			scanf ("%d", );	// Armazenamento do valor em determinada posição.
 		}
-	else printf("Não é possível multiplicar as matrizes");	// Negação do if de verificação.
-    
-	return 0;
-}
+	}
+    else
+	printf("Não é possível multiplicar as matrizes");// Negação do if de verificação.
     
     return 0;
 }
