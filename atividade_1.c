@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /*O código a baixo também poderia ser escrito apenas usando quatro vezes o comando "printf", 
 um para cada membro do grupo. No entanto, na visão da equipe, o modelo abaixo é mais limpo, 
