@@ -22,25 +22,26 @@ int main() {
 	printf("\nDimensões da Matriz B: ");
 	scanf("%d%d", &o, &p);
 
-	if (n=p){	// Verificação da possibilidade de multiplicação entre as matrizes. O indice n deve ser igual a p, caso contrário, deve ser impresso uma mensagem de erro.
-		// Inserção dos dados da matriz A por parte do usuário.
-		for (aux1 = 1; aux1 =< m; aux1++){		// Variação da linha.
-			for(aux2 = 1; aux2 =< n; aux2++){	// Variação da coluna.
-				printf("Insira um valor na Matriz A [%d,%d]: ", aux1, aux2);
-				scanf ("%d", &A[aux1][aux2]);	// Armazenamento do valor em determinada posição.
+	if (n=!p)	// Se o indice n for diferente de p será impresso uma mensagem de erro.
+	    printf("Não é possível multiplicar as matrizes");	// Negação do if de verificação.	
+	else {      // Caso contrário, prossegue-se para a inserção e posteriormente, para a multiplicação.
+	    // Inserção dos dados da matriz A por parte do usuário.
+		for (aux1 = 1; aux1 <= m; aux1++){		// Variação da linha.
+			for(aux2 = 1; aux2 <= n; aux2++){	// Variação da coluna.
+				printf("Insira um valor na posicão Matriz A [%d,%d]: ", aux1, aux2);
+				scanf ("%d", &A[aux1][aux2]);   // Armazenamento do valor em determinada posição.
 			}
 		}
 
 		// Inserção dos dados da matriz B por parte do usuário.
-		for (aux1 = 1; aux1 =< o; aux1++){		// Variação da linha.
-			for(aux2 = 1; aux2 =< p; aux2++){	// Variação da coluna.
-				printf("Insira um valor na Matriz B [%d,%d]: ", aux1, aux2);
+		for (aux1 = 1; aux1 <= o; aux1++){		// Variação da linha.
+			for(aux2 = 1; aux2 <= p; aux2++){	// Variação da coluna.
+				printf("Insira um valor na posicão Matriz B [%d,%d]: ", aux1, aux2);
 				scanf ("%d", &B[aux1][aux2]);	// Armazenamento do valor em determinada posição.
 			}
 		}
+		
 		// Aqui seria um bom lugar para realizar a multiplicação.
     	}
-	else
-	printf("Não é possível multiplicar as matrizes");	// Negação do if de verificação.
 	return 0;
 }
