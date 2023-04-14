@@ -16,7 +16,7 @@ int main() {
 	}
 	// Fim da apresentação da equipe.
 
-	int A[m][n], B[o][p], C[m][p];	// Perceba que, se o número de colunas na matriz A (n) é igual ao numero de linhas na matriz B (p), a matriz resultante C será de dimensão m,p.
+	int A[m][n], B[o][p], C[m][p], aux1, aux2;	// Perceba que, se o número de colunas na matriz A (n) é igual ao numero de linhas na matriz B (p), a matriz resultante C será de dimensão m,p.
 	printf("\nDimensões da Matriz A: ");
 	scanf("%d%d", &m, &n);
 	printf("\nDimensões da Matriz B: ");
@@ -26,18 +26,19 @@ int main() {
 		// Inserção dos dados da matriz A por parte do usuário.
 		for (aux1 = 1; aux1 =< m; aux1++){		// Variação da linha.
 			for(aux2 = 1; aux2 =< n; aux2++){	// Variação da coluna.
-				printf("Insira um valor em Matriz A [%d,%d]: ", aux1, aux2);
-				scanf ("%d", );			// Armazenamento do valor em determinada posição.
+				printf("Insira um valor na Matriz A [%d,%d]: ", aux1, aux2);
+				scanf ("%d", &A[aux1][aux2]);	// Armazenamento do valor em determinada posição.
 			}
 		}
 
 		// Inserção dos dados da matriz B por parte do usuário.
 		for (aux1 = 1; aux1 =< o; aux1++){		// Variação da linha.
 			for(aux2 = 1; aux2 =< p; aux2++){	// Variação da coluna.
-				printf("Insira um valor em Matriz B [%d,%d]: ", aux1, aux2);
-				scanf ("%d", );			// Armazenamento do valor em determinada posição.
+				printf("Insira um valor na Matriz B [%d,%d]: ", aux1, aux2);
+				scanf ("%d", &B[aux1][aux2]);	// Armazenamento do valor em determinada posição.
 			}
 		}
+		// Aqui seria um bom lugar para realizar a multiplicação.
     	}
 	else
 	printf("Não é possível multiplicar as matrizes");	// Negação do if de verificação.
