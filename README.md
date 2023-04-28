@@ -1,2 +1,2 @@
-# ProjetosII
-Nosso objetivo Ã© simplismente imprimir na tela o nome e a matrÃ­cula de todos os colaboradores da equipe
+# Projetos de Engenharia II
+Desenvolvimento de um sistema MIMO para telecomunicações utilizando linguagem C
