@@ -1,12 +1,12 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 
-/*O código a baixo também poderia ser escrito apenas usando quatro vezes o comando "printf", 
-um para cada membro do grupo. No entanto, na visão da equipe, o modelo abaixo é mais limpo, 
-ajustável e dinâmico.*/
+/*O cÃ³digo a baixo tambÃ©m poderia ser escrito apenas usando quatro vezes o comando "printf", 
+um para cada membro do grupo. No entanto, na visÃ£o da equipe, o modelo abaixo Ã© mais limpo, 
+ajustÃ¡vel e dinÃ¢mico.*/
 
 int main() {
-	// Inicio da apresentação da equipe.
+	// Inicio da apresentaÃ§Ã£o da equipe.
 	int i, m, n, o, p;
 	char nomes[4][30] = {"Joel Tavares", "David Sousa", "Kelton Cantao", "Carolyn Aviz"};
 	char matriculas[4][30] = {"202206840054", "202207040045", "202007040033", "202106840046"};
@@ -14,34 +14,34 @@ int main() {
 	for (i = 0; i < 4; i++) {
 		printf("%s - %s\n", nomes[i], matriculas[i]);
 	}
-	// Fim da apresentação da equipe.
+	// Fim da apresentaÃ§Ã£o da equipe.
+	return 0;
+}
 
-	int A[m][n], B[o][p], C[m][p], aux1, aux2;	// Perceba que, se o número de colunas na matriz A (n) é igual ao numero de linhas na matriz B (p), a matriz resultante C será de dimensão m,p.
-	printf("\nDimensões da Matriz A: ");
+/*int A[m][n], B[o][p], C[m][p], aux1, aux2;	// Perceba que, se o nÃºmero de colunas na matriz A (n) Ã© igual ao numero de linhas na matriz B (p), a matriz resultante C serÃ¡ de dimensÃ£o m,p.
+	printf("\nDimensÃµes da Matriz A: ");
 	scanf("%d%d", &m, &n);
-	printf("\nDimensões da Matriz B: ");
+	printf("\nDimensÃµes da Matriz B: ");
 	scanf("%d%d", &o, &p);
 
-	if (n=!p)	// Se o indice n for diferente de p será impresso uma mensagem de erro.
-	    printf("Não é possível multiplicar as matrizes");	// Negação do if de verificação.	
-	else {      // Caso contrário, prossegue-se para a inserção e posteriormente, para a multiplicação.
-	    // Inserção dos dados da matriz A por parte do usuário.
-		for (aux1 = 1; aux1 <= m; aux1++){		// Variação da linha.
-			for(aux2 = 1; aux2 <= n; aux2++){	// Variação da coluna.
-				printf("Insira um valor na posicão Matriz A [%d,%d]: ", aux1, aux2);
-				scanf ("%d", &A[aux1][aux2]);   // Armazenamento do valor em determinada posição.
+	if (n=!p)	// Se o indice n for diferente de p serÃ¡ impresso uma mensagem de erro.
+	    printf("NÃ£o Ã© possÃ­vel multiplicar as matrizes");	// NegaÃ§Ã£o do if de verificaÃ§Ã£o.	
+	else {      // Caso contrÃ¡rio, prossegue-se para a inserÃ§Ã£o e posteriormente, para a multiplicaÃ§Ã£o.
+	    // InserÃ§Ã£o dos dados da matriz A por parte do usuÃ¡rio.
+		for (aux1 = 1; aux1 <= m; aux1++){		// VariaÃ§Ã£o da linha.
+			for(aux2 = 1; aux2 <= n; aux2++){	// VariaÃ§Ã£o da coluna.
+				printf("Insira um valor na posicÃ£o Matriz A [%d,%d]: ", aux1, aux2);
+				scanf ("%d", &A[aux1][aux2]);   // Armazenamento do valor em determinada posiÃ§Ã£o.
 			}
 		}
 
-		// Inserção dos dados da matriz B por parte do usuário.
-		for (aux1 = 1; aux1 <= o; aux1++){		// Variação da linha.
-			for(aux2 = 1; aux2 <= p; aux2++){	// Variação da coluna.
-				printf("Insira um valor na posicão Matriz B [%d,%d]: ", aux1, aux2);
-				scanf ("%d", &B[aux1][aux2]);	// Armazenamento do valor em determinada posição.
+		// InserÃ§Ã£o dos dados da matriz B por parte do usuÃ¡rio.
+		for (aux1 = 1; aux1 <= o; aux1++){		// VariaÃ§Ã£o da linha.
+			for(aux2 = 1; aux2 <= p; aux2++){	// VariaÃ§Ã£o da coluna.
+				printf("Insira um valor na posicÃ£o Matriz B [%d,%d]: ", aux1, aux2);
+				scanf ("%d", &B[aux1][aux2]);	// Armazenamento do valor em determinada posiÃ§Ã£o.
 			}
 		}
 		
-		// Aqui seria um bom lugar para realizar a multiplicação.
-    	}
-	return 0;
-}
+		// Aqui seria um bom lugar para realizar a multiplicaÃ§Ã£o.
+    	}*/
