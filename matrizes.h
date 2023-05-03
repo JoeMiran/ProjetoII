@@ -1,21 +1,21 @@
 /* Cria um novo tipo de dado com o nome 'complexo'.
 Essa estrutura de dados possui dois campo do tipo float,
-um para a parte real e outro para a parte imagin·ria.*/
+um para a parte real e outro para a parte imagin√°ria.*/
 typedef struct { 
     float Real, Imag;
 } NumComplexo;
 
-/*A declaraÁ„o "NumComplexo*ponteiro" cria um ponteiro que 
-aponta para um endereÁo de memÛria onde um valor do tipo complexo
-est· armazenado. … tipo uma vari·vel de controle* que aponta endereÁos*/
+/*A declara√ß√£o "NumComplexo*ponteiro" cria um ponteiro que 
+aponta para um endere√ßo de mem√≥ria onde um valor do tipo complexo
+est√° armazenado. √â tipo uma vari√°vel de controle* que aponta endere√ßos*/
 typedef struct {
     NumComplexo *ponteiro;
     int tamanho; 
 } VetorComplexo;
 
-/* A estrutura "NumComplexo **ponteiro;" È basicamente um ponteiro que 
+/* A estrutura "NumComplexo **ponteiro;" √© basicamente um ponteiro que 
 aponta para o vetor de ponteiros anterior */
 typedef struct  {
-    NumComplexo **ponteiro;
+    VetorComplexo **ponteiro;
     int linhas, colunas;
 } MatrizComplexa;
