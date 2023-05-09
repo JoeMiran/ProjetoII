@@ -2,15 +2,6 @@
 #include <stdio.h>
 #include "matrizes.h"
 
-typedef struct {
-    float real, imag;
-} complex;
-
-typedef struct {
-    int linhas, colunas;
-    complex** mtx;
-} complexMatrix;
-
 //Definido as dimensões da matriz complexa
 int linhas = 3;
 int colunas = 2;

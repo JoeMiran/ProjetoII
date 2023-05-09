@@ -1,21 +1,17 @@
-/* Cria um novo tipo de dado com o nome 'complexo'.
-Essa estrutura de dados possui dois campo do tipo float,
-um para a parte real e outro para a parte imaginária.*/
-typedef struct { 
-    float Real, Imag;
-} NumComplexo;
+#ifndef MATRIZES_H
+#define MATRIZES_H
+#include <stdio.h>
 
-/*A declaração "NumComplexo*ponteiro" cria um ponteiro que 
-aponta para um endereço de memória onde um valor do tipo complexo
-está armazenado. É tipo uma variável de controle* que aponta endereços*/
 typedef struct {
-    NumComplexo *ponteiro;
-    int tamanho; 
-} VetorComplexo;
+  float real, imag;
+} complex;
 
-/* A estrutura "NumComplexo **ponteiro;" é basicamente um ponteiro que 
-aponta para o vetor de ponteiros anterior */
-typedef struct  {
-    VetorComplexo **ponteiro;
+typedef struct {
     int linhas, colunas;
-} MatrizComplexa;
+    complex** mtx;
+} complexMatrix;
+
+complexMatrix allocateComplexMatrix(int linhas, int colunas);
+void printComplex(complex num);
+
+#endif
