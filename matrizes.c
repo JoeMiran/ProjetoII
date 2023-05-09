@@ -76,3 +76,41 @@ complexMatrix allocateComplexMatrix(int linhas, int colunas) {
 
     return matrix;
 }
+
+complexMatrix matrixTransposta(complexMatrix matrix) {
+    
+    complexMatrix transposta; //Declaração da matriz
+    
+    transposta.linhas = matrix.colunas; //Atribuindo o númerro de linhas a transposta
+    transposta.colunas = matrix.linhas;//Agora o número de colunas
+
+    //Alocandoo memória para as linhas da transposta
+    transposta.mtx = (complex**)malloc(transposta.linhas * sizeof(complex*));
+    if (transposta.mtx == NULL) {
+        printf("Falha na alocação de memória\n");
+        exit(1);
+    }
+
+    //Alocando memória para as colunas da transposta
+    for (int i = 0; i < transposta.colunas; i++) {
+        transposta.mtx[i] = (complex**)malloc(transposta.linhas * sizeof(complex*));
+        if(transposta.mtx[i] == NULL) {
+            printf("Falha na alocação de memória\n");
+            for (int j = 0; j<i; j++) {
+                free(transposta.mtx[j]);
+            }
+                free(transposta.mtx);
+                exit(1);
+        }   
+    }
+
+    //Passandos os valores da matriz original para a transposta
+    for (int i = 0; i < matrix.linhas; i++) {
+        for (int j = 0; j < matrix.colunas; j++) {
+            transposta.mtx[j][i].real =  matrix.mtx[i][j].real;
+            transposta.mtx[j][i].imag = matrix.mtx[i][j].imag;
+        }
+    }
+
+    return transposta;
+}
