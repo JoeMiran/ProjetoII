@@ -12,6 +12,8 @@ typedef struct {
     complex** mtx;
 } complexMatrix;
 
+/********************** DEFINIDO A MATRIZ ORIGINAL *****************/
+
 //Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memória para cada linha
 complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     
@@ -36,6 +38,8 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     }
     return matrix;
 }
+
+/************************ FUNÇÕES DE OPERAÇÃO **************************/
 
 complexMatrix matrixTransposta(complexMatrix matrix) {
 
@@ -111,6 +115,43 @@ complexMatrix matrixConjugada(complexMatrix matrix) {
     return conjugada;
 }
 
+complexMatrix matrixHermitiana(complexMatrix transposta) {
+    
+    complexMatrix hermitiana;
+
+    hermitiana.linhas = transposta.linhas;
+    hermitiana.colunas = transposta.colunas;
+
+    hermitiana.mtx = (complex**)malloc(hermitiana.linhas * sizeof(complex*));
+    if(hermitiana.mtx == NULL) {
+        printf("Erro na alocação da memória\n");
+        exit(1);
+    }
+
+    for (int i = 0; i < hermitiana.linhas; i++) {
+        hermitiana.mtx[i] = (complex*)malloc(hermitiana.colunas * sizeof(complex));
+        if (hermitiana.mtx[i] == NULL) {
+            printf("Erro na alocação da memória: \n");
+            
+            for (int j = 0; j < i; j++) {
+                free(hermitiana.mtx[j]);
+            }
+            free(hermitiana.mtx);
+            exit(1);
+        }
+    }
+
+    for (int i = 0; i < transposta.linhas; i++) {
+        for(int j = 0; j < transposta.colunas; j++) {
+            hermitiana.mtx[i][j].Re = transposta.mtx[i][j].Re;
+            hermitiana.mtx[i][j].Im = -transposta.mtx[i][j].Im;
+        }
+    }
+
+    return hermitiana;
+}
+
+/************************ FUNÇÕES DE TESTE **************************/
 void printComplex(complex num) {
     printf("%.2f + %.2fi\n", num.Re, num.Im);
 }
@@ -118,18 +159,26 @@ void printComplex(complex num) {
 void printTransposta(complexMatrix transposta) {
     for (int l = 0; l < transposta.linhas; l++) {
         for (int c = 0; c < transposta.colunas; c++) {
-            printf("transposta[%d][%d]: ", l, c);
+            printf("[%d][%d]: ", l, c);
             printComplex(transposta.mtx[l][c]);
         }
     }
 }
 
 void printConjugada(complexMatrix conjugada) {
-    printf("Matriz Conjugada: \n");
     for (int l = 0; l < conjugada.linhas; l++) {
         for (int c = 0; c < conjugada.colunas; c++) {
-            printf("conjugada[%d][%d]: ", l, c);
+            printf("[%d][%d]: ", l, c);
             printComplex(conjugada.mtx[l][c]);
+        }
+    }
+}
+
+void printHermitiana(complexMatrix hermitiana) {
+    for (int l = 0; l < hermitiana.linhas; l++) {
+        for(int c = 0; c < hermitiana.colunas; c++) {
+            printf("[%d][%d]: ", l, c);
+            printComplex(hermitiana.mtx[l][c]);
         }
     }
 }
@@ -168,16 +217,7 @@ int main() {
     printf("\nMatrix Conjugada: \n");
     printConjugada(conjugada);
 
-    // Liberando a memória alocada para as matrizes complexas
-    for (int i = 0; i < matrix.linhas; i++) {
-        free(matrix.mtx[i]);
-    }
-    free(matrix.mtx);
-
-    for (int i = 0; i < transposta.linhas; i++) {
-        free(transposta.mtx[i]);
-    }
-    free(transposta.mtx);
-
-    return 0;
+    complexMatrix hermitiana = matrixHermitiana(transposta);
+    printf("\nMatrix Hermitiana: \n");
+    printHermitiana(hermitiana);
 }
