@@ -2,10 +2,6 @@
 #include <stdio.h>
 #include "matrizes.h"
 
-//Definido as dimensões da matriz complexa
-int linhas = 3;
-int colunas = 2;
-
 /*
 A função está sendo chamada para alocar memória para a matriz complexa, 
 retornando a variável mtx do tipo complexMatrix
@@ -77,7 +73,31 @@ complexMatrix allocateComplexMatrix(int linhas, int colunas) {
     return matrix;
 }
 
-complexMatrix matrixTransposta(complexMatrix matrix) {
+//Liberando a memória alocada para a matriz
+void freeComplexMatrix(complexMatrix matrix) {
+    for (int i = 0; i < matrix.linhas; i++) {
+        free(matrix.mtx[i]);
+    }
+    free(matrix.mtx);
+}
+
+// Função para imprimir um número complexo
+void printComplex(complex complex) {
+    printf("%.2f + %.2fi\n", complex.real, complex.imag);
+}
+
+// imprimindo a matriz complexa
+void printComplexMatrix(ComplexMatrix matrix) {
+    for (int i = 0; i < matrix.linhas; i++) {
+        for (int j = 0; j < matrix.colunas; j++) {
+            printf("mtx[%d][%d]: ", i, j);
+            printComplex(matrix.mtx[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void complexMatrix matrixTransposta(complexMatrix matrix) {
     
     complexMatrix transposta; //Declaração da matriz
     

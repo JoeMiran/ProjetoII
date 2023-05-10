@@ -12,7 +12,9 @@ typedef struct {
 } complexMatrix;
 
 complexMatrix allocateComplexMatrix(int linhas, int colunas);
-void printComplex(complex num);
+void freeComplexMatrix(complexMatrix matrix);
+void printComplex(complex complex);
+void printComplexMatrix(ComplexMatrix matrix);
 complexMatrix matrixTransposta(complexMatrix matrix);
 
 #endif
