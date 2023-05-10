@@ -1,151 +1,126 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+//Definindo a estrutua complex com parte real e imaginária
 typedef struct {
-  float real, imag;
+    float Re, Im;
 } complex;
 
+//Definindo a estrutura complexMtrix que representa uma matriz complexa
 typedef struct {
     int linhas, colunas;
     complex** mtx;
 } complexMatrix;
 
-complexMatrix allocateComplexMatrix(int linhas, int colunas);
-void freeComplexMatrix(complexMatrix matrix);
-void printComplex(complex complex);
-void printComplexMatrix(complexMatrix matrix);
-complexMatrix matrixTransposta(complexMatrix matrix);
-
-/*
-A função está sendo chamada para alocar memória para a matriz complexa, 
-retornando a variável mtx do tipo complexMatrix
-*/
-complexMatrix mtx = allocateComplexMatrix(linhas, colunas);
-
-//Preenchendo a matriz complexa
-for (int l = 0; l < mtx.linhas; l++) {
-    for (int c = 0; c < mtx.colunas; c++) {
-        mtx.mtx[l][c].real = 2 * l;
-        mtx.mtx[l][c].imag = 2 * c;
-    }
-}
-
-//Imprimindo o valor da matriz complexa
-for (int l = 0; l < mtx.linhas; l++) {
-    for (int c = 0; c < mtx.colunas; c++) {
-        printf("mtx[%d][%d]: ", l, c);
-        printComplex(mtx.mtx[l][c]);
-    }
-}
-
-/*
-Agora a função que foi chamada anteriormente vai alocar memória
-para a matriz complexa
-*/
-complexMatrix allocateComplexMatrix(int linhas, int colunas) {
+//Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memória para cada linha
+complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     
-    complexMatrix matrix; //Criando a variável matrix do tipo complexMatrix
+    complexMatrix matrix;
     matrix.linhas = linhas;
     matrix.colunas = colunas;
-
-    /*
-    Reservando a quantidade de memória necessária para armazenar as linhas
-    da matriz complexa 
-    */
-    matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
     
-    //Caso haja algum erro na alocação, o programa é interrompido
+    //Alocandoo memória para as linhas
+    matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
     if (matrix.mtx == NULL) {
         printf("Falha na alocação de memória\n");
         exit(1);
     }
-
-    /*
-    Esse laço está percorrendo cada linha da matriz e alocando memória
-    para as colunas correspondentes
-    */
-    for (int i = 0; i < linhas; i++) {
+    
+    //Alocando memória para cada coluna de cada linha
+    for (int i = 0; i < linhas; i++) { 
         matrix.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
-        
-        /*
-        Esse if vai verificar se houve algum erro na alocação da memória, assim como o anterios,
-        no entando, essa estrutura vai liberar a memória e depois encerrar o programa caso esse
-        erro ocorra.
-        */
-        if (matrix.mtx[i] == NULL) {
+        if (matrix.mtx == NULL) {
             printf("Falha na alocação de memória\n");
-
-            for (int j = 0; j < i; j++) { //Percorre as linhas anteriores a 'i'
-                free(matrix.mtx[j]);//Libera a memória alocada para as colunas das linhas
-            }
-            free(matrix.mtx);//Libera a memória alocada para as linhas
-
             exit(1);
         }
     }
-
     return matrix;
 }
 
-//Liberando a memória alocada para a matriz
-void freeComplexMatrix(complexMatrix matrix) {
-    for (int i = 0; i < matrix.linhas; i++) {
-        free(matrix.mtx[i]);
-    }
-    free(matrix.mtx);
+void printComplex(complex num) {
+    printf("%.2f + %.2fi\n", num.Re, num.Im);
 }
 
-// Função para imprimir um número complexo
-void printComplex(complex complex) {
-    printf("%.2f + %.2fi\n", complex.real, complex.imag);
-}
+complexMatrix matrixTransposta(complexMatrix matrix) {
 
-// imprimindo a matriz complexa
-void printComplexMatrix(complexMatrix matrix) {
-    for (int i = 0; i < matrix.linhas; i++) {
-        for (int j = 0; j < matrix.colunas; j++) {
-            printf("mtx[%d][%d]: ", i, j);
-            printComplex(matrix.mtx[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void complexMatrix matrixTransposta(complexMatrix matrix) {
-    
-    complexMatrix transposta; //Declaração da matriz
-    
-    transposta.linhas = matrix.colunas; //Atribuindo o númerro de linhas a transposta
-    transposta.colunas = matrix.linhas;//Agora o número de colunas
-
-    //Alocandoo memória para as linhas da transposta
+    complexMatrix transposta;
+    transposta.linhas = matrix.colunas;
+    transposta.colunas = matrix.linhas;
     transposta.mtx = (complex**)malloc(transposta.linhas * sizeof(complex*));
     if (transposta.mtx == NULL) {
         printf("Falha na alocação de memória\n");
         exit(1);
     }
 
-    //Alocando memória para as colunas da transposta
-    for (int i = 0; i < transposta.colunas; i++) {
-        transposta.mtx[i] = (complex**)malloc(transposta.linhas * sizeof(complex*));
-        if(transposta.mtx[i] == NULL) {
+    for (int i = 0; i < transposta.linhas; i++) {
+        transposta.mtx[i] = (complex*)malloc(transposta.colunas * sizeof(complex));
+        if (transposta.mtx[i] == NULL) {
             printf("Falha na alocação de memória\n");
-            for (int j = 0; j<i; j++) {
+            for (int j = 0; j < i; j++) {
                 free(transposta.mtx[j]);
-            }
-                free(transposta.mtx);
-                exit(1);
-        }   
-    }
-
-    //Passandos os valores da matriz original para a transposta
-    for (int i = 0; i < matrix.linhas; i++) {
-        for (int j = 0; j < matrix.colunas; j++) {
-            transposta.mtx[j][i].real =  matrix.mtx[i][j].real;
-            transposta.mtx[j][i].imag = matrix.mtx[i][j].imag;
+            } 
+            free(transposta.mtx);
+            exit(1);
         }
     }
 
+    for (int i = 0; i < matrix.linhas; i++) {
+        for (int j = 0; j < matrix.colunas; j++) {
+            transposta.mtx[i][j].Re = matrix.mtx[i][j].Re;
+            transposta.mtx[j][i].Im = matrix.mtx[i][j].Im;
+        }
+    }
     return transposta;
+}
+
+void printTransposta(complexMatrix transposta) {
+    for (int l = 0; l < transposta.linhas; l++) {
+        for (int c = 0; c < transposta.colunas; c++) {
+            printf("transposta[%d][%d]: ", l, c);
+            printComplex(transposta.mtx[l][c]);
+        }
+    }
+}
+
+int main() {
+    
+    int linhas = 3;
+    int colunas = 3;
+
+    //chamando a função que cria e aloca memória para a matriz complexa
+    complexMatrix matrix = allocateComplexMaatrix(linhas, colunas);
+
+    //Preenchendo a matriz complexa
+    for (int l = 0; l < matrix.linhas; l++) {
+        for (int c = 0; c < matrix.colunas; c++) {
+            matrix.mtx[l][c].Re = 2 * l;
+            matrix.mtx[l][c].Im = 2 * c;
+        }
+    }
+
+    //Imprimindo o valor da matriz complexa
+    for (int l = 0; l < matrix.linhas; l++) {
+        for (int c = 0; c  < matrix.colunas; c++) {
+            printf("matriz[%d][%d]: ", l, c);
+            printComplex(matrix.mtx[l][c]);
+        }
+    }
+
+    complexMatrix transposta = matrixTransposta(matrix);
+
+    printf("\nMatriz Transposta: \n");
+    printTransposta(transposta);
+
+    // Liberando a memória alocada para as matrizes complexas
+    for (int i = 0; i < matrix.linhas; i++) {
+        free(matrix.mtx[i]);
+    }
+    free(matrix.mtx);
+
+    for (int i = 0; i < transposta.linhas; i++) {
+        free(transposta.mtx[i]);
+    }
+    free(transposta.mtx);
+
+    return 0;
 }
