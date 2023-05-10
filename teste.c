@@ -202,7 +202,7 @@ int main() {
     //Imprimindo o valor da matriz complexa
     for (int l = 0; l < matrix.linhas; l++) {
         for (int c = 0; c  < matrix.colunas; c++) {
-            printf("matriz[%d][%d]: ", l, c);
+            printf("[%d][%d]: ", l, c);
             printComplex(matrix.mtx[l][c]);
         }
     }
