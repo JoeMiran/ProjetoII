@@ -1,6 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "matrizes.h"
+
+
+typedef struct {
+  float real, imag;
+} complex;
+
+typedef struct {
+    int linhas, colunas;
+    complex** mtx;
+} complexMatrix;
+
+complexMatrix allocateComplexMatrix(int linhas, int colunas);
+void freeComplexMatrix(complexMatrix matrix);
+void printComplex(complex complex);
+void printComplexMatrix(complexMatrix matrix);
+complexMatrix matrixTransposta(complexMatrix matrix);
 
 /*
 A função está sendo chamada para alocar memória para a matriz complexa, 
@@ -87,7 +102,7 @@ void printComplex(complex complex) {
 }
 
 // imprimindo a matriz complexa
-void printComplexMatrix(ComplexMatrix matrix) {
+void printComplexMatrix(complexMatrix matrix) {
     for (int i = 0; i < matrix.linhas; i++) {
         for (int j = 0; j < matrix.colunas; j++) {
             printf("mtx[%d][%d]: ", i, j);
@@ -133,40 +148,4 @@ void complexMatrix matrixTransposta(complexMatrix matrix) {
     }
 
     return transposta;
-}
-
-complexMatrix matrixConjugada(complexMatrix matrix) {
-    complexMatrix conjugada;
-    conjugada.rows = matrix.rows;
-    conjugada.cols = matrix.cols;
-
-    // Alocando memória para a matriz conjugada
-    conjugada.mtx = (complex**)malloc(conjugada.linhas * sizeof(complex*));
-    if (conjugada.mtx == NULL) {
-        printf("Falha na alocação de memória.\n");
-        exit(1);
-    }
-
-    for (int i = 0; i < conjugada.linhas; i++) {
-        conjugada.mtx[i] = (complex*)malloc(conjugada.colunas * sizeof(complex));
-        if (conjugada.mtx[i] == NULL) {
-            printf("Falha na alocação de memória.\n");
-
-            for (int j = 0; j < i; j++) {
-                free(conjugada.mtx[j]);
-            }
-            free(conjugada.mtx);
-            exit(1);
-        }
-    }
-
-    // Calculando a matriz conjugada
-    for (int i = 0; i < matrix.rows; i++) {
-        for (int j = 0; j < matrix.cols; j++) {
-            conjugada.mtx[i][j].real = matrix.mtx[i][j].real;
-            conjugada.mtx[i][j].imag = -matrix.mtx[i][j].imag; // Mudando o sinal da parte imaginária
-        }
-    }
-
-    return conjugada;
 }
