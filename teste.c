@@ -164,6 +164,20 @@ complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2) {
     return soma;
 }
 
+complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2) {
+    
+    complexMatrix subtracao = allocateComplexMaatrix(matrix1.linhas, matrix1.colunas);
+
+    for (int l = 0; l < matrix1.linhas; l++) {
+        for (int c = 0; c < matrix1.colunas; c++) {
+            subtracao.mtx[l][c].Re = matrix1.mtx[l][c].Re - matrix2.mtx[l][c].Re;
+            subtracao.mtx[l][c].Im = matrix1.mtx[l][c].Im - matrix2.mtx[l][c].Im;
+        }
+    }
+    
+    return subtracao;
+}
+
 /************************ FUNÇÕES DE TESTE **************************/
 void printComplex(complex num) {
     printf("%.2f + %.2fi\n", num.Re, num.Im);
@@ -204,6 +218,16 @@ void printSoma(complexMatrix soma) {
         }
     }
 }
+
+void printSubtracao(complexMatrix subtracao) {
+    for (int l = 0; l < subtracao.linhas; l++) {
+        for (int c = 0; subtracao.colunas; c++) {
+            printf("[%d][%d]: ", l, c);
+            printComplex(subtracao.mtx[l][c]);
+        }
+    }
+}
+
 
 //Completa aqui!!!
 void printMatrix(complexMatrix matrix) {
@@ -262,6 +286,7 @@ int main() {
     }
 
     complexMatrix soma = matrixSoma(matrix1, matrix2);
+    complexMatrix subtracao = matrixSubtracao(matrix1, matrix2);
 
     printf("\nMatriz Transposta: \n");
     printTransposta(transposta);
@@ -274,6 +299,9 @@ int main() {
 
     printf("\nMatriz Soma: \n");
     printSoma(soma);
+
+    printf("\nMatriz Subtração: \n");
+    printSubtracao(subtracao);
 
 
 }
