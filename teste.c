@@ -39,6 +39,31 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     return matrix;
 }
 
+complexMatrix allocateComplexMatrixA(int linhas, int colunas) {
+    
+    complexMatrix matrixA;
+    matrixA.linhas = linhas;
+    matrixA.colunas = colunas;
+    
+    //Alocandoo memória para as linhas
+    matrixA.mtx = (complex**)malloc(linhas * sizeof(complex*));
+    if (matrixA.mtx == NULL) {
+        printf("Falha na alocação de memória\n");
+        exit(1);
+    }
+    
+    //Alocando memória para cada coluna de cada linha
+    for (int i = 0; i < linhas; i++) { 
+        matrixA.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
+        if (matrixA.mtx == NULL) {
+            printf("Falha na alocação de memória\n");
+            exit(1);
+        }
+    }
+    return matrixA;
+}
+
+
 /************************ FUNÇÕES DE OPERAÇÃO **************************/
 
 complexMatrix matrixTransposta(complexMatrix matrix) {
@@ -151,6 +176,11 @@ complexMatrix matrixHermitiana(complexMatrix transposta) {
     return hermitiana;
 }
 
+//Completa aqui!!!
+complexMatrix matrixSoma(complexMatrix matrix, complexMatrix matrizA) {
+
+}
+
 /************************ FUNÇÕES DE TESTE **************************/
 void printComplex(complex num) {
     printf("%.2f + %.2fi\n", num.Re, num.Im);
@@ -179,6 +209,15 @@ void printHermitiana(complexMatrix hermitiana) {
         for(int c = 0; c < hermitiana.colunas; c++) {
             printf("[%d][%d]: ", l, c);
             printComplex(hermitiana.mtx[l][c]);
+        }
+    }
+}
+
+//Completa aqui!!!
+void printSoma(complexMatrix matrix, complexMatrix matrixA) {
+    for() {
+        for () {
+
         }
     }
 }
@@ -220,4 +259,8 @@ int main() {
     complexMatrix hermitiana = matrixHermitiana(transposta);
     printf("\nMatrix Hermitiana: \n");
     printHermitiana(hermitiana);
+
+
+    //Completa aqui!!!
+    complexMatrix Soma = matrixSoma(matrix, matrixA); 
 }
