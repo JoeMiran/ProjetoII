@@ -177,7 +177,7 @@ complexMatrix matrixHermitiana(complexMatrix transposta) {
 }
 
 //Completa aqui!!!
-complexMatrix matrixSoma(complexMatrix matrix, complexMatrix matrizA) {
+complexMatrix matrixSoma(complexMatrix matrix, complexMatrix matrixA) {
 
 }
 
