@@ -224,10 +224,6 @@ int main() {
     complexMatrix matrix = allocateComplexMaatrix(linhas, colunas);
     complexMatrix matrix1 = allocateComplexMaatrix(linhas, colunas);
     complexMatrix matrix2 = allocateComplexMaatrix(linhas, colunas);
-    complexMatrix transposta = matrixTransposta(matrix);
-    complexMatrix conjugada = matrixConjugada(matrix);
-    complexMatrix hermitiana = matrixHermitiana(transposta);
-    complexMatrix soma = matrixSoma(matrix1, matrix2);
 
     //Preenchendo a matriz complexa
     for (int l = 0; l < matrix.linhas; l++) {
@@ -245,6 +241,10 @@ int main() {
         }
     }
 
+    complexMatrix transposta = matrixTransposta(matrix);
+    complexMatrix conjugada = matrixConjugada(matrix);
+    complexMatrix hermitiana = matrixHermitiana(transposta);
+
     //Preenchendo a matrix1
     for (int l = 0; l < matrix1.linhas; l++) {
         for (int c = 0; c < matrix1.colunas; c++) {
@@ -260,6 +260,8 @@ int main() {
             matrix2.mtx[l][c].Im = l + c + 2.5;
         }
     }
+
+    complexMatrix soma = matrixSoma(matrix1, matrix2);
 
     printf("\nMatriz Transposta: \n");
     printTransposta(transposta);
