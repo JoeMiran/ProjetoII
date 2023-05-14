@@ -39,31 +39,6 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     return matrix;
 }
 
-complexMatrix allocateComplexMatrixA(int linhas, int colunas) {
-    
-    complexMatrix matrixA;
-    matrixA.linhas = linhas;
-    matrixA.colunas = colunas;
-    
-    //Alocandoo memória para as linhas
-    matrixA.mtx = (complex**)malloc(linhas * sizeof(complex*));
-    if (matrixA.mtx == NULL) {
-        printf("Falha na alocação de memória\n");
-        exit(1);
-    }
-    
-    //Alocando memória para cada coluna de cada linha
-    for (int i = 0; i < linhas; i++) { 
-        matrixA.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
-        if (matrixA.mtx == NULL) {
-            printf("Falha na alocação de memória\n");
-            exit(1);
-        }
-    }
-    return matrixA;
-}
-
-
 /************************ FUNÇÕES DE OPERAÇÃO **************************/
 
 complexMatrix matrixTransposta(complexMatrix matrix) {
@@ -176,9 +151,17 @@ complexMatrix matrixHermitiana(complexMatrix transposta) {
     return hermitiana;
 }
 
-//Completa aqui!!!
-complexMatrix matrixSoma(complexMatrix matrix, complexMatrix matrixA) {
+complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2) {
+    complexMatrix soma = allocateComplexMaatrix(matrix1.linhas, matrix1.colunas);
 
+    for (int l = 0; l < matrix1.linhas; l++) {
+        for (int c = 0; c < matrix1.colunas; c++) {
+            soma.mtx[l][c].Re = matrix1.mtx[l][c].Re + matrix2.mtx[l][c].Re;
+            soma.mtx[l][c].Im = matrix1.mtx[l][c].Im + matrix2.mtx[l][c].Im;
+        }
+    }
+
+    return soma;
 }
 
 /************************ FUNÇÕES DE TESTE **************************/
@@ -213,13 +196,23 @@ void printHermitiana(complexMatrix hermitiana) {
     }
 }
 
-//Completa aqui!!!
-void printSoma(complexMatrix matrix, complexMatrix matrixA) {
-    for() {
-        for () {
-
+void printSoma(complexMatrix soma) {
+    for(int l = 0; l < soma.linhas; l++) {
+        for(int c = 0; c < soma.colunas; c++) {
+            printf("[%d][%d]: ", l, c);
+            printComplex(soma.mtx[l][c]);
         }
     }
+}
+
+//Completa aqui!!!
+void printMatrix(complexMatrix matrix) {
+printf("Matriz:\n");
+for (int l = 0; l < matrix.linhas; l++) {
+for (int c = 0; c < matrix.colunas; c++) {
+printf("[%d][%d]: %.2f + %.2fi\n", l, c, matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
+}
+}
 }
 
 int main() {
@@ -229,6 +222,12 @@ int main() {
 
     //chamando a função que cria e aloca memória para a matriz complexa
     complexMatrix matrix = allocateComplexMaatrix(linhas, colunas);
+    complexMatrix matrix1 = allocateComplexMaatrix(linhas, colunas);
+    complexMatrix matrix2 = allocateComplexMaatrix(linhas, colunas);
+    complexMatrix transposta = matrixTransposta(matrix);
+    complexMatrix conjugada = matrixConjugada(matrix);
+    complexMatrix hermitiana = matrixHermitiana(transposta);
+    complexMatrix soma = matrixSoma(matrix1, matrix2);
 
     //Preenchendo a matriz complexa
     for (int l = 0; l < matrix.linhas; l++) {
@@ -246,21 +245,33 @@ int main() {
         }
     }
 
-    complexMatrix transposta = matrixTransposta(matrix);
+    //Preenchendo a matrix1
+    for (int l = 0; l < matrix1.linhas; l++) {
+        for (int c = 0; c < matrix1.colunas; c++) {
+            matrix1.mtx[l][c].Re = l + c + 1.0;
+            matrix1.mtx[l][c].Im = l + c + 2.0;
+        }
+    }
+
+    //Preenchendo a matrix2
+    for (int l = 0; l < matrix2.linhas; l++) {
+        for (int c = 0; c < matrix2.colunas; c++) {
+            matrix2.mtx[l][c].Re = l + c + 1.5;
+            matrix2.mtx[l][c].Im = l + c + 2.5;
+        }
+    }
 
     printf("\nMatriz Transposta: \n");
     printTransposta(transposta);
-
-    complexMatrix conjugada = matrixConjugada(matrix);
     
     printf("\nMatrix Conjugada: \n");
     printConjugada(conjugada);
 
-    complexMatrix hermitiana = matrixHermitiana(transposta);
     printf("\nMatrix Hermitiana: \n");
     printHermitiana(hermitiana);
 
+    printf("\nMatriz Soma: \n");
+    printSoma(soma);
 
-    //Completa aqui!!!
-    complexMatrix Soma = matrixSoma(matrix, matrixA); 
+
 }
