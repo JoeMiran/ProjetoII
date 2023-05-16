@@ -24,7 +24,7 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     //Alocandoo memï¿½ria para as linhas
     matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
     if (matrix.mtx == NULL) {
-        printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
+        printf("Falha na alocação de memória\n");
         exit(1);
     }
     
@@ -32,7 +32,7 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     for (int i = 0; i < linhas; i++) { 
         matrix.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
         if (matrix.mtx == NULL) {
-            printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
+            printf("Falha na alocação de memória\n");
             exit(1);
         }
     }
@@ -43,30 +43,11 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
 
 complexMatrix matrixTransposta(complexMatrix matrix) {
 
-    complexMatrix transposta;
-    transposta.linhas = matrix.colunas;
-    transposta.colunas = matrix.linhas;
-    transposta.mtx = (complex**)malloc(transposta.linhas * sizeof(complex*));
-    if (transposta.mtx == NULL) {
-        printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
-        exit(1);
-    }
-
-    for (int i = 0; i < transposta.linhas; i++) {
-        transposta.mtx[i] = (complex*)malloc(transposta.colunas * sizeof(complex));
-        if (transposta.mtx[i] == NULL) {
-            printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
-            for (int j = 0; j < i; j++) {
-                free(transposta.mtx[j]);
-            } 
-            free(transposta.mtx);
-            exit(1);
-        }
-    }
-
+    complexMatrix transposta = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
+    
     for (int i = 0; i < matrix.linhas; i++) {
         for (int j = 0; j < matrix.colunas; j++) {
-            transposta.mtx[i][j].Re = matrix.mtx[i][j].Re;
+            transposta.mtx[j][i].Re = matrix.mtx[i][j].Re;
             transposta.mtx[j][i].Im = matrix.mtx[i][j].Im;
         }
     }
@@ -75,34 +56,7 @@ complexMatrix matrixTransposta(complexMatrix matrix) {
 
 complexMatrix matrixConjugada(complexMatrix matrix) {
 
-    complexMatrix conjugada; //Declarando a matriz conjugada
-    
-    //A matriz conjugada vai receber as mesmas linhas e colunas da matriz original
-    conjugada.linhas = matrix.linhas; 
-    conjugada.colunas = matrix.colunas;
-
-    //Alocando memï¿½ria para as linhas
-    conjugada.mtx = (complex**)malloc(conjugada.linhas * sizeof(complex*));
-    //Verificando se nï¿½o houve nenhum erro na alocaï¿½ï¿½o das linhas
-    if(conjugada.mtx == NULL) {
-        printf("Erro na alocaï¿½ï¿½o da memï¿½ria");
-        exit(1);
-    }
-
-    //Alocando memï¿½ria para as colunas de cada linha
-    for (int i = 0; i < conjugada.linhas; i++) {
-        conjugada.mtx[i] = (complex*)malloc(conjugada.colunas * sizeof(complex));
-        //Verificando se nï¿½o hï¿½ nenhum erro na alocaï¿½ï¿½o
-        if (conjugada.mtx[i] == NULL) {
-            printf("Falha na alocaï¿½ï¿½o da memï¿½ria\n");
-            //Liberando a memï¿½ria em caso de erro
-            for (int j = 0; j < i; j++) {
-                free(conjugada.mtx[j]);
-            }
-            free(conjugada.mtx);
-            exit(1);
-        }
-    }
+    complexMatrix conjugada = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
 
     //Aqui vai a operaï¿½ï¿½o em si, que transforma a matriz original na sua conjjugada
     for (int i = 0; i < matrix.linhas; i++) {
@@ -117,29 +71,7 @@ complexMatrix matrixConjugada(complexMatrix matrix) {
 
 complexMatrix matrixHermitiana(complexMatrix transposta) {
     
-    complexMatrix hermitiana;
-
-    hermitiana.linhas = transposta.linhas;
-    hermitiana.colunas = transposta.colunas;
-
-    hermitiana.mtx = (complex**)malloc(hermitiana.linhas * sizeof(complex*));
-    if(hermitiana.mtx == NULL) {
-        printf("Erro na alocaï¿½ï¿½o da memï¿½ria\n");
-        exit(1);
-    }
-
-    for (int i = 0; i < hermitiana.linhas; i++) {
-        hermitiana.mtx[i] = (complex*)malloc(hermitiana.colunas * sizeof(complex));
-        if (hermitiana.mtx[i] == NULL) {
-            printf("Erro na alocaï¿½ï¿½o da memï¿½ria: \n");
-            
-            for (int j = 0; j < i; j++) {
-                free(hermitiana.mtx[j]);
-            }
-            free(hermitiana.mtx);
-            exit(1);
-        }
-    }
+    complexMatrix hermitiana = allocateComplexMaatrix(transposta.colunas, transposta.linhas);
 
     for (int i = 0; i < transposta.linhas; i++) {
         for(int j = 0; j < transposta.colunas; j++) {
@@ -177,9 +109,62 @@ complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2) {
     return subtracao;
 }
 
-/************************ FUNï¿½ï¿½ES DE TESTE **************************/
+complexMatrix matrix_produtoEscalar(complexMatrix matrix, float num) {
+    complexMatrix produtoEscalar = allocateComplexMaatrix(matrix.linhas, matrix.colunas);
+
+    for (int l = 0; l < matrix.linhas; l++) {
+        for (int c = 0; c < matrix.colunas; c++) {
+            produtoEscalar.mtx[l][c].Re = matrix.mtx[l][c].Re * num;
+            produtoEscalar.mtx[l][c].Im = matrix.mtx[l][c].Im * num;
+        }
+    }
+
+    return produtoEscalar;
+}
+
+complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2) {
+    complexMatrix produto = allocateComplexMaatrix(matrix1.linhas, matrix1.colunas);
+
+    for (int l = 0; l < matrix1.linhas; l++) {
+        for(int c = 0; c < matrix1.colunas; c++) {
+            produto.mtx[l][c].Re = matrix1.mtx[l][c].Re * matrix2.mtx[l][c].Re;
+            produto.mtx[l][c].Im = matrix1.mtx[l][c].Im * matrix2.mtx[l][c].Im;
+        }
+    }
+
+    return produto;
+}
+
+/************************ FUNÇÕES DE TESTE **************************/
 void printComplex(complex num) {
     printf("%.2f + %.2fi\n", num.Re, num.Im);
+}
+
+void printMatrix(complexMatrix matrix) {
+    for (int l = 0; l < matrix.linhas; l++) {
+        for (int c = 0; c < matrix.colunas; c++) {
+        printf("[%d][%d]: ", l, c);
+        printComplex(matrix.mtx[l][c]);
+        }
+    }
+}
+
+void printMatrix1(complexMatrix matrix1) {
+    for (int l = 0; l < matrix1.linhas; l++) {
+        for (int c = 0; c < matrix1.colunas; c++) {
+        printf("[%d][%d]: ", l, c);
+        printComplex(matrix1.mtx[l][c]);
+        }
+    }
+}
+
+void printMatrix2(complexMatrix matrix2) {
+    for (int l = 0; l < matrix2.linhas; l++) {
+        for (int c = 0; c < matrix2.colunas; c++) {
+        printf("[%d][%d]: ", l, c);
+        printComplex(matrix2.mtx[l][c]);
+        }
+    }
 }
 
 void printTransposta(complexMatrix transposta) {
@@ -227,21 +212,29 @@ void printSubtracao(complexMatrix subtracao) {
     }
 }
 
+void print_produtoEscalar(complexMatrix produtoEscalar) {
+    for (int l = 0; l < produtoEscalar.linhas; l++) {
+        for (int c = 0; c < produtoEscalar.colunas; c++ ) {
+            printf("[%d][%d]: ", l, c);
+            printComplex(produtoEscalar.mtx[l][c]);
+        }
+    }
+}
 
-//Completa aqui!!!
-void printMatrix(complexMatrix matrix) {
-printf("Matriz:\n");
-for (int l = 0; l < matrix.linhas; l++) {
-for (int c = 0; c < matrix.colunas; c++) {
-printf("[%d][%d]: %.2f + %.2fi\n", l, c, matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
-}
-}
+void printProduto(complexMatrix produto) {
+    for (int l = 0; l < produto.linhas; l++) {
+        for (int c = 0; c < produto.colunas; c++ ) {
+            printf("[%d][%d]: ", l, c);
+            printComplex(produto.mtx[l][c]);
+        }
+    }
 }
 
 int main() {
     
     int linhas = 3;
     int colunas = 3;
+    float num = 2.5;
 
     //chamando a funï¿½ï¿½o que cria e aloca memï¿½ria para a matriz complexa
     complexMatrix matrix = allocateComplexMaatrix(linhas, colunas);
@@ -255,15 +248,7 @@ int main() {
             matrix.mtx[l][c].Im = 2 * c;
         }
     }
-
-    //Imprimindo o valor da matriz complexa
-    for (int l = 0; l < matrix.linhas; l++) {
-        for (int c = 0; c  < matrix.colunas; c++) {
-            printf("[%d][%d]: ", l, c);
-            printComplex(matrix.mtx[l][c]);
-        }
-    }
-
+    
     complexMatrix transposta = matrixTransposta(matrix);
     complexMatrix conjugada = matrixConjugada(matrix);
     complexMatrix hermitiana = matrixHermitiana(transposta);
@@ -286,21 +271,37 @@ int main() {
 
     complexMatrix soma = matrixSoma(matrix1, matrix2);
     complexMatrix subtracao = matrixSubtracao(matrix1, matrix2);
+    complexMatrix produtoEscalar = matrix_produtoEscalar(matrix, num);
+    complexMatrix produto = matrixProduto(matrix1, matrix2);
 
-    printf("\nMatriz Transposta: \n");
+    printf("\n Matriz Original: \n");
+    printMatrix(matrix);
+
+    printf("\n Matriz 1: \n");
+    printMatrix(matrix1);
+
+    printf("\n Matriz 2: \n");
+    printMatrix(matrix2);
+
+    printf("\nMatriz Transposta da Original: \n");
     printTransposta(transposta);
     
-    printf("\nMatrix Conjugada: \n");
+    printf("\nMatrix Conjugada da Original: \n");
     printConjugada(conjugada);
 
-    printf("\nMatrix Hermitiana: \n");
+    printf("\nMatrix Hermitiana da Original: \n");
     printHermitiana(hermitiana);
 
-    printf("\nMatriz Soma: \n");
+    printf("\nMatriz Soma de 1 e 2: \n");
     printSoma(soma);
 
-    printf("\nMatriz Subtraï¿½ï¿½o: \n");
+    printf("\nMatriz Subtracao de 1 e 2: \n");
     printSubtracao(subtracao);
 
+    printf("\n Produto escalar entre a a original e um número: \n");
+    print_produtoEscalar(produtoEscalar);
+
+    printf("\n Produto Matricial de 1 e 2: \n");
+    printProduto(produto);
 
 }
