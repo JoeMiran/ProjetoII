@@ -165,7 +165,6 @@ complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2) {
 }
 
 complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2) {
-    
     complexMatrix subtracao = allocateComplexMaatrix(matrix1.linhas, matrix1.colunas);
 
     for (int l = 0; l < matrix1.linhas; l++) {
@@ -174,7 +173,7 @@ complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2) {
             subtracao.mtx[l][c].Im = matrix1.mtx[l][c].Im - matrix2.mtx[l][c].Im;
         }
     }
-    
+
     return subtracao;
 }
 
@@ -221,7 +220,7 @@ void printSoma(complexMatrix soma) {
 
 void printSubtracao(complexMatrix subtracao) {
     for (int l = 0; l < subtracao.linhas; l++) {
-        for (int c = 0; subtracao.colunas; c++) {
+        for (int c = 0; c < subtracao.colunas; c++) {
             printf("[%d][%d]: ", l, c);
             printComplex(subtracao.mtx[l][c]);
         }
