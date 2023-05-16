@@ -244,8 +244,8 @@ int main() {
     //Preenchendo a matriz complexa
     for (int l = 0; l < matrix.linhas; l++) {
         for (int c = 0; c < matrix.colunas; c++) {
-            matrix.mtx[l][c].Re = 2 * l;
-            matrix.mtx[l][c].Im = 2 * c;
+            matrix.mtx[l][c].Re =  l + c + 1.4;
+            matrix.mtx[l][c].Im =  l + c + 4.0;
         }
     }
     
