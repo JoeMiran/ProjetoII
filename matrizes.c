@@ -2,25 +2,25 @@
 #include <stdlib.h>
 #include "matrizes.h"
 
-//Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memória para cada linha
+//Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memï¿½ria para cada linha
 complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     
     complexMatrix matrix;
     matrix.linhas = linhas;
     matrix.colunas = colunas;
     
-    //Alocandoo memória para as linhas
+    //Alocandoo memï¿½ria para as linhas
     matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
     if (matrix.mtx == NULL) {
-        printf("Falha na alocação de memória\n");
+        printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
         exit(1);
     }
     
-    //Alocando memória para cada coluna de cada linha
+    //Alocando memï¿½ria para cada coluna de cada linha
     for (int i = 0; i < linhas; i++) { 
         matrix.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
         if (matrix.mtx == NULL) {
-            printf("Falha na alocação de memória\n");
+            printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
             exit(1);
         }
     }
@@ -44,7 +44,7 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     return matrix;
 }
 
-/************************ FUNÇÕES DE OPERAÇÃO **************************/
+/************************ FUNï¿½ï¿½ES DE OPERAï¿½ï¿½O **************************/
 
 complexMatrix matrixTransposta(complexMatrix matrix) {
 
@@ -53,14 +53,14 @@ complexMatrix matrixTransposta(complexMatrix matrix) {
     transposta.colunas = matrix.linhas;
     transposta.mtx = (complex**)malloc(transposta.linhas * sizeof(complex*));
     if (transposta.mtx == NULL) {
-        printf("Falha na alocação de memória\n");
+        printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
         exit(1);
     }
 
     for (int i = 0; i < transposta.linhas; i++) {
         transposta.mtx[i] = (complex*)malloc(transposta.colunas * sizeof(complex));
         if (transposta.mtx[i] == NULL) {
-            printf("Falha na alocação de memória\n");
+            printf("Falha na alocaï¿½ï¿½o de memï¿½ria\n");
             for (int j = 0; j < i; j++) {
                 free(transposta.mtx[j]);
             } 
@@ -87,21 +87,21 @@ complexMatrix matrixConjugada(complexMatrix matrix) {
     conjugada.linhas = matrix.linhas; 
     conjugada.colunas = matrix.colunas;
 
-    //Alocando memória para as linhas
+    //Alocando memï¿½ria para as linhas
     conjugada.mtx = (complex**)malloc(conjugada.linhas * sizeof(complex*));
-    //Verificando se não houve nenhum erro na alocação das linhas
+    //Verificando se nï¿½o houve nenhum erro na alocaï¿½ï¿½o das linhas
     if(conjugada.mtx == NULL) {
-        printf("Erro na alocação da memória");
+        printf("Erro na alocaï¿½ï¿½o da memï¿½ria");
         exit(1);
     }
 
-    //Alocando memória para as colunas de cada linha
+    //Alocando memï¿½ria para as colunas de cada linha
     for (int i = 0; i < conjugada.linhas; i++) {
         conjugada.mtx[i] = (complex*)malloc(conjugada.colunas * sizeof(complex));
-        //Verificando se não há nenhum erro na alocação
+        //Verificando se nï¿½o hï¿½ nenhum erro na alocaï¿½ï¿½o
         if (conjugada.mtx[i] == NULL) {
-            printf("Falha na alocação da memória\n");
-            //Liberando a memória em caso de erro
+            printf("Falha na alocaï¿½ï¿½o da memï¿½ria\n");
+            //Liberando a memï¿½ria em caso de erro
             for (int j = 0; j < i; j++) {
                 free(conjugada.mtx[j]);
             }
@@ -110,11 +110,11 @@ complexMatrix matrixConjugada(complexMatrix matrix) {
         }
     }
 
-    //Aqui vai a operação em si, que transforma a matriz original na sua conjjugada
+    //Aqui vai a operaï¿½ï¿½o em si, que transforma a matriz original na sua conjjugada
     for (int i = 0; i < matrix.linhas; i++) {
         for(int j = 0; j < matrix.colunas; j++) {
             conjugada.mtx[i][j].Re = matrix.mtx[i][j].Re;
-            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im;//Inverte o sinal da parte imaginária
+            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im;//Inverte o sinal da parte imaginï¿½ria
         }
     }
 
@@ -131,14 +131,14 @@ complexMatrix matrixHermitiana(complexMatrix transposta) {
 
     hermitiana.mtx = (complex**)malloc(hermitiana.linhas * sizeof(complex*));
     if(hermitiana.mtx == NULL) {
-        printf("Erro na alocação da memória\n");
+        printf("Erro na alocaï¿½ï¿½o da memï¿½ria\n");
         exit(1);
     }
 
     for (int i = 0; i < hermitiana.linhas; i++) {
         hermitiana.mtx[i] = (complex*)malloc(hermitiana.colunas * sizeof(complex));
         if (hermitiana.mtx[i] == NULL) {
-            printf("Erro na alocação da memória: \n");
+            printf("Erro na alocaï¿½ï¿½o da memï¿½ria: \n");
             
             for (int j = 0; j < i; j++) {
                 free(hermitiana.mtx[j]);
@@ -159,7 +159,7 @@ complexMatrix matrixHermitiana(complexMatrix transposta) {
 
 }
 
-/************************ FUNÇÕES DE TESTE **************************/
+/************************ FUNï¿½ï¿½ES DE TESTE **************************/
 void printComplex(complex num) {
     printf("%.2f + %.2fi\n", num.Re, num.Im);
 }
