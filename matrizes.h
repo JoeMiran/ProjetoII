@@ -15,9 +15,9 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas);
 complexMatrix matrixTransposta(complexMatrix matrix);
 complexMatrix matrixConjugada(complexMatrix matrix);
 complexMatrix matrixHermitiana(complexMatrix transposta);
-void printComplex(complex num);
-void printTransposta(complexMatrix transposta);
-void printConjugada(complexMatrix conjugada);
-void printHermitiana(complexMatrix hermitiana);
+complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2);
+complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2);
+complexMatrix matrix_produtoEscalar(complexMatrix matrix, float num);
+complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2);
 
 #endif
