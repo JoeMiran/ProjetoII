@@ -277,7 +277,7 @@ int linhas = 3;
     printf("\n ======Teste da operacao da Hermitiana====== \n");
 
     printf("\n Matriz Original: \n");
-    printMatrix(Matrix);
+    printMatrix(matrix);
 
     printf("\n Matriz Hermitiana \n");
     printHermitiana(hermitiana);
