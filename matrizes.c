@@ -33,8 +33,8 @@ complexMatrix matrixTransposta(complexMatrix matrix) {
     
     for (int i = 0; i < matrix.linhas; i++) {
         for (int j = 0; j < matrix.colunas; j++) {
-            transposta.mtx[j][i].Re = matrix.mtx[i][j].Re;
-            transposta.mtx[j][i].Im = matrix.mtx[i][j].Im;
+            transposta.mtx[i][j].Re = matrix.mtx[j][i].Re;
+            transposta.mtx[i][j].Im = matrix.mtx[j][i].Im;
         }
     }
     return transposta;
@@ -258,6 +258,13 @@ int linhas = 3;
     complexMatrix produtoEscalar = matrix_produtoEscalar(matrix, num);
     complexMatrix produto = matrixProduto(matrix1, matrix2);
 
+    printf("\n ======TEquipe====== \n");
+    printf("Joel Tavares Miranda\n");
+    printf("David Pinheiro \n");
+    printf("Leonam Bronze\n");
+    printf("Nicolas Ranniery\n");
+    
+    
     printf("\n ======Teste da operacao transposta====== \n");
 
     printf("\n Matriz Original: \n");

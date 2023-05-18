@@ -47,8 +47,8 @@ complexMatrix matrixTransposta(complexMatrix matrix) {
     
     for (int i = 0; i < matrix.linhas; i++) {
         for (int j = 0; j < matrix.colunas; j++) {
-            transposta.mtx[j][i].Re = matrix.mtx[i][j].Re;
-            transposta.mtx[j][i].Im = matrix.mtx[i][j].Im;
+            transposta.mtx[i][j].Re = matrix.mtx[j][i].Re;
+            transposta.mtx[i][j].Im = matrix.mtx[j][i].Im;
         }
     }
     return transposta;
@@ -274,34 +274,77 @@ int main() {
     complexMatrix produtoEscalar = matrix_produtoEscalar(matrix, num);
     complexMatrix produto = matrixProduto(matrix1, matrix2);
 
+    printf("\n ======Teste da operacao transposta====== \n");
+    printf("Joel Tavares Miranda\n");
+    printf("David Pinheiro \n");
+    printf("Leonam Bronze\n");
+    printf("Nicolas Ranniery\n");
+    
+    
+    printf("\n ======Teste da operacao transposta====== \n");
+
     printf("\n Matriz Original: \n");
     printMatrix(matrix);
 
-    printf("\n Matriz 1: \n");
-    printMatrix(matrix1);
+    printf("\n Matriz Transposta \n");
+    printTransposta(transposta); 
 
-    printf("\n Matriz 2: \n");
-    printMatrix(matrix2);
+    printf("\n ======Teste da operacao conjugada====== \n");
 
-    printf("\nMatriz Transposta da Original: \n");
-    printTransposta(transposta);
+    printf("\n Matriz Original: \n");
+    printMatrix(matrix);    
     
-    printf("\nMatrix Conjugada da Original: \n");
+    printf("\n Matriz Conjugada \n");
     printConjugada(conjugada);
 
-    printf("\nMatrix Hermitiana da Original: \n");
-    printHermitiana(hermitiana);
+    printf("\n ======Teste da operacao da Hermitiana====== \n");
 
-    printf("\nMatriz Soma de 1 e 2: \n");
+    printf("\n Matriz Original: \n");
+    printMatrix(matrix);
+
+    printf("\n Matriz Hermitiana \n");
+    printHermitiana(hermitiana);
+    
+    printf("\n ======Teste da Soma Matricial====== \n");
+
+    printf("\n Matriz A: \n");
+    printMatrix(matrix1);
+
+    printf("\n Matriz B: \n");
+    printMatrix(matrix2);
+
+    printf("\n Matriz Resultado \n");
     printSoma(soma);
 
-    printf("\nMatriz Subtracao de 1 e 2: \n");
+    printf("\n ======Teste da Subtracao Matricial====== \n");
+
+    printf("\n Matriz A: \n");
+    printMatrix(matrix1);
+
+    printf("\n Matriz B: \n");
+    printMatrix(matrix2);
+
+    printf("\n Matriz Resultado: \n");
     printSubtracao(subtracao);
 
-    printf("\n Produto escalar entre a a original e um número: \n");
+
+    printf("\n ======Teste do Produto escalar====== \n");
+
+    printf("\n Escalar: 2.5  \n");
+    printf("\n Matriz Original: \n");
+    printMatrix(matrix);
+    printf("\n Matriz Resultado \n");
     print_produtoEscalar(produtoEscalar);
 
-    printf("\n Produto Matricial de 1 e 2: \n");
+    printf("\n ======Teste do Produto Matricial====== \n");
+
+    printf("\n Matriz A: \n");
+    printMatrix(matrix1);
+
+    printf("\n Matriz B: \n");
+    printMatrix(matrix2);
+
+    printf("\n Matriz Resultado \n");
     printProduto(produto);
 
 }
