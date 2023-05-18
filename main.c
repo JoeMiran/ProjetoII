@@ -4,9 +4,7 @@
 
 void teste_todos();
 
-int main(){
-    
+int main() {
     teste_todos();
-
     return 0;
 }
