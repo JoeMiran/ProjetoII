@@ -258,7 +258,7 @@ int linhas = 3;
     complexMatrix produtoEscalar = matrix_produtoEscalar(matrix, num);
     complexMatrix produto = matrixProduto(matrix1, matrix2);
 
-    printf("\n ======TEquipe====== \n");
+    printf("\n ======Equipe====== \n");
     printf("Joel Tavares Miranda\n");
     printf("David Pinheiro \n");
     printf("Leonam Bronze\n");
