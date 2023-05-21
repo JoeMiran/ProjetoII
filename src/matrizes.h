@@ -2,22 +2,23 @@
 #define MATRIZES_H
 #include <stdio.h>
 
-//DefiniÁ„o da estrutura complexa
-typedef struct {
-    float Re, Im; //Campos para armazenar a parte real(Re) e imagin·ria (Im)
+// Defini√ß√£o da estrutura complexa
+typedef struct
+{
+    float Re, Im; // Campos para armazenar a parte real(Re) e imagin√°ria (Im)
 } complex;
 
-//DefiniÁ„o da estrutura complexMatrix
-typedef struct {
-    int linhas, colunas; //Campos para armazenar o n˙mero de linhas e de colunas
-    complex** mtx; //DefiniÁ„o de um ponteiro de ponteiros 'mtx' para uma matriz de n˙meros complexos
+// Defini√ß√£o da estrutura complexMatrix
+typedef struct
+{
+    int linhas, colunas; // Campos para armazenar o n√∫mero de linhas e de colunas
+    complex **mtx;       // Defini√ß√£o de um ponteiro de ponteiros 'mtx' para uma matriz de n√∫meros complexos
 } complexMatrix;
 
-
-/****************************************** DECLARA«√O DAS FUN«’ES COMPLEXAS ****************************************************/
+/****************************************** DECLARA√á√ÉO DAS FUN√á√ïES COMPLEXAS ****************************************************/
 /*
------> As funÁıes abaixo est„o sendo implementadas em 'matrizes.c'.
------> Abaixo temos apenas as assinaturas das respectivas funÁıes.
+-----> As fun√ß√µes abaixo est√£o sendo implementadas em 'matrizes.c'.
+-----> Abaixo temos apenas as assinaturas das respectivas fun√ß√µes.
 */
 complexMatrix allocateComplexMaatrix(int linhas, int colunas);
 complexMatrix matrixTransposta(complexMatrix matrix);
