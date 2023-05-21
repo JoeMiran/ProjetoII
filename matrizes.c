@@ -33,8 +33,8 @@ complexMatrix matrixTransposta(complexMatrix matrix) {
     
     for (int i = 0; i < matrix.linhas; i++) {
         for (int j = 0; j < matrix.colunas; j++) {
-            transposta.mtx[i][j].Re = matrix.mtx[j][i].Re;
-            transposta.mtx[i][j].Im = matrix.mtx[j][i].Im;
+            transposta.mtx[j][i].Re = matrix.mtx[i][j].Re;
+            transposta.mtx[j][i].Im = matrix.mtx[i][j].Im;
         }
     }
     return transposta;
@@ -215,8 +215,9 @@ void printProduto(complexMatrix produto) {
         }
     }
 }
-void teste_todos(){
-int linhas = 3;
+
+void teste_todos() {
+    int linhas = 3;
     int colunas = 3;
     float num = 2.5;
 
