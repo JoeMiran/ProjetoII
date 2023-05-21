@@ -136,17 +136,18 @@ complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2) {
 }
 
 /************************ FUNÇÕES DE TESTE **************************/
-void printComplex(complex num) {
-    printf("%.2f + %.2fi\n", num.Re, num.Im);
-}
 
 void printMatrix(complexMatrix matrix) {
     for (int l = 0; l < matrix.linhas; l++) {
         for (int c = 0; c < matrix.colunas; c++) {
-        printf("[%d][%d]: ", l, c);
-        printComplex(matrix.mtx[l][c]);
+            printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
         }
+        printf("\n");  // Adicionar uma nova linha ap�s imprimir todos os elementos da linha
     }
+}
+
+void printComplex(complex num) {
+    printf("%.2f + %.2fi\n", num.Re, num.Im);
 }
 
 void printMatrix1(complexMatrix matrix1) {
@@ -283,8 +284,6 @@ int main() {
     
     printf("\n ======Teste da operacao transposta====== \n");
 
-    printf("\n Matriz Original: \n");
-    printMatrix(matrix);
 
     printf("\n Matriz Transposta \n");
     printTransposta(transposta); 

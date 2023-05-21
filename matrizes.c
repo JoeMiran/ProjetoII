@@ -1,38 +1,60 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "matrizes.h"
 
-//Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memÃ¯Â¿Â½ria para cada linha
+// incluindo o arquivos onde está contido a estrutura 
+#include "matrizes.h" 
+
+/************************************* FUNÇÃO PARA ALOCAÇÃO DE MEMÓRIA ***************************************/
+
+
+//Criando uma função cujo objetivo é alocar memória dinamicamente para a matriz complexa
 complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     
-    complexMatrix matrix;
-    matrix.linhas = linhas;
+    //Declarando a variável matrix do tipo complexMatrix
+    complexMatrix matrix; 
+    
+    // A variavel do tipo complexMatrix tem os "atributos" linhas e colunas e deve recebê-los como parâmetros 
+    matrix.linhas = linhas; 
     matrix.colunas = colunas;
     
-    //Alocandoo memÃ¯Â¿Â½ria para as linhas
+    //Alocando memória para as linhas de matrix
     matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
+    
+    //Tratando possíveis erros na alocação de memória para as linhas 
     if (matrix.mtx == NULL) {
-        printf("Falha na alocaÃ§Ã£o de memÃ³ria\n");
+        printf("Falha na alocação de memória\n");
         exit(1);
     }
     
-    //Alocando memÃ¯Â¿Â½ria para cada coluna de cada linha
+    //Alocando memória para as colunas de cada linha
     for (int i = 0; i < linhas; i++) { 
         matrix.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
+        
+        //Tratando possíveis erros na alocação de memória para as colunas
         if (matrix.mtx == NULL) {
             printf("Falha na alocaÃ§Ã£o de memÃ³ria\n");
             exit(1);
         }
     }
+    
+    //Retornado matrix
     return matrix;
 }
 
-complexMatrix matrixTransposta(complexMatrix matrix) {
+/************************************* FUNÇÕES DE OPERAÇÃO ***************************************/
 
+//Criando uma função para realizar o cálculo da transposta
+complexMatrix matrixTransposta(complexMatrix matrix) { 
+
+    // Alocando memória para a matriz transposta 
     complexMatrix transposta = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
     
+    //Percorrendo cada elemento da matriz original
     for (int i = 0; i < matrix.linhas; i++) {
         for (int j = 0; j < matrix.colunas; j++) {
+            
+            // Atribuindo o valor do elemento atual da matriz original para a transposta
+            // Trocando a posição das linhas e colunas na matriz transposta
             transposta.mtx[j][i].Re = matrix.mtx[i][j].Re;
             transposta.mtx[j][i].Im = matrix.mtx[i][j].Im;
         }
@@ -40,18 +62,22 @@ complexMatrix matrixTransposta(complexMatrix matrix) {
     return transposta;
 }
 
+//Criando uma função para realizar o cálculo da conjugada
 complexMatrix matrixConjugada(complexMatrix matrix) {
 
+    // Alocando memória para a matriz conjugada utilizando a função allocateComplexMaatrix
     complexMatrix conjugada = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
 
-    //Aqui vai a operaÃ¯Â¿Â½Ã¯Â¿Â½o em si, que transforma a matriz original na sua conjjugada
+    // Loop para percorrer cada elemento da matriz original
     for (int i = 0; i < matrix.linhas; i++) {
-        for(int j = 0; j < matrix.colunas; j++) {
+        for (int j = 0; j < matrix.colunas; j++) {
+            // Atribuindo o valor do elemento atual da matriz original para a conjugada
             conjugada.mtx[i][j].Re = matrix.mtx[i][j].Re;
-            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im;//Inverte o sinal da parte imaginÃ¯Â¿Â½ria
+            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im; // Inverte o sinal da parte imaginária
         }
     }
 
+    // Retornando a matriz conjugada
     return conjugada;
 }
 
@@ -331,5 +357,7 @@ void teste_todos() {
 
     printf("\n Matriz Resultado \n");
     printProduto(produto);
+
+    
 
 }
