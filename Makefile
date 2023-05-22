@@ -12,4 +12,6 @@ clean:
 	rm -rf doc/html/*.svg
 	rm -rf doc/html/*.js
 	rm -rf doc/html/*.dot
+doc:
+	doxygen doxyfile
 	
