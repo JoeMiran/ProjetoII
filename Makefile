@@ -6,7 +6,10 @@ all:
 clean:
 	rm -rf build/*.o
 	rm -rf build/*matrizes
-	rm -rf build/*.css
-	rm -rf build/*.html
-	rm -rf build/*.png
+	rm -rf doc/html/*.css
+	rm -rf doc/html/*.html
+	rm -rf doc/html/*.png
+	rm -rf doc/html/*.svg
+	rm -rf doc/html/*.js
+	rm -rf doc/html/*.dot
 	
