@@ -1,7 +1,15 @@
-all:
+all:	matrizes
+matrizes:
 	gcc -c src/matrizes.c -o build/matrizes.o
 	gcc -c src/main.c -o build/main.o
 	gcc build/matrizes.o build/main.o -o build/matrizes
+	./build/matrizes
+aplicacao:
+	gcc -c src/matrizes.c -o build/matrizes.o
+	gcc -c src/main.c -o build/main.o
+	gcc build/matrizes.o build/main.o -o build/matrizes
+	
+teste:
 	./build/matrizes
 clean:
 	rm -rf build/*.o
@@ -12,6 +20,8 @@ clean:
 	rm -rf doc/html/*.svg
 	rm -rf doc/html/*.js
 	rm -rf doc/html/*.dot
+.PHONY:	doc
 doc:
 	doxygen doxyfile
+	
 	
