@@ -6,6 +6,13 @@
 #include "matrizes.h"
 
 /************************************* FUNÇÃO PARA ALOCAÇÃO DE MEMÓRIA ***************************************/
+/**
+ * 
+ * @param [in] linhas
+ * @param [in] colunas
+ * @param [out] matrix
+ * 
+*/
 
 /// Criando uma função cujo objetivo é alocar memória dinamicamente para a matriz complexa
 complexMatrix allocateComplexMaatrix(int linhas, int colunas)
@@ -47,6 +54,11 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas)
 
 /************************************* FUNÇÕES DE OPERAÇÃO ***************************************/
 
+/**
+ * @param [in] matrix
+ * @param [out] transposta
+*/
+
 /// Criando uma função para realizar o cálculo da transposta
 complexMatrix matrixTransposta(complexMatrix matrix)
 {
@@ -69,6 +81,11 @@ complexMatrix matrixTransposta(complexMatrix matrix)
     return transposta;
 }
 
+/**
+ * @param [in] matrix
+ * @param [out] conjugada
+ */
+
 /// Criando uma função para realizar o cálculo da conjugada
 complexMatrix matrixConjugada(complexMatrix matrix)
 {
@@ -90,6 +107,11 @@ complexMatrix matrixConjugada(complexMatrix matrix)
     /// Retornando a matriz conjugada
     return conjugada;
 }
+
+/**
+ * @param [in] transposta
+ * @param [out] hermitiana
+ */
 
 /// Criando uma função para realizar o cálculo da hermitiana
 complexMatrix matrixHermitiana(complexMatrix transposta)
@@ -114,6 +136,12 @@ complexMatrix matrixHermitiana(complexMatrix transposta)
     return hermitiana;
 }
 
+/**
+ * @param [in] matrix1
+ * @param [in] matrix2
+ * @param [out] soma
+ */
+
 /// Criando uma função para realizar a soma da matrix A e B, que estou apelidando de matrix1 e matrix2
 complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2)
 {
@@ -136,6 +164,12 @@ complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2)
     /// Retornando a matriz Soma
     return soma;
 }
+
+/**
+ * @param [in] matrix1
+ * @param [in] matrix2
+ * @param [out] subtracao
+ */
 
 /// Criando uma função para realizar a subtração entre matrix1 e matrix2
 complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2)
@@ -160,6 +194,12 @@ complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2)
     return subtracao;
 }
 
+/**
+ * @param [in] matrix
+ * @param [in] num
+ * @param [out] produtoEscalar
+ */
+
 /// Criando uma função para realizar a multiplicação de um número escalar com cada elemento da matriz original
 complexMatrix matrix_produtoEscalar(complexMatrix matrix, float num)
 {
@@ -182,6 +222,12 @@ complexMatrix matrix_produtoEscalar(complexMatrix matrix, float num)
     /// Retornando produtoEscalar
     return produtoEscalar;
 }
+
+/**
+ * @param [in] matrix1
+ * @param [in] matrix2
+ * @param [out] produto
+ */
 
 /// Criando uma função para realizar o produto entre matrix1 e matrix2
 complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2)
@@ -216,7 +262,7 @@ void printComplex(complex num)
 
 /// Função para imprimir a Matriz Original
 void printMatrix(complexMatrix matrix)
-{
+{ /// T           E                       S               T                    E
     for (int l = 0; l < matrix.linhas; l++)
     {
         for (int c = 0; c < matrix.colunas; c++)
