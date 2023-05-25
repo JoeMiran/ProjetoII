@@ -210,10 +210,10 @@ void printSubtracao(complexMatrix subtracao) {
     for (int l = 0; l < subtracao.linhas; l++) {
         for (int c = 0; c < subtracao.colunas; c++) {
                 if(c == 0){
-                    printf("| %.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+                    printf("|%.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
                 }
                 else if(c == subtracao.colunas-1){
-                 printf("%.2f + %.2fi |\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+                 printf("%.2f + %.2fi|\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
                 }
                 else{
                 printf("%.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
