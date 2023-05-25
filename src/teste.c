@@ -16,20 +16,20 @@ typedef struct {
 
 //Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memï¿½ria para cada linha
 complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
-    
+
     complexMatrix matrix;
     matrix.linhas = linhas;
     matrix.colunas = colunas;
-    
+
     //Alocandoo memï¿½ria para as linhas
     matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
     if (matrix.mtx == NULL) {
         printf("Falha na alocação de memória\n");
         exit(1);
     }
-    
+
     //Alocando memï¿½ria para cada coluna de cada linha
-    for (int i = 0; i < linhas; i++) { 
+    for (int i = 0; i < linhas; i++) {
         matrix.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
         if (matrix.mtx == NULL) {
             printf("Falha na alocação de memória\n");
@@ -44,7 +44,7 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
 complexMatrix matrixTransposta(complexMatrix matrix) {
 
     complexMatrix transposta = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
-    
+
     for (int i = 0; i < matrix.linhas; i++) {
         for (int j = 0; j < matrix.colunas; j++) {
             transposta.mtx[i][j].Re = matrix.mtx[j][i].Re;
@@ -70,7 +70,7 @@ complexMatrix matrixConjugada(complexMatrix matrix) {
 }
 
 complexMatrix matrixHermitiana(complexMatrix transposta) {
-    
+
     complexMatrix hermitiana = allocateComplexMaatrix(transposta.colunas, transposta.linhas);
 
     for (int i = 0; i < transposta.linhas; i++) {
@@ -142,7 +142,7 @@ void printMatrix(complexMatrix matrix) {
         for (int c = 0; c < matrix.colunas; c++) {
             printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
         }
-        printf("\n");  // Adicionar uma nova linha ap�s imprimir todos os elementos da linha
+        printf("\n");  // Adicionar uma nova linha ap�s imprimir todos os elementos da linha
     }
 }
 
@@ -198,18 +198,28 @@ void printHermitiana(complexMatrix hermitiana) {
 void printSoma(complexMatrix soma) {
     for(int l = 0; l < soma.linhas; l++) {
         for(int c = 0; c < soma.colunas; c++) {
-            printf("[%d][%d]: ", l, c);
-            printComplex(soma.mtx[l][c]);
+            //printf("[%d][%d]: ", l, c);
+            //printComplex(soma.mtx[l][c]);
+            printf("%.2f + %.2fi\t",soma.mtx[l][c].Re, soma.mtx[l][c].Im);
         }
+    printf("\n");
     }
 }
 
 void printSubtracao(complexMatrix subtracao) {
     for (int l = 0; l < subtracao.linhas; l++) {
         for (int c = 0; c < subtracao.colunas; c++) {
-            printf("[%d][%d]: ", l, c);
-            printComplex(subtracao.mtx[l][c]);
+                if(c == 0){
+                    printf("| %.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+                }
+                else if(c == subtracao.colunas-1){
+                 printf("%.2f + %.2fi |\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+                }
+                else{
+                printf("%.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+                }
         }
+    printf("\n");
     }
 }
 
@@ -232,7 +242,7 @@ void printProduto(complexMatrix produto) {
 }
 
 int main() {
-    
+
     int linhas = 3;
     int colunas = 3;
     float num = 2.5;
@@ -249,7 +259,7 @@ int main() {
             matrix.mtx[l][c].Im =  l + c + 4.0;
         }
     }
-    
+
     complexMatrix transposta = matrixTransposta(matrix);
     complexMatrix conjugada = matrixConjugada(matrix);
     complexMatrix hermitiana = matrixHermitiana(transposta);
@@ -280,19 +290,19 @@ int main() {
     printf("David Pinheiro \n");
     printf("Leonam Bronze\n");
     printf("Nicolas Ranniery\n");
-    
-    
+
+
     printf("\n ======Teste da operacao transposta====== \n");
 
 
     printf("\n Matriz Transposta \n");
-    printTransposta(transposta); 
+    printTransposta(transposta);
 
     printf("\n ======Teste da operacao conjugada====== \n");
 
     printf("\n Matriz Original: \n");
-    printMatrix(matrix);    
-    
+    printMatrix(matrix);
+
     printf("\n Matriz Conjugada \n");
     printConjugada(conjugada);
 
@@ -303,7 +313,7 @@ int main() {
 
     printf("\n Matriz Hermitiana \n");
     printHermitiana(hermitiana);
-    
+
     printf("\n ======Teste da Soma Matricial====== \n");
 
     printf("\n Matriz A: \n");
