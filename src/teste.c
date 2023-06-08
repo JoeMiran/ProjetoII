@@ -140,7 +140,18 @@ complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2) {
 void printMatrix(complexMatrix matrix) {
     for (int l = 0; l < matrix.linhas; l++) {
         for (int c = 0; c < matrix.colunas; c++) {
-            printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
+            if (c == 0)
+            {
+                printf("|%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
+            }
+            else if (c == matrix.colunas - 1)
+            {
+                printf("%.2f + %.2fi|\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
+            }
+            else
+            {
+                printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
+            }
         }
         printf("\n");  // Adicionar uma nova linha ap�s imprimir todos os elementos da linha
     }
@@ -171,10 +182,8 @@ void printMatrix2(complexMatrix matrix2) {
 void printTransposta(complexMatrix transposta) {
     for (int l = 0; l < transposta.linhas; l++) {
         for (int c = 0; c < transposta.colunas; c++) {
-            //printf("[%d][%d]: ", l, c);
-            //printComplex(transposta.mtx[l][c]);
             if(c == 0){
-                    printf("|%.2f + %.2fi\t",transposta.mtx[l][c].Re, transposta.mtx[l][c].Im);
+                printf("|%.2f + %.2fi\t",transposta.mtx[l][c].Re, transposta.mtx[l][c].Im);
                 }
                 else if(c == transposta.colunas-1){
                  printf("%.2f + %.2fi|\t",transposta.mtx[l][c].Re, transposta.mtx[l][c].Im);
@@ -190,8 +199,6 @@ void printTransposta(complexMatrix transposta) {
 void printConjugada(complexMatrix conjugada) {
     for (int l = 0; l < conjugada.linhas; l++) {
         for (int c = 0; c < conjugada.colunas; c++) {
-            //printf("[%d][%d]: ", l, c);
-            //printComplex(conjugada.mtx[l][c]);
             if(c == 0){
                     printf("|%.2f + %.2fi\t",conjugada.mtx[l][c].Re, conjugada.mtx[l][c].Im);
                 }
@@ -209,8 +216,6 @@ void printConjugada(complexMatrix conjugada) {
 void printHermitiana(complexMatrix hermitiana) {
     for (int l = 0; l < hermitiana.linhas; l++) {
         for(int c = 0; c < hermitiana.colunas; c++) {
-            //printf("[%d][%d]: ", l, c);
-            //printComplex(hermitiana.mtx[l][c]);
             if(c == 0){
                     printf("|%.2f + %.2fi\t",hermitiana.mtx[l][c].Re, hermitiana.mtx[l][c].Im);
                 }
@@ -228,26 +233,32 @@ void printHermitiana(complexMatrix hermitiana) {
 void printSoma(complexMatrix soma) {
     for(int l = 0; l < soma.linhas; l++) {
         for(int c = 0; c < soma.colunas; c++) {
-            //printf("[%d][%d]: ", l, c);
-            //printComplex(soma.mtx[l][c]);
+            if(c == 0){
+                printf("|%.2f + %.2fi\t",soma.mtx[l][c].Re, soma.mtx[l][c].Im);
+            }
+            else if(c == soma.colunas-1){
+                printf("%.2f + %.2fi|\t",soma.mtx[l][c].Re, soma.mtx[l][c].Im);
+            }
+            else{
             printf("%.2f + %.2fi\t",soma.mtx[l][c].Re, soma.mtx[l][c].Im);
+            }
         }
-    printf("\n");
+        printf("\n");
     }
 }
 
 void printSubtracao(complexMatrix subtracao) {
     for (int l = 0; l < subtracao.linhas; l++) {
         for (int c = 0; c < subtracao.colunas; c++) {
-                if(c == 0){
-                    printf("|%.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
-                }
-                else if(c == subtracao.colunas-1){
-                 printf("%.2f + %.2fi|\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
-                }
-                else{
-                printf("%.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
-                }
+            if(c == 0){
+                printf("|%.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+            }
+            else if(c == subtracao.colunas-1){
+                printf("%.2f + %.2fi|\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+            }
+            else{
+            printf("%.2f + %.2fi\t",subtracao.mtx[l][c].Re, subtracao.mtx[l][c].Im);
+            }
         }
     printf("\n");
     }
