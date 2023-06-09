@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <gsl/gsl_linalg.h>
 
 //Definindo a estrutua complex com parte real e imaginï¿½ria
 typedef struct {
@@ -14,21 +15,21 @@ typedef struct {
 
 /********************** DEFINIDO A MATRIZ ORIGINAL *****************/
 
-//Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memï¿½ria para cada linha
+//Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memoria para cada linha
 complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
 
     complexMatrix matrix;
     matrix.linhas = linhas;
     matrix.colunas = colunas;
 
-    //Alocandoo memï¿½ria para as linhas
+    // Alocandoo memoria para as linhas
     matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
     if (matrix.mtx == NULL) {
         printf("Falha na alocação de memória\n");
         exit(1);
     }
 
-    //Alocando memï¿½ria para cada coluna de cada linha
+    // Alocando memoria para cada coluna de cada linha
     for (int i = 0; i < linhas; i++) {
         matrix.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
         if (matrix.mtx == NULL) {
@@ -38,8 +39,58 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     }
     return matrix;
 }
+/************************ FUNCOES DE CALCULO SVD **************************/
 
-/************************ FUNï¿½ï¿½ES DE OPERAï¿½ï¿½O **************************/
+void calc_svd(complexMatrix matrix) {
+    
+    if(matrix.mtx[i][j].Im != 0) {
+        printf("A matriz em quest�o � complexa, portanto ser� calculado o SVD apenas da parte real")
+    }
+
+    //Criando uma matriz gsl usando a parte real da matrix complexa
+    gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
+    for (int i = 0; i < matrix.linhas; i++) {
+        for (int j = 0; j < matrix.colunas; j++) {
+            //Atribuindo os valores da parte real da matrix a a gslMatrix
+            gsl_matrix_set(gslMatrix, i, j, matrix.mtx[i][j].Re);
+        }
+    }
+
+    //Fazendo a decomposicicao SVD
+    gsl_matrix * A = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
+    gsl_vector * S = gsl_vector_alloc(matrix.colunas);
+    gsl_matrix * V = gsl_matrix_alloc(matrix.colunas, matrix.colunas);
+    gsl_vector *work = gsl_vector_alloc(matrix.colunas);
+
+    //Chamando a fun��o que realiza o c�lculo do SVD
+    gsl_linalg_SV_decomp(A, S, V, work);
+
+    //Agora a mesma funcao vai imprimir os resultados
+    printf("Matrix A: \n");
+    for (int i = 0; i < A->size1; i++) {
+        for (int j = 0; j < A->size2; j++) {
+            printf("%.2f\t", gsl_matrix_get(A, i, j));
+        }
+        printf("\n");
+    }
+
+    printf("Vetor S: \n");
+    for (int i = 0; i < S->size1; i++) {
+        printf("%.2f\n", gsl_vector_get(S, i));
+    }
+
+    printf("Matriz V: \n");
+    for (int i = 0; i < V->size1; i++) {
+        for(int j = 0; j < V->size2; j++) {
+            printf("%.2f\n", gsl_matrix_get(V, i, j));
+        }
+        printf("\n");
+    }
+}
+
+void teste_calc_svd()
+
+/************************ FUNCOES DE OPERACAO **************************/
 
 complexMatrix matrixTransposta(complexMatrix matrix) {
 
@@ -135,7 +186,7 @@ complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2) {
     return produto;
 }
 
-/************************ FUNÇÕES DE TESTE **************************/
+/************************ FUNCOES DE TESTE **************************/
 
 void printMatrix(complexMatrix matrix) {
     for (int l = 0; l < matrix.linhas; l++) {
