@@ -13,7 +13,7 @@ typedef struct {
     complex** mtx;
 } complexMatrix;
 
-/********************** DEFINIDO A MATRIZ ORIGINAL *****************/
+/********************** DEFINIDO A MATRIZ ORIGINAL*****************/
 
 //Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memoria para cada linha
 complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
@@ -44,7 +44,7 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
 void calc_svd(complexMatrix matrix) {
     
     if(matrix.mtx[i][j].Im != 0) {
-        printf("A matriz em questão é complexa, portanto será calculado o SVD apenas da parte real")
+        printf("A matriz em questï¿½o ï¿½ complexa, portanto serï¿½ calculado o SVD apenas da parte real")
     }
 
     //Criando uma matriz gsl usando a parte real da matrix complexa
@@ -62,7 +62,7 @@ void calc_svd(complexMatrix matrix) {
     gsl_matrix * V = gsl_matrix_alloc(matrix.colunas, matrix.colunas);
     gsl_vector *work = gsl_vector_alloc(matrix.colunas);
 
-    //Chamando a função que realiza o cálculo do SVD
+    //Chamando a funï¿½ï¿½o que realiza o cï¿½lculo do SVD
     gsl_linalg_SV_decomp(A, S, V, work);
 
     //Agora a mesma funcao vai imprimir os resultados
