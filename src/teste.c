@@ -2,93 +2,178 @@
 #include <stdio.h>
 #include <gsl/gsl_linalg.h>
 
-//Definindo a estrutua complex com parte real e imaginï¿½ria
+// Definindo a estrutura complex com parte real e imaginária
 typedef struct {
     float Re, Im;
 } complex;
 
-//Definindo a estrutura complexMtrix que representa uma matriz complexa
+// Definindo a estrutura complexMatrix que representa uma matriz complexa
 typedef struct {
     int linhas, colunas;
     complex** mtx;
 } complexMatrix;
 
-/********************** DEFINIDO A MATRIZ ORIGINAL*****************/
-
-//Criando uma matriz do tipo complexMatrix que aloca dinamicamnetea memoria para cada linha
-complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
-
+// Criando uma matriz do tipo complexMatrix que aloca dinamicamente a memória para cada linha
+complexMatrix allocateComplexMatrix(int linhas, int colunas) {
     complexMatrix matrix;
     matrix.linhas = linhas;
     matrix.colunas = colunas;
 
-    // Alocandoo memoria para as linhas
+    // Alocando memória para as linhas
     matrix.mtx = (complex**)malloc(linhas * sizeof(complex*));
     if (matrix.mtx == NULL) {
         printf("Falha na alocação de memória\n");
         exit(1);
     }
 
-    // Alocando memoria para cada coluna de cada linha
+    // Alocando memória para cada coluna de cada linha
     for (int i = 0; i < linhas; i++) {
         matrix.mtx[i] = (complex*)malloc(colunas * sizeof(complex));
-        if (matrix.mtx == NULL) {
+        if (matrix.mtx[i] == NULL) {
             printf("Falha na alocação de memória\n");
             exit(1);
         }
     }
     return matrix;
 }
-/************************ FUNCOES DE CALCULO SVD **************************/
 
+/************************ FUNCOES DE CALCULO SVD **************************/
 void calc_svd(complexMatrix matrix) {
-    
-    if(matrix.mtx[i][j].Im != 0) {
-        printf("A matriz em quest�o � complexa, portanto ser� calculado o SVD apenas da parte real")
+    int i, j;
+
+    if (matrix.mtx[i][j].Im != 0) {
+        printf("A matriz é complexa, portanto será calculado o SVD apenas da parte real.\n");
     }
 
-    //Criando uma matriz gsl usando a parte real da matrix complexa
+    // Criando uma matriz gsl usando a parte real da matriz complexa
     gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
-    for (int i = 0; i < matrix.linhas; i++) {
-        for (int j = 0; j < matrix.colunas; j++) {
-            //Atribuindo os valores da parte real da matrix a a gslMatrix
+    for (i = 0; i < matrix.linhas; i++) {
+        for (j = 0; j < matrix.colunas; j++) {
+            // Atribuindo os valores da parte real da matriz a gslMatrix
             gsl_matrix_set(gslMatrix, i, j, matrix.mtx[i][j].Re);
         }
     }
 
-    //Fazendo a decomposicicao SVD
-    gsl_matrix * A = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
-    gsl_vector * S = gsl_vector_alloc(matrix.colunas);
-    gsl_matrix * V = gsl_matrix_alloc(matrix.colunas, matrix.colunas);
-    gsl_vector *work = gsl_vector_alloc(matrix.colunas);
+    // Fazendo a decomposição SVD
+    gsl_matrix* A = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
+    gsl_vector* S = gsl_vector_alloc(matrix.colunas);
+    gsl_matrix* V = gsl_matrix_alloc(matrix.colunas, matrix.colunas);
+    gsl_vector* work = gsl_vector_alloc(matrix.colunas);
 
-    //Chamando a fun��o que realiza o c�lculo do SVD
+    // Chamando a função que realiza o cálculo do SVD
     gsl_linalg_SV_decomp(A, S, V, work);
 
-    //Agora a mesma funcao vai imprimir os resultados
-    printf("Matrix A: \n");
-    for (int i = 0; i < A->size1; i++) {
-        for (int j = 0; j < A->size2; j++) {
+    // Agora a mesma função vai imprimir os resultados
+    printf("Matrix A:\n");
+    for (i = 0; i < A->size1; i++) {
+        for (j = 0; j < A->size2; j++) {
             printf("%.2f\t", gsl_matrix_get(A, i, j));
         }
         printf("\n");
     }
 
-    printf("Vetor S: \n");
-    for (int i = 0; i < S->size1; i++) {
+    printf("Vetor S:\n");
+    for (i = 0; i < S->size; i++) {
         printf("%.2f\n", gsl_vector_get(S, i));
     }
 
-    printf("Matriz V: \n");
-    for (int i = 0; i < V->size1; i++) {
-        for(int j = 0; j < V->size2; j++) {
-            printf("%.2f\n", gsl_matrix_get(V, i, j));
+    printf("Matriz V:\n");
+    for (i = 0; i < V->size1; i++) {
+        for (j = 0; j < V->size2; j++) {
+            printf("%.2f\t", gsl_matrix_get(V, i, j));
         }
         printf("\n");
     }
 }
 
-void teste_calc_svd()
+void teste_calc_svd() {
+    //Caso de teste1: Matriz 3X2
+    printf("Caso de teste 1: Matriz 3x2\n");
+    ///Alocando memória para a matriz
+    complexMatrix matrixA = allocateComplexMaatrix(3, 2);
+    //Preenchendo a matriz com valores
+    for (int i = 0; i < matrixA.linhas; i++) {
+        for (int j = 0; j < matrixA.colunas; j++) {
+            matrixA.mtx[i][j].Re = i + j + 1;
+            matrixA.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("Matriz de entrada:\n");
+    for (int i = 0; i < matrixA.linhas; i++) {
+        for (int j = 0; j < matrixA.colunas; j++) {
+            printf("(%.2f + %.2fi)\t", matrixA.mtx[i][j].Re, matrixA.mtx[i][j].Im);
+        }
+        printf("\n");
+    }
+
+    calc_svd(matrixA);
+    printf("\n");
+
+    printf("Caso de teste 2: Matriz 4x4");
+    complexMatrix matrixB = allocateComplexMaatrix(4, 4);
+    
+    for (int i = 0; i < matrixB.linhas; i++) {
+        for (int j = 0; j < matrixB.linhas; j++) {
+            matrixB.mtx[i][j].Re = i + j + 3.2;
+            matrixB.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("Matriz de entrada:\n");
+    for (int i = 0; i < matrixB.linhas; i++) {
+        for (int j = 0; j < matrixB.colunas; j++) {
+            printf("(%.2f + %.2fi)\t", matrixB.mtx[i][j].Re, matrixB.mtx[i][j].Im);
+        }
+        printf("\n");
+    }
+
+    calc_svd(matrixB);
+    printf("\n");
+
+    printf("Caso de teste 3: Matriz 6x5");
+    complexMatrix matrixC = allocateComplexMaatrix(6, 5);
+    
+    for (int i = 0; i < matrixC.linhas; i++) {
+        for (int j = 0; j < matrixC.linhas; j++) {
+            matrixC.mtx[i][j].Re = i + j + 5;
+            matrixC.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("Matriz de entrada:\n");
+    for (int i = 0; i < matrixC.linhas; i++) {
+        for (int j = 0; j < matrixC.colunas; j++) {
+            printf("(%.2f + %.2fi)\t", matrixC.mtx[i][j].Re, matrixC.mtx[i][j].Im);
+        }
+        printf("\n");
+    }
+
+    calc_svd(matrixC);
+    printf("\n");
+
+     printf("Caso de teste 4: Matriz 5x6");
+    complexMatrix matrixD = allocateComplexMaatrix(5, 6);
+    
+    for (int i = 0; i < matrixD.linhas; i++) {
+        for (int j = 0; j < matrixD.linhas; j++) {
+            matrixD.mtx[i][j].Re = i + j + 2.7;
+            matrixD.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("Matriz de entrada:\n");
+    for (int i = 0; i < matrixD.linhas; i++) {
+        for (int j = 0; j < matrixD.colunas; j++) {
+            printf("(%.2f + %.2fi)\t", matrixD.mtx[i][j].Re, matrixD.mtx[i][j].Im);
+        }
+        printf("\n");
+    }
+
+    calc_svd(matrixD);
+    printf("\n");
+
+}
 
 /************************ FUNCOES DE OPERACAO **************************/
 
@@ -109,11 +194,11 @@ complexMatrix matrixConjugada(complexMatrix matrix) {
 
     complexMatrix conjugada = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
 
-    //Aqui vai a operaï¿½ï¿½o em si, que transforma a matriz original na sua conjjugada
+    //Aqui vai a operaÃƒÂ¯Ã‚Â¿Ã‚Â½ÃƒÂ¯Ã‚Â¿Ã‚Â½o em si, que transforma a matriz original na sua conjjugada
     for (int i = 0; i < matrix.linhas; i++) {
         for(int j = 0; j < matrix.colunas; j++) {
             conjugada.mtx[i][j].Re = matrix.mtx[i][j].Re;
-            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im;//Inverte o sinal da parte imaginï¿½ria
+            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im;//Inverte o sinal da parte imaginÃƒÂ¯Ã‚Â¿Ã‚Â½ria
         }
     }
 
@@ -204,7 +289,7 @@ void printMatrix(complexMatrix matrix) {
                 printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
             }
         }
-        printf("\n");  // Adicionar uma nova linha ap�s imprimir todos os elementos da linha
+        printf("\n");  // Adicionar uma nova linha apÃ¯Â¿Â½s imprimir todos os elementos da linha
     }
 }
 
@@ -359,7 +444,7 @@ int main() {
     int colunas = 3;
     float num = 2.5;
 
-    //chamando a funï¿½ï¿½o que cria e aloca memï¿½ria para a matriz complexa
+    //chamando a funÃƒÂ¯Ã‚Â¿Ã‚Â½ÃƒÂ¯Ã‚Â¿Ã‚Â½o que cria e aloca memÃƒÂ¯Ã‚Â¿Ã‚Â½ria para a matriz complexa
     complexMatrix matrix = allocateComplexMaatrix(linhas, colunas);
     complexMatrix matrix1 = allocateComplexMaatrix(linhas, colunas);
     complexMatrix matrix2 = allocateComplexMaatrix(linhas, colunas);
