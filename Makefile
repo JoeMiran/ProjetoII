@@ -23,5 +23,9 @@ clean:
 .PHONY:	doc
 doc:
 	doxygen doxyfile
+make:
+	rm -rf src/*.out
+	gcc src/teste.c -lgsl -o src/a.out
+	./src/a.out
 	
 	
