@@ -14,7 +14,7 @@ typedef struct {
 } complexMatrix;
 
 // Criando uma matriz do tipo complexMatrix que aloca dinamicamente a memória para cada linha
-complexMatrix allocateComplexMatrix(int linhas, int colunas) {
+complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
     complexMatrix matrix;
     matrix.linhas = linhas;
     matrix.colunas = colunas;
