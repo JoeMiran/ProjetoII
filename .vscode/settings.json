@@ -36,6 +36,7 @@
   "C_Cpp_Runner.useAddressSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "files.associations": {
-    "matrizes.h": "c"
+    "matrizes.h": "c",
+    "stdlib.h": "c"
   }
 }

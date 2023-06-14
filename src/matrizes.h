@@ -2,6 +2,9 @@
 #ifndef MATRIZES_H
 #define MATRIZES_H
 #include <stdio.h>
+#include <gsl/gsl_linalg.h>
+#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_vector.h>
 
 /// Definição da estrutura complexa
 typedef struct

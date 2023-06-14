@@ -112,7 +112,6 @@ void calc_svd(complexMatrix matrix) {
     gsl_vector_free(S);
     gsl_vector_free(work);
     gsl_matrix_free(gslMatrix);
-
 }
 
 void teste_calc_svd() {
@@ -201,7 +200,6 @@ void teste_calc_svd() {
         }
         printf("\n");
     }
-
     calc_svd(matrixC);
     printf("\n");
 
@@ -235,10 +233,10 @@ void teste_calc_svd() {
     printf("\n");
 
     // Liberando memória
-    free(matrixA.mtx);
-    free(matrixB.mtx);
-    free(matrixC.mtx);
-    free(matrixD.mtx);
+    //free(matrixA.mtx);
+    //free(matrixB.mtx);
+    //free(matrixC.mtx);
+    //free(matrixD.mtx);
 
 }
 

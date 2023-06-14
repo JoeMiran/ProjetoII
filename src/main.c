@@ -1,6 +1,9 @@
 ///@file main.c
 #include <stdio.h>
 #include <stdlib.h>
+#include <gsl/gsl_linalg.h>
+#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_vector.h>
 
 /// incluindo o arquivos onde está contido a estrutura
 #include "matrizes.h"

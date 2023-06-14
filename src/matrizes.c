@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <gsl/gsl_linalg.h>
+#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_vector.h>
 /// incluindo o arquivos onde estÃ¡ contido a estrutura
 #include "matrizes.h"
 
@@ -50,6 +52,205 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas)
 
     /// Retornado matrix
     return matrix;
+}
+
+///************************ FUNCOES DE CALCULO SVD **************************///
+void calc_svd(complexMatrix matrix) {
+    int i = 0;
+    int j = 0;
+
+    if (matrix.mtx[i][j].Im != 0) {
+        printf("A matriz é complexa, portanto será calculado o SVD apenas da parte real.\n");
+    }
+
+    // Criando uma matriz gsl usando a parte real da matriz complexa
+    gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
+    for (i = 0; i < matrix.linhas; i++) {
+        for (j = 0; j < matrix.colunas; j++) {
+            // Atribuindo os valores da parte real da matriz a gslMatrix
+            gsl_matrix_set(gslMatrix, i, j, matrix.mtx[i][j].Re);
+        }
+    }
+
+    // Fazendo a decomposição SVD
+    gsl_matrix *A = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
+    gsl_matrix *V = gsl_matrix_alloc(matrix.colunas, matrix.colunas);
+    gsl_vector *S = gsl_vector_alloc(matrix.colunas);
+    gsl_vector *work = gsl_vector_alloc(matrix.colunas);
+
+    // Chamando a função que realiza o cálculo do SVD
+    gsl_linalg_SV_decomp(A, V, S, work);
+
+    // Agora a mesma função vai imprimir os resultados
+    printf("\nMatrix A:\n");
+    for (i = 0; i < A->size1; i++) {
+        for (j = 0; j < A->size2; j++) {
+            if(j ==0){
+            printf("|%.2f\t", gsl_matrix_get(A, i, j));
+            }
+            else if(j == A->size2 - 1){
+            printf("%.2f|\t", gsl_matrix_get(A, i, j));
+            }
+            else{
+            printf("%.2f\t", gsl_matrix_get(A, i, j));
+            }
+        }
+        printf("\n");
+    }
+
+    printf("\nVetor S:\n");
+    for (i = 0; i < S->size; i++) {
+        printf("|%.2f|\n", gsl_vector_get(S, i));
+    }
+
+    printf("\nMatriz V:\n");
+    for (i = 0; i < V->size1; i++) {
+        for (j = 0; j < V->size2; j++) {
+            if(j ==0){
+            printf("|%.2f\t", gsl_matrix_get(V, i, j));
+            }
+            else if(j == V->size2 -1){
+            printf("%.2f|\t", gsl_matrix_get(V, i, j));
+            }
+            else{
+                printf("%.2f\t", gsl_matrix_get(V, i, j));
+            }
+        }
+        printf("\n");
+    }
+    
+    // Liberando memória
+    gsl_matrix_free(A);
+    gsl_matrix_free(V);
+    gsl_vector_free(S);
+    gsl_vector_free(work);
+    gsl_matrix_free(gslMatrix);
+}
+
+void teste_calc_svd() {
+    //Caso de teste1: Matriz 3X2
+    printf("\nCaso de teste 1: Matriz 3x2\n");
+    ///Alocando memória para a matriz
+    complexMatrix matrixA = allocateComplexMaatrix(3, 2);
+    //Preenchendo a matriz com valores
+    for (int i = 0; i < matrixA.linhas; i++) {
+        for (int j = 0; j < matrixA.colunas; j++) {
+            matrixA.mtx[i][j].Re = i + j + 1;
+            matrixA.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("\nMatriz de entrada:\n");
+    for (int i = 0; i < matrixA.linhas; i++) {
+        for (int j = 0; j < matrixA.colunas; j++) {
+            if( j == 0){
+            printf("|%.2f + %.2fi\t", matrixA.mtx[i][j].Re, matrixA.mtx[i][j].Im);
+            }
+            else if(j == matrixA.colunas - 1){
+            printf("%.2f + %.2fi|\t", matrixA.mtx[i][j].Re, matrixA.mtx[i][j].Im);
+            }
+            else{
+                printf("%.2f + %.2fi\t", matrixA.mtx[i][j].Re, matrixA.mtx[i][j].Im);
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+    calc_svd(matrixA);
+    printf("\n");
+
+    printf("\nCaso de teste 2: Matriz 4x4\n");
+    complexMatrix matrixB = allocateComplexMaatrix(4, 4);
+    
+    for (int i = 0; i < matrixB.linhas; i++) {
+        for (int j = 0; j < matrixB.linhas; j++) {
+            matrixB.mtx[i][j].Re = i + j + 3.2;
+            matrixB.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("\nMatriz de entrada:\n");
+    for (int i = 0; i < matrixB.linhas; i++) {
+        for (int j = 0; j < matrixB.colunas; j++) {
+            if( j == 0){
+            printf("|%.2f + %.2fi\t", matrixB.mtx[i][j].Re, matrixB.mtx[i][j].Im);
+            }
+            else if(j == matrixB.colunas - 1){
+            printf("%.2f + %.2fi|\t", matrixB.mtx[i][j].Re, matrixB.mtx[i][j].Im);
+            }
+            else{
+                printf("%.2f + %.2fi\t", matrixB.mtx[i][j].Re, matrixB.mtx[i][j].Im);
+            }
+        }
+        printf("\n");
+    }
+
+    calc_svd(matrixB);
+    printf("\n");
+
+    printf("Caso de teste 3: Matriz 6x5\n");
+    complexMatrix matrixC = allocateComplexMaatrix(6, 5);
+    
+    for (int i = 0; i < matrixC.linhas; i++) {
+        for (int j = 0; j < matrixC.linhas; j++) {
+            matrixC.mtx[i][j].Re = i + j + 5;
+            matrixC.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("\nMatriz de entrada:\n");
+    for (int i = 0; i < matrixC.linhas; i++) {
+        for (int j = 0; j < matrixC.colunas; j++) {
+            if( j == 0){
+            printf("|%.2f + %.2fi\t", matrixC.mtx[i][j].Re, matrixC.mtx[i][j].Im);
+            }
+            else if(j == matrixC.colunas - 1){
+            printf("%.2f + %.2fi|\t", matrixC.mtx[i][j].Re, matrixC.mtx[i][j].Im);
+            }
+            else{
+                printf("%.2f + %.2fi\t", matrixC.mtx[i][j].Re, matrixC.mtx[i][j].Im);
+            }
+        }
+        printf("\n");
+    }
+    calc_svd(matrixC);
+    printf("\n");
+
+     printf("\nCaso de teste 4: Matriz 5x6\n");
+    complexMatrix matrixD = allocateComplexMaatrix(5, 6);
+    
+    for (int i = 0; i < matrixD.linhas; i++) {
+        for (int j = 0; j < matrixD.linhas; j++) {
+            matrixD.mtx[i][j].Re = i + j + 2.7;
+            matrixD.mtx[i][j].Im = 0;
+        }
+    }
+
+    printf("\nMatriz de entrada:\n");
+    for (int i = 0; i < matrixD.linhas; i++) {
+        for (int j = 0; j < matrixD.colunas; j++) {
+            if( j == 0){
+            printf("|%.2f + %.2fi\t", matrixD.mtx[i][j].Re, matrixD.mtx[i][j].Im);
+            }
+            else if(j == matrixD.colunas - 1){
+            printf("%.2f + %.2fi|\t", matrixD.mtx[i][j].Re, matrixD.mtx[i][j].Im);
+            }
+            else{
+                printf("%.2f + %.2fi\t", matrixD.mtx[i][j].Re, matrixD.mtx[i][j].Im);
+            }
+        }
+        printf("\n");
+    }
+
+    calc_svd(matrixD);
+    printf("\n");
+
+    // Liberando memória
+    //free(matrixA.mtx);
+    //free(matrixB.mtx);
+    //free(matrixC.mtx);
+    //free(matrixD.mtx);
+
 }
 
 /************************************* FUNÃÃES DE OPERAÃÃO ***************************************/
@@ -597,4 +798,10 @@ void teste_todos()
 
     printf("\n Matriz Resultado \n");
     printProduto(produto);
+
+    complexMatrix matrixA = allocateComplexMaatrix(3, 2);
+    complexMatrix matrixB = allocateComplexMaatrix(4, 4);
+    complexMatrix matrixC = allocateComplexMaatrix(6, 5);
+    complexMatrix matrixD = allocateComplexMaatrix(5, 6);
+    teste_calc_svd();
 }
