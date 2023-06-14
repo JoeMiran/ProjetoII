@@ -43,7 +43,7 @@ void calc_svd(complexMatrix matrix) {
     int j = 0;
 
     if (matrix.mtx[i][j].Im != 0) {
-        printf("A matriz Ã© complexa, portanto serÃ¡ calculado o SVD apenas da parte real.\n");
+        printf("The matrix is complex. Not to be calculate the imaginary matrix part.\n");
     }
 
     // Criando uma matriz gsl usando a parte real da matriz complexa
@@ -126,7 +126,7 @@ void teste_calc_svd() {
     for (int i = 0; i < matrixA.linhas; i++) {
         for (int j = 0; j < matrixA.colunas; j++) {
             matrixA.mtx[i][j].Re = i + j + 1;
-            matrixA.mtx[i][j].Im = 0;
+            matrixA.mtx[i][j].Im = i + j + 1.5;
         }
     }
 
@@ -164,20 +164,19 @@ void teste_calc_svd() {
     for (int i = 0; i < matrixB.linhas; i++) {
         for (int j = 0; j < matrixB.colunas; j++) {
             if( j == 0){
-            printf("|%.1f + %.1fi\t", matrixB.mtx[i][j].Re, matrixB.mtx[i][j].Im);
+            printf("|%.1f\t", matrixB.mtx[i][j].Re);
             }
             else if(j == matrixB.colunas - 1){
-            printf("%.1f + %.1fi|\t", matrixB.mtx[i][j].Re, matrixB.mtx[i][j].Im);
+            printf("%.1f|\t", matrixB.mtx[i][j].Re);
             }
             else{
-                printf("%.1f + %.1fi\t", matrixB.mtx[i][j].Re, matrixB.mtx[i][j].Im);
+                printf("%.1f\t", matrixB.mtx[i][j].Re);
             }
         }
         printf("\n");
     }
 
     calc_svd(matrixB);
-    //freeComplexMatrix(matrixB);
     
     printf("\n");
 
@@ -195,19 +194,18 @@ void teste_calc_svd() {
     for (int i = 0; i < matrixC.linhas; i++) {
         for (int j = 0; j < matrixC.colunas; j++) {
             if( j == 0){
-            printf("|%.1f + %.1fi\t", matrixC.mtx[i][j].Re, matrixC.mtx[i][j].Im);
+            printf("|%.1f\t", matrixC.mtx[i][j].Re);
             }
             else if(j == matrixC.colunas - 1){
-            printf("%.1f + %.1fi|\t", matrixC.mtx[i][j].Re, matrixC.mtx[i][j].Im);
+            printf("%.1f|\t", matrixC.mtx[i][j].Re);
             }
             else{
-                printf("%.1f + %.1fi\t", matrixC.mtx[i][j].Re, matrixC.mtx[i][j].Im);
+                printf("%.1f\t", matrixC.mtx[i][j].Re);
             }
         }
         printf("\n");
     }
     calc_svd(matrixC);
-    //freeComplexMatrix(matrixC);
 
     printf("\n");
 
@@ -216,7 +214,7 @@ void teste_calc_svd() {
     
     for (int i = 0; i < matrixD.linhas; i++) {
         for (int j = 0; j < matrixD.linhas; j++) {
-            matrixD.mtx[i][j].Re = i + j + 2.7;
+            matrixD.mtx[i][j].Re = i + j + 2.5;
             matrixD.mtx[i][j].Im = 0;
         }
     }
@@ -225,13 +223,13 @@ void teste_calc_svd() {
     for (int i = 0; i < matrixD.linhas; i++) {
         for (int j = 0; j < matrixD.colunas; j++) {
             if( j == 0){
-            printf("|%.1f + %.1fi\t", matrixD.mtx[i][j].Re, matrixD.mtx[i][j].Im);
+            printf("|%.1f\t", matrixD.mtx[i][j].Re);
             }
             else if(j == matrixD.colunas - 1){
-            printf("%.1f + %.1fi|\t", matrixD.mtx[i][j].Re, matrixD.mtx[i][j].Im);
+            printf("%.1f|\t", matrixD.mtx[i][j].Re);
             }
             else{
-                printf("%.1f + %.1fi\t", matrixD.mtx[i][j].Re, matrixD.mtx[i][j].Im);
+                printf("%.1f\t", matrixD.mtx[i][j].Re);
             }
         }
         printf("\n");

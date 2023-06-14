@@ -3,9 +3,6 @@
 #define MATRIZES_H
 #include <stdio.h>
 #include <gsl/gsl_linalg.h>
-#include <gsl/gsl_matrix.h>
-#include <gsl/gsl_vector.h>
-
 /// Definição da estrutura complexa
 typedef struct
 {
@@ -25,6 +22,7 @@ typedef struct
 ///-----> Abaixo temos apenas as assinaturas das respectivas funções.
 ///
 complexMatrix allocateComplexMaatrix(int linhas, int colunas);
+
 complexMatrix matrixTransposta(complexMatrix matrix);
 complexMatrix matrixConjugada(complexMatrix matrix);
 complexMatrix matrixHermitiana(complexMatrix transposta);
