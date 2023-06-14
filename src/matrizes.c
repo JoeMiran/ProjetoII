@@ -16,8 +16,7 @@
  */
 
 /// Criando uma funÃ§Ã£o cujo objetivo Ã© alocar memÃ³ria dinamicamente para a matriz complexa
-complexMatrix allocateComplexMaatrix(int linhas, int colunas)
-{
+complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
 
     /// Declarando a variÃ¡vel matrix do tipo complexMatrix
     complexMatrix matrix;
@@ -59,7 +58,8 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas)
 */
 
 /// This function does the implementation for the SVD calculation
-void calc_svd(complexMatrix matrix) {
+void calc_svd(complexMatrix matrix) 
+{
     
     int i = 0;
     int j = 0;
@@ -69,25 +69,24 @@ void calc_svd(complexMatrix matrix) {
         printf("A matriz é complexa, portanto será calculado o SVD apenas da parte real.\n");
     }
 
-    // Criando uma matriz gsl usando a parte real da matriz complexa
+    /// Criando uma matriz gsl usando a parte real da matriz complexa
     gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
-    for (i = 0; i < matrix.linhas; i++) {
-        for (j = 0; j < matrix.colunas; j++) {
-            // Atribuindo os valores da parte real da matriz a gslMatrix
-            gsl_matrix_set(gslMatrix, i, j, matrix.mtx[i][j].Re);
-        }
+    
+    /// This snippet assigns the values ​​of the real part of the parameter matrix to the gslMatrix matrix    for (i = 0; i < matrix.linhas; i++) {
+    for (j = 0; j < matrix.colunas; j++) {
+        gsl_matrix_set(gslMatrix, i, j, matrix.mtx[i][j].Re);
     }
 
-    // Fazendo a decomposição SVD
+    /// Performing SVD decomposition
     gsl_matrix *A = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
     gsl_matrix *V = gsl_matrix_alloc(matrix.colunas, matrix.colunas);
     gsl_vector *S = gsl_vector_alloc(matrix.colunas);
     gsl_vector *work = gsl_vector_alloc(matrix.colunas);
 
-    // Chamando a função que realiza o cálculo do SVD
+    /// Chamando a função que realiza o cálculo do SVD
     gsl_linalg_SV_decomp(A, V, S, work);
 
-    // Agora a mesma função vai imprimir os resultados
+    /// Agora a mesma função vai imprimir os resultados
     printf("\nMatrix A:\n");
     for (i = 0; i < A->size1; i++) {
         for (j = 0; j < A->size2; j++) {
@@ -125,7 +124,7 @@ void calc_svd(complexMatrix matrix) {
         printf("\n");
     }
     
-    // Liberando memória
+    /// Liberando memória
     gsl_matrix_free(A);
     gsl_matrix_free(V);
     gsl_vector_free(S);
@@ -133,8 +132,9 @@ void calc_svd(complexMatrix matrix) {
     gsl_matrix_free(gslMatrix);
 }
 
+/// Function that will perform all the tests and print the results in the terminal
 void teste_calc_svd() {
-    //Caso de teste1: Matriz 3X2
+    ///Caso de teste1: Matriz 3X2
     printf("\n========= Matriz 3x2 =========\n");
     ///Alocando memÃ³ria para a matriz
     complexMatrix matrixA = allocateComplexMatrix(3, 2);
