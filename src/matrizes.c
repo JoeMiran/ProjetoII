@@ -491,9 +491,19 @@ void printMatrix1(complexMatrix matrix1)
     {
         for (int c = 0; c < matrix1.colunas; c++)
         {
-            printf("[%d][%d]: ", l, c);
-            printComplex(matrix1.mtx[l][c]);
+            //printf("[%d][%d]: ", l, c);
+            //printComplex(matrix1.mtx[l][c]);
+            if(c == 0){
+                printf("|%.2f + %.2fi\t", matrix1.mtx[l][c].Re, matrix1.mtx[l][c].Im);
+            }
+            else if (c == matrix1.colunas - 1){
+                printf("%.2f + %.2fi\t", matrix1.mtx[l][c].Re, matrix1.mtx[l][c].Im);
+            }
+            else{
+                printf("%.2f + %.2fi\t", matrix1.mtx[l][c].Re, matrix1.mtx[l][c].Im);
+            }
         }
+        printf("\n');
     }
 }
 
