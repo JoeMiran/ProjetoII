@@ -147,7 +147,7 @@ void teste_calc_svd() {
     }
     printf("\n");
     calc_svd(matrixA);
-    freeComplexMatrix(matrixA);
+    //freeComplexMatrix(matrixA);
     printf("\n");
 
     printf("\n========= Matriz 4x4 =========\n");
@@ -177,7 +177,7 @@ void teste_calc_svd() {
     }
 
     calc_svd(matrixB);
-    freeComplexMatrix(matrixB);
+    //freeComplexMatrix(matrixB);
     
     printf("\n");
 
@@ -207,7 +207,7 @@ void teste_calc_svd() {
         printf("\n");
     }
     calc_svd(matrixC);
-    freeComplexMatrix(matrixC);
+    //freeComplexMatrix(matrixC);
 
     printf("\n");
 
@@ -625,5 +625,9 @@ int main() {
     complexMatrix matrixB = allocateComplexMatrix(4, 4);
     complexMatrix matrixC = allocateComplexMatrix(6, 5);
     complexMatrix matrixD = allocateComplexMatrix(5, 6);
+    
+    freeComplexMatrix(matrixA);
+    freeComplexMatrix(matrixB);
+    freeComplexMatrix(matrixC);
     teste_calc_svd();
 }
