@@ -17,7 +17,7 @@
  */
 
 /// Criando uma funÃ§Ã£o cujo objetivo Ã© alocar memÃ³ria dinamicamente para a matriz complexa
-complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
+complexMatrix allocateComplexMatrix(int linhas, int colunas) {
 
     /// Declarando a variÃ¡vel matrix do tipo complexMatrix
     complexMatrix matrix;
@@ -140,7 +140,7 @@ void teste_calc_svd() {
     ///Caso de teste1: Matriz 3X2
     printf("\n========= Matriz 3x2 =========\n");
     ///Alocando memÃ³ria para a matriz
-    complexMatrix matrixA = allocateComplexMaatrix(3, 2);
+    complexMatrix matrixA = allocateComplexMatrix(3, 2);
     //Preenchendo a matriz com valores
     for (int i = 0; i < matrixA.linhas; i++) {
         for (int j = 0; j < matrixA.colunas; j++) {
@@ -170,7 +170,7 @@ void teste_calc_svd() {
     printf("\n");
 
     printf("\n========= Matriz 4x4 =========\n");
-    complexMatrix matrixB = allocateComplexMaatrix(4, 4);
+    complexMatrix matrixB = allocateComplexMatrix(4, 4);
     
     for (int i = 0; i < matrixB.linhas; i++) {
         for (int j = 0; j < matrixB.linhas; j++) {
@@ -199,7 +199,7 @@ void teste_calc_svd() {
     printf("\n");
 
     printf("\n========= Matriz 6x5 =========\n");
-    complexMatrix matrixC = allocateComplexMaatrix(6, 5);
+    complexMatrix matrixC = allocateComplexMatrix(6, 5);
     
     for (int i = 0; i < matrixC.linhas; i++) {
         for (int j = 0; j < matrixC.linhas; j++) {
@@ -228,7 +228,7 @@ void teste_calc_svd() {
     printf("\n");
 
     printf("\n========= Matriz 5x6 =========\n");
-    complexMatrix matrixD = allocateComplexMaatrix(5, 6);
+    complexMatrix matrixD = allocateComplexMatrix(5, 6);
     
     for (int i = 0; i < matrixD.linhas; i++) {
         for (int j = 0; j < matrixD.linhas; j++) {
@@ -269,7 +269,7 @@ complexMatrix matrixTransposta(complexMatrix matrix)
 {
 
     /// Alocando memÃ³ria para a matriz transposta
-    complexMatrix transposta = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
+    complexMatrix transposta = allocateComplexMatrix(matrix.colunas, matrix.linhas);
 
     /// Percorrendo cada elemento da matriz original
     for (int i = 0; i < matrix.linhas; i++)
@@ -296,7 +296,7 @@ complexMatrix matrixConjugada(complexMatrix matrix)
 {
 
     /// Alocando memÃ³ria para a matriz conjugada utilizando a funÃ§Ã£o allocateComplexMaatrix
-    complexMatrix conjugada = allocateComplexMaatrix(matrix.colunas, matrix.linhas);
+    complexMatrix conjugada = allocateComplexMatrix(matrix.colunas, matrix.linhas);
 
     /// Loop para percorrer cada elemento da matriz original
     for (int i = 0; i < matrix.linhas; i++)
@@ -323,7 +323,7 @@ complexMatrix matrixHermitiana(complexMatrix transposta)
 {
 
     /// Alocando memÃ³ria para a matriz Hermitiana
-    complexMatrix hermitiana = allocateComplexMaatrix(transposta.colunas, transposta.linhas);
+    complexMatrix hermitiana = allocateComplexMatrix(transposta.colunas, transposta.linhas);
 
     /// Loop para percorrer cada elemento da matriz transposta
     for (int i = 0; i < transposta.linhas; i++)
@@ -352,7 +352,7 @@ complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2)
 {
 
     /// Alocando memÃ³ria para a matrix soma
-    complexMatrix soma = allocateComplexMaatrix(matrix1.linhas, matrix1.colunas);
+    complexMatrix soma = allocateComplexMatrix(matrix1.linhas, matrix1.colunas);
 
     /// Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 tÃªm a mesma dimensÃ£o
     for (int l = 0; l < matrix1.linhas; l++)
@@ -381,7 +381,7 @@ complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2)
 {
 
     /// Alocando memÃ³ria para a matriz subtraÃ§Ã£o
-    complexMatrix subtracao = allocateComplexMaatrix(matrix1.linhas, matrix1.colunas);
+    complexMatrix subtracao = allocateComplexMatrix(matrix1.linhas, matrix1.colunas);
 
     /// Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 tÃªm a mesma dimensÃ£o
     for (int l = 0; l < matrix1.linhas; l++)
@@ -410,7 +410,7 @@ complexMatrix matrix_produtoEscalar(complexMatrix matrix, float num)
 {
 
     /// Alocando memÃ³ria para a matrix resultado do produto escalar
-    complexMatrix produtoEscalar = allocateComplexMaatrix(matrix.linhas, matrix.colunas);
+    complexMatrix produtoEscalar = allocateComplexMatrix(matrix.linhas, matrix.colunas);
 
     /// Loop para percorrer cada elemento da matriz original
     for (int l = 0; l < matrix.linhas; l++)
@@ -439,7 +439,7 @@ complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2)
 {
 
     /// Alocando memÃ³ria para a matrix resultado do produto
-    complexMatrix produto = allocateComplexMaatrix(matrix1.linhas, matrix1.colunas);
+    complexMatrix produto = allocateComplexMatrix(matrix1.linhas, matrix1.colunas);
 
     /// Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 tÃªm a mesma dimensÃ£o
     for (int l = 0; l < matrix1.linhas; l++)
@@ -694,9 +694,9 @@ void teste_todos()
     float num = 2.5;
 
     /// chamando a funÃ§Ã£o que cria e aloca memÃ³ria para as matrizes Original, A e B
-    complexMatrix matrix = allocateComplexMaatrix(linhas, colunas);
-    complexMatrix matrix1 = allocateComplexMaatrix(linhas, colunas);
-    complexMatrix matrix2 = allocateComplexMaatrix(linhas, colunas);
+    complexMatrix matrix = allocateComplexMatrix(linhas, colunas);
+    complexMatrix matrix1 = allocateComplexMatrix(linhas, colunas);
+    complexMatrix matrix2 = allocateComplexMatrix(linhas, colunas);
 
     /// Preenchendo a Matriz Original
     for (int l = 0; l < matrix.linhas; l++)
@@ -813,9 +813,9 @@ void teste_todos()
     printf("\n Matriz Resultado \n");
     printProduto(produto);
 
-    complexMatrix matrixA = allocateComplexMaatrix(3, 2);
-    complexMatrix matrixB = allocateComplexMaatrix(4, 4);
-    complexMatrix matrixC = allocateComplexMaatrix(6, 5);
-    complexMatrix matrixD = allocateComplexMaatrix(5, 6);
+    complexMatrix matrixA = allocateComplexMatrix(3, 2);
+    complexMatrix matrixB = allocateComplexMatrix(4, 4);
+    complexMatrix matrixC = allocateComplexMatrix(6, 5);
+    complexMatrix matrixD = allocateComplexMatrix(5, 6);
     teste_calc_svd();
 }
