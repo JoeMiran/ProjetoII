@@ -817,5 +817,9 @@ void teste_todos()
     complexMatrix matrixB = allocateComplexMatrix(4, 4);
     complexMatrix matrixC = allocateComplexMatrix(6, 5);
     complexMatrix matrixD = allocateComplexMatrix(5, 6);
+    
+    freeComplexMatrix(matrixA);
+    freeComplexMatrix(matrixB);
+    freeComplexMatrix(matrixC);
     teste_calc_svd();
 }
