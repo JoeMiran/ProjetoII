@@ -1,8 +1,6 @@
 all:	matrizes
 matrizes:
-	gcc -c src/matrizes.c -o build/matrizes.o
-	gcc -c src/main.c -o build/main.o
-	gcc build/matrizes.o build/main.o -o build/matrizes
+	gcc src/main.c src/matrizes.c -lgsl -o build/matrizes
 	./build/matrizes
 aplicacao:
 	gcc -c src/matrizes.c -o build/matrizes.o
@@ -23,12 +21,6 @@ clean:
 .PHONY:	doc
 doc:
 	doxygen doxyfile
-make:
-	rm -rf src/*.out
-	gcc src/teste.c -lgsl -o src/a.out
-	./src/a.out
-blz:
-	gcc src/main.c src/matrizes.c -lgsl -o build/matrizes
-	./build/matrizes
+	
 	
 	
