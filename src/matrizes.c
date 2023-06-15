@@ -3,6 +3,7 @@
 #include <stdlib.h>
 /// including the files where the structure is contained
 #include "matrizes.h"
+
 /// including the GSL library
 #include <gsl/gsl_linalg.h>
 
@@ -139,7 +140,7 @@ void teste_calc_svd() {
     ///Caso de teste1: Matriz 3X2
     printf("\n========= Matriz 3x2 =========\n");
     ///Alocando memÃ³ria para a matriz
-    complexMatrix matrixA = allocateComplexMatrix(3, 2);
+    complexMatrix matrixA = allocateComplexMaatrix(3, 2);
     //Preenchendo a matriz com valores
     for (int i = 0; i < matrixA.linhas; i++) {
         for (int j = 0; j < matrixA.colunas; j++) {
@@ -169,7 +170,7 @@ void teste_calc_svd() {
     printf("\n");
 
     printf("\n========= Matriz 4x4 =========\n");
-    complexMatrix matrixB = allocateComplexMatrix(4, 4);
+    complexMatrix matrixB = allocateComplexMaatrix(4, 4);
     
     for (int i = 0; i < matrixB.linhas; i++) {
         for (int j = 0; j < matrixB.linhas; j++) {
@@ -198,7 +199,7 @@ void teste_calc_svd() {
     printf("\n");
 
     printf("\n========= Matriz 6x5 =========\n");
-    complexMatrix matrixC = allocateComplexMatrix(6, 5);
+    complexMatrix matrixC = allocateComplexMaatrix(6, 5);
     
     for (int i = 0; i < matrixC.linhas; i++) {
         for (int j = 0; j < matrixC.linhas; j++) {
@@ -227,7 +228,7 @@ void teste_calc_svd() {
     printf("\n");
 
     printf("\n========= Matriz 5x6 =========\n");
-    complexMatrix matrixD = allocateComplexMatrix(5, 6);
+    complexMatrix matrixD = allocateComplexMaatrix(5, 6);
     
     for (int i = 0; i < matrixD.linhas; i++) {
         for (int j = 0; j < matrixD.linhas; j++) {
@@ -505,7 +506,7 @@ void printMatrix1(complexMatrix matrix1)
                 printf("%.2f + %.2fi\t", matrix1.mtx[l][c].Re, matrix1.mtx[l][c].Im);
             }
         }
-        printf("\n');
+        printf("\n");
     }
 }
 
