@@ -148,7 +148,7 @@ void teste_calc_svd() {
     printf("\n========= Matriz 3x2 =========\n");
     ///Alocando memÃ³ria para a matriz
     complexMatrix matrixA = allocateComplexMatrix(3, 2);
-    //Preenchendo a matriz com valores
+    ///Preenchendo a matriz com valores
     for (int i = 0; i < matrixA.linhas; i++) {
         for (int j = 0; j < matrixA.colunas; j++) {
             matrixA.mtx[i][j].Re = i + j + 1;
@@ -491,7 +491,7 @@ void printMatrix(complexMatrix matrix)
                 printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
             }
         }
-        printf("\n"); // Adicionar uma nova linha apï¿½s imprimir todos os elementos da linha
+        printf("\n"); /// Adicionar uma nova linha apï¿½s imprimir todos os elementos da linha
     }
 }
 
@@ -501,8 +501,6 @@ void printMatrix1(complexMatrix matrix1)
     {
         for (int c = 0; c < matrix1.colunas; c++)
         {
-            //printf("[%d][%d]: ", l, c);
-            //printComplex(matrix1.mtx[l][c]);
             if(c == 0){
                 printf("|%.2f + %.2fi\t", matrix1.mtx[l][c].Re, matrix1.mtx[l][c].Im);
             }
@@ -673,8 +671,6 @@ void printProduto(complexMatrix produto)
     {
         for (int c = 0; c < produto.colunas; c++)
         {
-            // printf("[%d][%d]: ", l, c);
-            // printComplex(produto.mtx[l][c]);
             if (c == 0)
             {
                 printf("|%.2f + %.2fi\t", produto.mtx[l][c].Re, produto.mtx[l][c].Im);
