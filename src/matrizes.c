@@ -41,7 +41,7 @@ complexMatrix allocateComplexMaatrix(int linhas, int colunas) {
         matrix.mtx[i] = (complex *)malloc(colunas * sizeof(complex));
 
         /// Tratando possÃ­veis erros na alocaÃ§Ã£o de memÃ³ria para as colunas
-        if (matrix.mtx == NULL)
+        if (matrix.mtx[i] == NULL)
         {
             printf("Falha na alocaÃÂ§ÃÂ£o de memÃÂ³ria\n");
             exit(1);
@@ -73,8 +73,10 @@ void calc_svd(complexMatrix matrix)
     gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
     
     /// This snippet assigns the values ​​of the real part of the parameter matrix to the gslMatrix matrix    for (i = 0; i < matrix.linhas; i++) {
-    for (j = 0; j < matrix.colunas; j++) {
+    for (i = 0; i < matrix.linhas; i++) {
+        for (j=0; j < matrix.colunas; j++){
         gsl_matrix_set(gslMatrix, i, j, matrix.mtx[i][j].Re);
+        }   
     }
 
     /// Performing SVD decomposition
@@ -111,7 +113,7 @@ void calc_svd(complexMatrix matrix)
     printf("\nMatriz V:\n");
     for (i = 0; i < V->size1; i++) {
         for (j = 0; j < V->size2; j++) {
-            if(j ==0){
+            if(j == 0){
             printf("|%.2f\t", gsl_matrix_get(V, i, j));
             }
             else if(j == V->size2 -1){
