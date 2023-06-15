@@ -135,6 +135,13 @@ void calc_svd(complexMatrix matrix)
     gsl_matrix_free(gslMatrix);
 }
 
+void freeComplexMatrix(complexMatrix matrix) {
+    for (int i = 0; i < matrix.linhas; i++) {
+        free(matrix.mtx[i]);
+    }
+    free(matrix.mtx);
+}
+
 /// Function that will perform all the tests and print the results in the terminal
 void teste_calc_svd() {
     ///Caso de teste1: Matriz 3X2
