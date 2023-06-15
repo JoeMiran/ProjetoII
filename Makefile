@@ -27,5 +27,8 @@ make:
 	rm -rf src/*.out
 	gcc src/teste.c -lgsl -o src/a.out
 	./src/a.out
+blz:
+	gcc src/main.c src/matrizes.c -lgsl -o build/matrizes
+	./build/matrizes
 	
 	
