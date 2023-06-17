@@ -1,0 +1,26 @@
+var matrizes_8c =
+[
+    [ "allocateComplexMatrix", "matrizes_8c.html#abb2b265d53e05a75bef9589f73f535e7", null ],
+    [ "calc_svd", "matrizes_8c.html#a30d448d61b50412dc5bbafb1085538e9", null ],
+    [ "freeComplexMatrix", "matrizes_8c.html#a37e4de8e0fa1f47b2003d9e9d5a7b2bc", null ],
+    [ "matrix_produtoEscalar", "matrizes_8c.html#a72c4d38ae400800b2454ffc1832d4fd3", null ],
+    [ "matrixConjugada", "matrizes_8c.html#a854c02c0a6cc0a7050ae05807a77ff79", null ],
+    [ "matrixHermitiana", "matrizes_8c.html#ab36fa6eaa22c321ccd734a9141652107", null ],
+    [ "matrixProduto", "matrizes_8c.html#a9a5644f8a0b3d22886d2a12a9a02904f", null ],
+    [ "matrixSoma", "matrizes_8c.html#a9244b625fef12d954d2f74501f912f5f", null ],
+    [ "matrixSubtracao", "matrizes_8c.html#a514f2d37098a5998b470ee699a47b5b4", null ],
+    [ "matrixTransposta", "matrizes_8c.html#aad2a628e5c9b317136cfaabb9b0e303b", null ],
+    [ "print_produtoEscalar", "matrizes_8c.html#a9e7bc4af3513676d5238e6a392a4ee8e", null ],
+    [ "printComplex", "matrizes_8c.html#af772984e7eb993c1819f55a902e4fff7", null ],
+    [ "printConjugada", "matrizes_8c.html#a8137e6591e80c6b6d3cd1f971cc8e75b", null ],
+    [ "printHermitiana", "matrizes_8c.html#a7114566c30d5d778bfb546fd5e9858f3", null ],
+    [ "printMatrix", "matrizes_8c.html#ae7877b934fb79e15b0fbafba1e965e00", null ],
+    [ "printMatrix1", "matrizes_8c.html#aeaff45517167b6846215fffbc2e6d32a", null ],
+    [ "printMatrix2", "matrizes_8c.html#a95ed08efd63b5767de5f94e4c5f37e8d", null ],
+    [ "printProduto", "matrizes_8c.html#aad738210146b55cca3033ef5a83bb6a7", null ],
+    [ "printSoma", "matrizes_8c.html#a91e834864d05c72e88e837bfe4c9273a", null ],
+    [ "printSubtracao", "matrizes_8c.html#ae3b08ec5d4c8f9665670dc789b588ce5", null ],
+    [ "printTransposta", "matrizes_8c.html#a556309c6c7ad797f1f51ccc0a543d515", null ],
+    [ "teste_calc_svd", "matrizes_8c.html#ae220ed44122cad3aa4637358f423bb93", null ],
+    [ "teste_todos", "matrizes_8c.html#a952fccbf4de97804227218194694777f", null ]
+];

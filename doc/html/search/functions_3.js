@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['teste_5ftodos_51',['teste_todos',['../main_8c.html#a952fccbf4de97804227218194694777f',1,'teste_todos():&#160;matrizes.c'],['../matrizes_8c.html#a952fccbf4de97804227218194694777f',1,'teste_todos():&#160;matrizes.c']]]
+  ['printcomplex_34',['printComplex',['../matrizes_8c.html#af772984e7eb993c1819f55a902e4fff7',1,'matrizes.c']]],
+  ['printmatrix_35',['printMatrix',['../matrizes_8c.html#ae7877b934fb79e15b0fbafba1e965e00',1,'matrizes.c']]]
 ];

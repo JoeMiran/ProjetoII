@@ -1,14 +1,11 @@
 var searchData=
 [
-  ['print_5fprodutoescalar_40',['print_produtoEscalar',['../matrizes_8c.html#a9e7bc4af3513676d5238e6a392a4ee8e',1,'matrizes.c']]],
-  ['printcomplex_41',['printComplex',['../matrizes_8c.html#af772984e7eb993c1819f55a902e4fff7',1,'matrizes.c']]],
-  ['printconjugada_42',['printConjugada',['../matrizes_8c.html#a8137e6591e80c6b6d3cd1f971cc8e75b',1,'matrizes.c']]],
-  ['printhermitiana_43',['printHermitiana',['../matrizes_8c.html#a7114566c30d5d778bfb546fd5e9858f3',1,'matrizes.c']]],
-  ['printmatrix_44',['printMatrix',['../matrizes_8c.html#ae7877b934fb79e15b0fbafba1e965e00',1,'matrizes.c']]],
-  ['printmatrix1_45',['printMatrix1',['../matrizes_8c.html#aeaff45517167b6846215fffbc2e6d32a',1,'matrizes.c']]],
-  ['printmatrix2_46',['printMatrix2',['../matrizes_8c.html#a95ed08efd63b5767de5f94e4c5f37e8d',1,'matrizes.c']]],
-  ['printproduto_47',['printProduto',['../matrizes_8c.html#aad738210146b55cca3033ef5a83bb6a7',1,'matrizes.c']]],
-  ['printsoma_48',['printSoma',['../matrizes_8c.html#a91e834864d05c72e88e837bfe4c9273a',1,'matrizes.c']]],
-  ['printsubtracao_49',['printSubtracao',['../matrizes_8c.html#ae3b08ec5d4c8f9665670dc789b588ce5',1,'matrizes.c']]],
-  ['printtransposta_50',['printTransposta',['../matrizes_8c.html#a556309c6c7ad797f1f51ccc0a543d515',1,'matrizes.c']]]
+  ['main_26',['main',['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
+  ['matrix_5fprodutoescalar_27',['matrix_produtoEscalar',['../matrizes_8c.html#a72c4d38ae400800b2454ffc1832d4fd3',1,'matrix_produtoEscalar(complexMatrix matrix, float num):&#160;matrizes.c'],['../matrizes_8h.html#a72c4d38ae400800b2454ffc1832d4fd3',1,'matrix_produtoEscalar(complexMatrix matrix, float num):&#160;matrizes.c']]],
+  ['matrixconjugada_28',['matrixConjugada',['../matrizes_8c.html#a854c02c0a6cc0a7050ae05807a77ff79',1,'matrixConjugada(complexMatrix matrix):&#160;matrizes.c'],['../matrizes_8h.html#a854c02c0a6cc0a7050ae05807a77ff79',1,'matrixConjugada(complexMatrix matrix):&#160;matrizes.c']]],
+  ['matrixhermitiana_29',['matrixHermitiana',['../matrizes_8c.html#ab36fa6eaa22c321ccd734a9141652107',1,'matrixHermitiana(complexMatrix transposta):&#160;matrizes.c'],['../matrizes_8h.html#ab36fa6eaa22c321ccd734a9141652107',1,'matrixHermitiana(complexMatrix transposta):&#160;matrizes.c']]],
+  ['matrixproduto_30',['matrixProduto',['../matrizes_8c.html#a9a5644f8a0b3d22886d2a12a9a02904f',1,'matrixProduto(complexMatrix matrix1, complexMatrix matrix2):&#160;matrizes.c'],['../matrizes_8h.html#a9a5644f8a0b3d22886d2a12a9a02904f',1,'matrixProduto(complexMatrix matrix1, complexMatrix matrix2):&#160;matrizes.c']]],
+  ['matrixsoma_31',['matrixSoma',['../matrizes_8c.html#a9244b625fef12d954d2f74501f912f5f',1,'matrixSoma(complexMatrix matrix1, complexMatrix matrix2):&#160;matrizes.c'],['../matrizes_8h.html#a9244b625fef12d954d2f74501f912f5f',1,'matrixSoma(complexMatrix matrix1, complexMatrix matrix2):&#160;matrizes.c']]],
+  ['matrixsubtracao_32',['matrixSubtracao',['../matrizes_8c.html#a514f2d37098a5998b470ee699a47b5b4',1,'matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2):&#160;matrizes.c'],['../matrizes_8h.html#a514f2d37098a5998b470ee699a47b5b4',1,'matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2):&#160;matrizes.c']]],
+  ['matrixtransposta_33',['matrixTransposta',['../matrizes_8c.html#aad2a628e5c9b317136cfaabb9b0e303b',1,'matrixTransposta(complexMatrix matrix):&#160;matrizes.c'],['../matrizes_8h.html#aad2a628e5c9b317136cfaabb9b0e303b',1,'matrixTransposta(complexMatrix matrix):&#160;matrizes.c']]]
 ];

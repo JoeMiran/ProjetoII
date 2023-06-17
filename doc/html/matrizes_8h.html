@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: src/matrizes.h File Reference</title>
+<title>Projetos II: src/matrizes.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,8 +24,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ufpa.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Projetos II
    </div>
   </td>
  </tr>
@@ -45,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('matrizes_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -73,6 +90,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;gsl/gsl_linalg.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for matrizes.h:</div>
 <div class="dyncontent">
@@ -97,77 +115,32 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae2435b5a41e8ed8705ea4d8d1739a0b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#ae2435b5a41e8ed8705ea4d8d1739a0b8">allocateComplexMaatrix</a> (int linhas, int colunas)</td></tr>
-<tr class="memdesc:ae2435b5a41e8ed8705ea4d8d1739a0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">incluindo o arquivos onde está contido a estrutura  <a href="matrizes_8h.html#ae2435b5a41e8ed8705ea4d8d1739a0b8">More...</a><br /></td></tr>
+<tr class="memitem:ae2435b5a41e8ed8705ea4d8d1739a0b8"><td class="memItemLeft" align="right" valign="top"><a id="ae2435b5a41e8ed8705ea4d8d1739a0b8"></a>
+<a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>allocateComplexMaatrix</b> (int linhas, int colunas)</td></tr>
 <tr class="separator:ae2435b5a41e8ed8705ea4d8d1739a0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad2a628e5c9b317136cfaabb9b0e303b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#aad2a628e5c9b317136cfaabb9b0e303b">matrixTransposta</a> (<a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix)</td></tr>
-<tr class="memdesc:aad2a628e5c9b317136cfaabb9b0e303b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma função para realizar o cálculo da transposta.  <a href="matrizes_8h.html#aad2a628e5c9b317136cfaabb9b0e303b">More...</a><br /></td></tr>
+<tr class="memdesc:aad2a628e5c9b317136cfaabb9b0e303b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da transposta.  <a href="matrizes_8h.html#aad2a628e5c9b317136cfaabb9b0e303b">More...</a><br /></td></tr>
 <tr class="separator:aad2a628e5c9b317136cfaabb9b0e303b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a854c02c0a6cc0a7050ae05807a77ff79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#a854c02c0a6cc0a7050ae05807a77ff79">matrixConjugada</a> (<a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix)</td></tr>
-<tr class="memdesc:a854c02c0a6cc0a7050ae05807a77ff79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma função para realizar o cálculo da conjugada.  <a href="matrizes_8h.html#a854c02c0a6cc0a7050ae05807a77ff79">More...</a><br /></td></tr>
+<tr class="memdesc:a854c02c0a6cc0a7050ae05807a77ff79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da conjugada.  <a href="matrizes_8h.html#a854c02c0a6cc0a7050ae05807a77ff79">More...</a><br /></td></tr>
 <tr class="separator:a854c02c0a6cc0a7050ae05807a77ff79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab36fa6eaa22c321ccd734a9141652107"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#ab36fa6eaa22c321ccd734a9141652107">matrixHermitiana</a> (<a class="el" href="structcomplexMatrix.html">complexMatrix</a> transposta)</td></tr>
-<tr class="memdesc:ab36fa6eaa22c321ccd734a9141652107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma função para realizar o cálculo da hermitiana.  <a href="matrizes_8h.html#ab36fa6eaa22c321ccd734a9141652107">More...</a><br /></td></tr>
+<tr class="memdesc:ab36fa6eaa22c321ccd734a9141652107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da hermitiana.  <a href="matrizes_8h.html#ab36fa6eaa22c321ccd734a9141652107">More...</a><br /></td></tr>
 <tr class="separator:ab36fa6eaa22c321ccd734a9141652107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9244b625fef12d954d2f74501f912f5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#a9244b625fef12d954d2f74501f912f5f">matrixSoma</a> (<a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix1, <a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix2)</td></tr>
-<tr class="memdesc:a9244b625fef12d954d2f74501f912f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma função para realizar a soma da matrix A e B, que estou apelidando de matrix1 e matrix2.  <a href="matrizes_8h.html#a9244b625fef12d954d2f74501f912f5f">More...</a><br /></td></tr>
+<tr class="memdesc:a9244b625fef12d954d2f74501f912f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma funÃ§Ã£o para realizar a soma da matrix A e B, que estou apelidando de matrix1 e matrix2.  <a href="matrizes_8h.html#a9244b625fef12d954d2f74501f912f5f">More...</a><br /></td></tr>
 <tr class="separator:a9244b625fef12d954d2f74501f912f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a514f2d37098a5998b470ee699a47b5b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#a514f2d37098a5998b470ee699a47b5b4">matrixSubtracao</a> (<a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix1, <a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix2)</td></tr>
-<tr class="memdesc:a514f2d37098a5998b470ee699a47b5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma função para realizar a subtração entre matrix1 e matrix2.  <a href="matrizes_8h.html#a514f2d37098a5998b470ee699a47b5b4">More...</a><br /></td></tr>
+<tr class="memdesc:a514f2d37098a5998b470ee699a47b5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma funÃ§Ã£o para realizar a subtraÃ§Ã£o entre matrix1 e matrix2.  <a href="matrizes_8h.html#a514f2d37098a5998b470ee699a47b5b4">More...</a><br /></td></tr>
 <tr class="separator:a514f2d37098a5998b470ee699a47b5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72c4d38ae400800b2454ffc1832d4fd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#a72c4d38ae400800b2454ffc1832d4fd3">matrix_produtoEscalar</a> (<a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix, float num)</td></tr>
-<tr class="memdesc:a72c4d38ae400800b2454ffc1832d4fd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma função para realizar a multiplicação de um número escalar com cada elemento da matriz original.  <a href="matrizes_8h.html#a72c4d38ae400800b2454ffc1832d4fd3">More...</a><br /></td></tr>
+<tr class="memdesc:a72c4d38ae400800b2454ffc1832d4fd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma funÃ§Ã£o para realizar a multiplicaÃ§Ã£o de um nÃºmero escalar com cada elemento da matriz original.  <a href="matrizes_8h.html#a72c4d38ae400800b2454ffc1832d4fd3">More...</a><br /></td></tr>
 <tr class="separator:a72c4d38ae400800b2454ffc1832d4fd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a5644f8a0b3d22886d2a12a9a02904f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcomplexMatrix.html">complexMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="matrizes_8h.html#a9a5644f8a0b3d22886d2a12a9a02904f">matrixProduto</a> (<a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix1, <a class="el" href="structcomplexMatrix.html">complexMatrix</a> matrix2)</td></tr>
-<tr class="memdesc:a9a5644f8a0b3d22886d2a12a9a02904f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma função para realizar o produto entre matrix1 e matrix2.  <a href="matrizes_8h.html#a9a5644f8a0b3d22886d2a12a9a02904f">More...</a><br /></td></tr>
+<tr class="memdesc:a9a5644f8a0b3d22886d2a12a9a02904f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Criando uma funÃ§Ã£o para realizar o produto entre matrix1 e matrix2.  <a href="matrizes_8h.html#a9a5644f8a0b3d22886d2a12a9a02904f">More...</a><br /></td></tr>
 <tr class="separator:a9a5644f8a0b3d22886d2a12a9a02904f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae2435b5a41e8ed8705ea4d8d1739a0b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2435b5a41e8ed8705ea4d8d1739a0b8">&#9670;&nbsp;</a></span>allocateComplexMaatrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structcomplexMatrix.html">complexMatrix</a> allocateComplexMaatrix </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>linhas</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>colunas</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>incluindo o arquivos onde está contido a estrutura </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">linhas</td><td></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">colunas</td><td></td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">matrix</td><td>Criando uma função cujo objetivo é alocar memória dinamicamente para a matriz complexa </td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Declarando a variável matrix do tipo <a class="el" href="structcomplexMatrix.html" title="Definição da estrutura complexMatrix.">complexMatrix</a></p>
-<p>A variavel do tipo <a class="el" href="structcomplexMatrix.html" title="Definição da estrutura complexMatrix.">complexMatrix</a> tem os "atributos" linhas e colunas e deve recebê-los como parâmetros</p>
-<p>Alocando memória para as linhas de matrix</p>
-<p>Tratando possíveis erros na alocação de memória para as linhas</p>
-<p>Alocando memória para as colunas de cada linha</p>
-<p>Tratando possíveis erros na alocação de memória para as colunas</p>
-<p>Retornado matrix</p>
-
-</div>
-</div>
 <a id="a72c4d38ae400800b2454ffc1832d4fd3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72c4d38ae400800b2454ffc1832d4fd3">&#9670;&nbsp;</a></span>matrix_produtoEscalar()</h2>
 
@@ -194,7 +167,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Criando uma função para realizar a multiplicação de um número escalar com cada elemento da matriz original. </p>
+<p>Criando uma funÃ§Ã£o para realizar a multiplicaÃ§Ã£o de um nÃºmero escalar com cada elemento da matriz original. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">matrix</td><td></td></tr>
@@ -203,9 +176,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Alocando memória para a matrix resultado do produto escalar</p>
+<p>Alocando memÃ³ria para a matrix resultado do produto escalar</p>
 <p>Loop para percorrer cada elemento da matriz original</p>
-<p>Multiplicando um número a cada elemento da matriz original e atribuindo o resultado aos elementos a produtoEscalar</p>
+<p>Multiplicando um nÃºmero a cada elemento da matriz original e atribuindo o resultado aos elementos a produtoEscalar</p>
 <p>Retornando produtoEscalar</p>
 
 </div>
@@ -226,7 +199,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Criando uma função para realizar o cálculo da conjugada. </p>
+<p>Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da conjugada. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">matrix</td><td></td></tr>
@@ -234,7 +207,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Alocando memória para a matriz conjugada utilizando a função allocateComplexMaatrix</p>
+<p>Alocando memÃ³ria para a matriz conjugada utilizando a funÃ§Ã£o allocateComplexMaatrix</p>
 <p>Loop para percorrer cada elemento da matriz original</p>
 <p>Atribuindo o valor do elemento atual da matriz original para a conjugada</p>
 <p>Retornando a matriz conjugada</p>
@@ -257,7 +230,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Criando uma função para realizar o cálculo da hermitiana. </p>
+<p>Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da hermitiana. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transposta</td><td></td></tr>
@@ -265,7 +238,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Alocando memória para a matriz Hermitiana</p>
+<p>Alocando memÃ³ria para a matriz Hermitiana</p>
 <p>Loop para percorrer cada elemento da matriz transposta</p>
 <p>Retornando a matriz hermitiana</p>
 
@@ -297,7 +270,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Criando uma função para realizar o produto entre matrix1 e matrix2. </p>
+<p>Criando uma funÃ§Ã£o para realizar o produto entre matrix1 e matrix2. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">matrix1</td><td></td></tr>
@@ -306,8 +279,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Alocando memória para a matrix resultado do produto</p>
-<p>Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 têm a mesma dimensão</p>
+<p>Alocando memÃ³ria para a matrix resultado do produto</p>
+<p>Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 tÃªm a mesma dimensÃ£o</p>
 <p>Multiplicando matrix1 e matrix2 e atribuindo o resultao a produto</p>
 <p>Retorna a matriz produto</p>
 
@@ -339,7 +312,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Criando uma função para realizar a soma da matrix A e B, que estou apelidando de matrix1 e matrix2. </p>
+<p>Criando uma funÃ§Ã£o para realizar a soma da matrix A e B, que estou apelidando de matrix1 e matrix2. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">matrix1</td><td></td></tr>
@@ -348,8 +321,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Alocando memória para a matrix soma</p>
-<p>Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 têm a mesma dimensão</p>
+<p>Alocando memÃ³ria para a matrix soma</p>
+<p>Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 tÃªm a mesma dimensÃ£o</p>
 <p>Somando os elementos correspondentes e atribuindo o resultado na matriz soma</p>
 <p>Retornando a matriz Soma</p>
 
@@ -381,7 +354,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Criando uma função para realizar a subtração entre matrix1 e matrix2. </p>
+<p>Criando uma funÃ§Ã£o para realizar a subtraÃ§Ã£o entre matrix1 e matrix2. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">matrix1</td><td></td></tr>
@@ -390,10 +363,10 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Alocando memória para a matriz subtração</p>
-<p>Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 têm a mesma dimensão</p>
-<p>Subtraindo os elementos correspondentes e atribuindo o resultado na matriz subtração</p>
-<p>Retornando a matriz Subtração</p>
+<p>Alocando memÃ³ria para a matriz subtraÃ§Ã£o</p>
+<p>Loop para percorrer cada elemento da matrix1 considerando que matrix1 e matrix2 tÃªm a mesma dimensÃ£o</p>
+<p>Subtraindo os elementos correspondentes e atribuindo o resultado na matriz subtraÃ§Ã£o</p>
+<p>Retornando a matriz SubtraÃ§Ã£o</p>
 
 </div>
 </div>
@@ -413,7 +386,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Criando uma função para realizar o cálculo da transposta. </p>
+<p>Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da transposta. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">matrix</td><td></td></tr>
@@ -421,16 +394,20 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Alocando memória para a matriz transposta</p>
+<p>Alocando memÃ³ria para a matriz transposta</p>
 <p>Percorrendo cada elemento da matriz original</p>
-<p>Atribuindo o valor do elemento atual da matriz original para a transposta Trocando a posição das linhas e colunas na matriz transposta</p>
+<p>Atribuindo o valor do elemento atual da matriz original para a transposta Trocando a posiÃ§Ã£o das linhas e colunas na matriz transposta</p>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="matrizes_8h.html">matrizes.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>
