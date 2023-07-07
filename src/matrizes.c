@@ -16,69 +16,40 @@
  *
  */
 
-/** 
- * @brief Generating a function which the objective is to alocate memory dinamically to the complex matrix
- * @param param1 The number of rows for the matrix.
- * @param param1 The number of columns for the matrix.
- * @return A complexMatrix object representing the allocated matrix.
- */
+/// Criando uma funÃ§Ã£o cujo objetivo Ã© alocar memÃ³ria dinamicamente para a matriz complexa
 complexMatrix allocateComplexMatrix(int linhas, int colunas) {
 
-    /** 
-     * @brief Declaring the variable matrix of complexMatrix type
-     */ 
+    /// Declarando a variÃ¡vel matrix do tipo complexMatrix
     complexMatrix matrix;
 
-   /**
- * @brief Sets the number of rows and columns for a complexMatrix variable.
- *
- * This code assigns the provided `linhas` and `colunas` values to the `linhas` and `colunas` members of a `complexMatrix` variable. It specifies the number of rows and columns for the matrix.
- *
- * @param linhas The number of rows for the matrix.
- * @param colunas The number of columns for the matrix.
- */
-matrix.linhas = linhas;
-matrix.colunas = colunas;
+    /// A variavel do tipo complexMatrix tem os "atributos" linhas e colunas e deve recebÃª-los como parÃ¢metros
+    matrix.linhas = linhas;
+    matrix.colunas = colunas;
 
-    /**
- * @brief Allocates memory for the matrix rows.
- *
- * This function dynamically allocates memory for the rows of a matrix. It uses the `malloc` function to allocate memory for an array of `linhas` pointers to complex numbers (`complex *`).
- *
- * @param linhas The number of rows for the matrix.
- */
-matrix.mtx = (complex **)malloc(linhas * sizeof(complex *));
+    /// Alocando memÃ³ria para as linhas de matrix
+    matrix.mtx = (complex **)malloc(linhas * sizeof(complex *));
 
-   /**
- * @brief Handles possible errors when trying to allocate memory to the rows of a matrix.
- *
- * This code checks if the memory allocation for the rows of the matrix was successful. If the allocation failed, it prints an error message and terminates the program with an exit code of 1.
- */
-if (matrix.mtx == NULL)
-{
-    printf("Falha na alocação de memória\n");
-    exit(1);
-}
+    /// Tratando possÃ­veis erros na alocaÃ§Ã£o de memÃ³ria para as linhas
+    if (matrix.mtx == NULL)
+    {
+        printf("Falha na alocaÃ§Ã£o de memÃ³ria\n");
+        exit(1);
+    }
 
-
-    /**
- * @brief Allocates memory for the columns of each line in the matrix.
- *
- * This code iterates over each row of the matrix and allocates memory for the columns of each line. It uses the `malloc` function to allocate memory for an array of `colunas` complex numbers (`complex`).
- */ 
+    /// Alocando memÃ³ria para as colunas de cada linha
     for (int i = 0; i < linhas; i++)
     {
         matrix.mtx[i] = (complex *)malloc(colunas * sizeof(complex));
 
-        //! Dealing with possible mistakes when allocating memory to the columns. 
+        /// Tratando possÃ­veis erros na alocaÃ§Ã£o de memÃ³ria para as colunas
         if (matrix.mtx[i] == NULL)
         {
-            printf("Falha na alocacao de memoria\n");
+            printf("Falha na alocaÃÂ§ÃÂ£o de memÃÂ³ria\n");
             exit(1);
         }
     }
 
-    //! Returning matrix.
+    /// Retornado matrix
     return matrix;
 }
 
@@ -87,60 +58,38 @@ if (matrix.mtx == NULL)
  * @param [in] matrix
 */
 
-/**
- * @brief Performs the implementation for Singular Value Decomposition (SVD) calculation.
- *
- * This function calculates the SVD for the provided `matrix`. It implements the necessary algorithm or method for the SVD calculation.
- *
- * @param matrix The complexMatrix object for which the SVD calculation will be performed.
- */
-void calc_svd(complexMatrix matrix)
+/// This function does the implementation for the SVD calculation
+void calc_svd(complexMatrix matrix) 
 {
+    
     int i = 0;
     int j = 0;
 
-}
+    ///Structure that checks if the matrix is ​​complex
+    if (matrix.mtx[i][j].Im != 0) {
+        printf("A matriz é complexa, portanto será calculado o SVD apenas da parte real.\n");
+    }
 
-
-    /**
- * @brief Checks if the matrix is complex.
- *
- * This code snippet checks if the elements in the matrix are complex numbers. It specifically checks if the imaginary part (`Im`) of an element at position `matrix.mtx[i][j]` is non-zero. If it is non-zero, the code prints a message indicating that the matrix is complex, and therefore, only the real part will be used for SVD calculation.
- */
-if (matrix.mtx[i][j].Im != 0) {
-    printf("A matriz é complexa, portanto será calculado o SVD apenas da parte real.\n");
-}
-
-
-   /**
- * @brief Generates a GSL matrix using the real part of the complex matrix.
- *
- * This code snippet allocates memory for a GSL matrix (`gsl_matrix`) with the same number of rows and columns as the complex matrix (`matrix`). The matrix is allocated using the `gsl_matrix_alloc` function from the GSL. It is intended to be used for storing the real part of the complex matrix during further computations.
- *
- * @param matrix The complexMatrix object from which the real part will be extracted to generate the GSL matrix.
- *
- * @return A pointer to the allocated GSL matrix.
- */
-gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
-
+    /// Criando uma matriz gsl usando a parte real da matriz complexa
+    gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
     
-    //! This snippet assigns the values ​​of the real part of the parameter matrix to the gslMatrix matrix    for (i = 0; i < matrix.linhas; i++) {
+    /// This snippet assigns the values ​​of the real part of the parameter matrix to the gslMatrix matrix    for (i = 0; i < matrix.linhas; i++) {
     for (i = 0; i < matrix.linhas; i++) {
         for (j=0; j < matrix.colunas; j++){
         gsl_matrix_set(gslMatrix, i, j, matrix.mtx[i][j].Re);
         }   
     }
 
-    //! Performing SVD decomposition
+    /// Performing SVD decomposition
     gsl_matrix *A = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
     gsl_matrix *V = gsl_matrix_alloc(matrix.colunas, matrix.colunas);
     gsl_vector *S = gsl_vector_alloc(matrix.colunas);
     gsl_vector *work = gsl_vector_alloc(matrix.colunas);
 
-    //! Calling the function that does the SVD calculation
+    /// Chamando a função que realiza o cálculo do SVD
     gsl_linalg_SV_decomp(A, V, S, work);
 
-    //! Now the same function is going to print the results
+    /// Agora a mesma função vai imprimir os resultados
     printf("\nMatrix A:\n");
     for (i = 0; i < A->size1; i++) {
         for (j = 0; j < A->size2; j++) {
@@ -178,7 +127,7 @@ gsl_matrix* gslMatrix = gsl_matrix_alloc(matrix.linhas, matrix.colunas);
         printf("\n");
     }
     
-    //! releasing memory
+    /// Liberando memória
     gsl_matrix_free(A);
     gsl_matrix_free(V);
     gsl_vector_free(S);
@@ -193,15 +142,13 @@ void freeComplexMatrix(complexMatrix matrix) {
     free(matrix.mtx);
 }
 
-//! Function that will perform all the tests and print the results in the terminal
+/// Function that will perform all the tests and print the results in the terminal
 void teste_calc_svd() {
-    //!test case1: Matrix 3X2 
+    ///Caso de teste1: Matriz 3X2
     printf("\n========= Matriz 3x2 =========\n");
-    //! Allocating memory for the matrix.
+    ///Alocando memÃ³ria para a matriz
     complexMatrix matrixA = allocateComplexMatrix(3, 2);
-    /** 
-     * @brief putting values in the matrix
-     */
+    //Preenchendo a matriz com valores
     for (int i = 0; i < matrixA.linhas; i++) {
         for (int j = 0; j < matrixA.colunas; j++) {
             matrixA.mtx[i][j].Re = i + j + 1;
@@ -317,28 +264,28 @@ void teste_calc_svd() {
     printf("\n");
 }
 
-/************************************* FUNCOES DE OPERACAO ***************************************/
+/************************************* FUNÃÃES DE OPERAÃÃO ***************************************/
 
 /**
  * @param [in] matrix
  * @param [out] transposta
  */
 
-//! Creating a function to make the tranposed matrix calculations 
+/// Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da transposta
 complexMatrix matrixTransposta(complexMatrix matrix)
 {
 
-    //! Allocating memory for the complex matrix  
+    /// Alocando memÃ³ria para a matriz transposta
     complexMatrix transposta = allocateComplexMatrix(matrix.colunas, matrix.linhas);
 
-    //! Going through each element of the original matrix
+    /// Percorrendo cada elemento da matriz original
     for (int i = 0; i < matrix.linhas; i++)
     {
         for (int j = 0; j < matrix.colunas; j++)
         {
 
-            //! Setting the actual element of the original matrix current value to the transposed one
-            //! Switching the rows and columns positions in the transposed matrix 
+            /// Atribuindo o valor do elemento atual da matriz original para a transposta
+            /// Trocando a posiÃ§Ã£o das linhas e colunas na matriz transposta
             transposta.mtx[j][i].Re = matrix.mtx[i][j].Re;
             transposta.mtx[j][i].Im = matrix.mtx[i][j].Im;
         }
@@ -351,25 +298,25 @@ complexMatrix matrixTransposta(complexMatrix matrix)
  * @param [out] conjugada
  */
 
-//! Creating a function to do the conjugate matrix calculation
+/// Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da conjugada
 complexMatrix matrixConjugada(complexMatrix matrix)
 {
 
-    //! Allocating memory to the conjugate matrix utilizing the allocateComplexMaatrix function 
+    /// Alocando memÃ³ria para a matriz conjugada utilizando a funÃ§Ã£o allocateComplexMaatrix
     complexMatrix conjugada = allocateComplexMatrix(matrix.colunas, matrix.linhas);
 
-    //!Loop for going through each original matrix element 
+    /// Loop para percorrer cada elemento da matriz original
     for (int i = 0; i < matrix.linhas; i++)
     {
         for (int j = 0; j < matrix.colunas; j++)
         {
-            //! Setting  o valor do elemento atual da matriz original para a conjugada
+            /// Atribuindo o valor do elemento atual da matriz original para a conjugada
             conjugada.mtx[i][j].Re = matrix.mtx[i][j].Re;
-            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im; //!  Reverses the imaginary part signal
+            conjugada.mtx[i][j].Im = -matrix.mtx[i][j].Im; // Inverte o sinal da parte imaginÃ¡ria
         }
     }
 
-    //! Returns the conjugate matrix
+    /// Retornando a matriz conjugada
     return conjugada;
 }
 
@@ -378,26 +325,26 @@ complexMatrix matrixConjugada(complexMatrix matrix)
  * @param [out] hermitiana
  */
 
-//! Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da hermitiana
+/// Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da hermitiana
 complexMatrix matrixHermitiana(complexMatrix transposta)
 {
 
-    //! Alocando memÃ³ria para a matriz Hermitiana
+    /// Alocando memÃ³ria para a matriz Hermitiana
     complexMatrix hermitiana = allocateComplexMatrix(transposta.colunas, transposta.linhas);
 
-    //! Loop para percorrer cada elemento da matriz transposta
+    /// Loop para percorrer cada elemento da matriz transposta
     for (int i = 0; i < transposta.linhas; i++)
     {
         for (int j = 0; j < transposta.colunas; j++)
         {
 
-            //! Atribuindo o valor do elemento atual da matriz transposta para a hermitiana
+            //// Atribuindo o valor do elemento atual da matriz transposta para a hermitiana
             hermitiana.mtx[i][j].Re = transposta.mtx[i][j].Re;
-            hermitiana.mtx[i][j].Im = -transposta.mtx[i][j].Im; //! Inverte o sinal da parte imaginÃ¡ria
+            hermitiana.mtx[i][j].Im = -transposta.mtx[i][j].Im; // Inverte o sinal da parte imaginÃ¡ria
         }
     }
 
-    //! Returns the hermitian matrix 
+    /// Retornando a matriz hermitiana
     return hermitiana;
 }
 
@@ -544,7 +491,7 @@ void printMatrix(complexMatrix matrix)
                 printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
             }
         }
-        printf("\n"); //! Add a new line after printing all the line elements 
+        printf("\n"); // Adicionar uma nova linha apï¿½s imprimir todos os elementos da linha
     }
 }
 
@@ -554,6 +501,8 @@ void printMatrix1(complexMatrix matrix1)
     {
         for (int c = 0; c < matrix1.colunas; c++)
         {
+            //printf("[%d][%d]: ", l, c);
+            //printComplex(matrix1.mtx[l][c]);
             if(c == 0){
                 printf("|%.2f + %.2fi\t", matrix1.mtx[l][c].Re, matrix1.mtx[l][c].Im);
             }
@@ -724,6 +673,8 @@ void printProduto(complexMatrix produto)
     {
         for (int c = 0; c < produto.colunas; c++)
         {
+            // printf("[%d][%d]: ", l, c);
+            // printComplex(produto.mtx[l][c]);
             if (c == 0)
             {
                 printf("|%.2f + %.2fi\t", produto.mtx[l][c].Re, produto.mtx[l][c].Im);
@@ -741,20 +692,20 @@ void printProduto(complexMatrix produto)
     }
 }
 
-//! This function will be called on the 'main.c' file and will be responsible for printing on the screen the team name and the operations containing the functions.
+/// Essa funÃ§Ã£o serÃ¡ chamada no arquivo main.c e serÃ¡ responsÃ¡vel por imprimir na tela o nome de equipe e as operaÃ§Ãµes com as funÃ§Ãµes
 void teste_todos()
 {
-    //! The number of lines, columns and the scalar value are hardcode the make the compilation easier.
+    /// O nÃºmero de linhas, colunas e o valor do escalar sÃ£o hardcode para facilitar a compilaÃ§Ã£o
     int linhas = 3;
     int colunas = 3;
     float num = 2.5;
 
-    //! Calling the create and allocate memory to the original matrixes, A and B
+    /// chamando a funÃ§Ã£o que cria e aloca memÃ³ria para as matrizes Original, A e B
     complexMatrix matrix = allocateComplexMatrix(linhas, colunas);
     complexMatrix matrix1 = allocateComplexMatrix(linhas, colunas);
     complexMatrix matrix2 = allocateComplexMatrix(linhas, colunas);
 
-    //! Filling the original matrix 
+    /// Preenchendo a Matriz Original
     for (int l = 0; l < matrix.linhas; l++)
     {
         for (int c = 0; c < matrix.colunas; c++)
@@ -764,12 +715,12 @@ void teste_todos()
         }
     }
 
-    //! Calling the defined functions early that depends on the original matrix 
+    /// Chamando as funÃ§Ãµes definidas anteriormente que dependenda da Matriz Original
     complexMatrix transposta = matrixTransposta(matrix);
     complexMatrix conjugada = matrixConjugada(matrix);
     complexMatrix hermitiana = matrixHermitiana(transposta);
 
-    //! Filling Matrix A
+    /// Preenchendo a Matriz A
     for (int l = 0; l < matrix1.linhas; l++)
     {
         for (int c = 0; c < matrix1.colunas; c++)
@@ -779,7 +730,7 @@ void teste_todos()
         }
     }
 
-    //! Filling Matrix B
+    /// Preenchendo a Matriz B
     for (int l = 0; l < matrix2.linhas; l++)
     {
         for (int c = 0; c < matrix2.colunas; c++)
@@ -789,7 +740,7 @@ void teste_todos()
         }
     }
 
-    /// Chamando as funcoes criadas anteriormente que dependem das Matrizes A e B
+    /// Chamando as funÃ§Ãµes criadas anteriormente que dependem das Matrizes A e B
     complexMatrix soma = matrixSoma(matrix1, matrix2);
     complexMatrix subtracao = matrixSubtracao(matrix1, matrix2);
     complexMatrix produtoEscalar = matrix_produtoEscalar(matrix, num);
@@ -797,7 +748,7 @@ void teste_todos()
 
     /******************** IMPRIMINDO AS FUNÃÃES DE TESTE *********************/
 
-    //! printing the number one from Brazil team
+    /// imprimindo a equipe
     printf("\n ============ Equipe ============ \n");
     printf("Joel Tavares Miranda\n");
     printf("David Pinheiro \n");
