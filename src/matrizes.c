@@ -491,7 +491,7 @@ void printMatrix(complexMatrix matrix)
                 printf("%.2f + %.2fi\t", matrix.mtx[l][c].Re, matrix.mtx[l][c].Im);
             }
         }
-        printf("\n"); // Add a new line after printing all line elements
+        printf("\n"); /// Add a new line after printing all line elements
     }
 }
 

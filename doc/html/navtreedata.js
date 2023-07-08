@@ -24,7 +24,9 @@
 */
 var NAVTREE =
 [
-  [ "Projetos II", "index.html", [
+  [ "Projetos de Engenharia II", "index.html", [
+    [ "Integrantes da equipe:", "index.html#autotoc_md1", null ],
+    [ "Disciplina 'Projetos de Engenharia II' ministrada por:", "index.html#autotoc_md2", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ]
