@@ -3,23 +3,23 @@
 #define MATRIZES_H
 #include <stdio.h>
 #include <gsl/gsl_linalg.h>
-/// Definição da estrutura complexa
+/// Definition of complex structure
 typedef struct
 {
-    float Re, Im; // Campos para armazenar a parte real(Re) e imaginária (Im)
+    float Re, Im; // Fields to store the real (Re) and imaginary (Im) parts
 } complex;
 
-/// Definição da estrutura complexMatrix
+/// Definition of the complexMatrix structure
 typedef struct
 {
-    int linhas, colunas; // Campos para armazenar o número de linhas e de colunas
-    complex **mtx;       // Definição de um ponteiro de ponteiros 'mtx' para uma matriz de números complexos
+    int linhas, colunas; // Fields to store the number of rows and columns
+    complex **mtx;       // Defining a pointer of 'mtx' pointers to an matrix of complex numbers
 } complexMatrix;
 
-///****************************************** DECLARAÇÃO DAS FUNÇÕES COMPLEXAS ****************************************************/
+///****************************************** DECLARATION OF COMPLEX FUNCTIONS ****************************************************/
 ///
-///-----> As funções abaixo estão sendo implementadas em 'matrizes.c'.
-///-----> Abaixo temos apenas as assinaturas das respectivas funções.
+///-----> The functions below are being implemented in 'matrizes.c'.
+///-----> Below we have only the signatures of the respective functions.
 ///
 complexMatrix allocateComplexMaatrix(int linhas, int colunas);
 

@@ -467,8 +467,7 @@ void printSubtracao(complexMatrix subtracao) {
 void print_produtoEscalar(complexMatrix produtoEscalar) {
     for (int l = 0; l < produtoEscalar.linhas; l++) {
         for (int c = 0; c < produtoEscalar.colunas; c++ ) {
-            //printf("[%d][%d]: ", l, c);
-            //printComplex(produtoEscalar.mtx[l][c]);
+            
             if(c == 0){
                     printf("|%.1f + %.1fi\t",produtoEscalar.mtx[l][c].Re, produtoEscalar.mtx[l][c].Im);
                 }
@@ -486,8 +485,7 @@ void print_produtoEscalar(complexMatrix produtoEscalar) {
 void printProduto(complexMatrix produto) {
     for (int l = 0; l < produto.linhas; l++) {
         for (int c = 0; c < produto.colunas; c++ ) {
-            //printf("[%d][%d]: ", l, c);
-            //printComplex(produto.mtx[l][c]);
+            
             if(c == 0){
                     printf("|%.1f + %.1fi\t",produto.mtx[l][c].Re, produto.mtx[l][c].Im);
                 }
