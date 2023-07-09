@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['printcomplex_34',['printComplex',['../matrizes_8c.html#af772984e7eb993c1819f55a902e4fff7',1,'matrizes.c']]],
-  ['printmatrix_35',['printMatrix',['../matrizes_8c.html#ae7877b934fb79e15b0fbafba1e965e00',1,'matrizes.c']]]
+  ['printcomplex_35',['printComplex',['../matrizes_8c.html#af772984e7eb993c1819f55a902e4fff7',1,'matrizes.c']]],
+  ['printmatrix_36',['printMatrix',['../matrizes_8c.html#ae7877b934fb79e15b0fbafba1e965e00',1,'matrizes.c']]]
 ];

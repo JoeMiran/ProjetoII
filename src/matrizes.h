@@ -25,18 +25,12 @@ typedef struct
     complex **mtx;       /*!< Definition of a pointer to pointer 'mtx' for a matrix of complex numbers */
 } complexMatrix;
 
-/******************************** DECLARAÇÃO DAS FUNÇÕES COMPLEXAS ********************************/
-
-/**
- * @brief Dynamically allocates a complex matrix.
- *
- * This function dynamically allocates memory for a complex matrix with the given number of rows and columns.
- *
-* @param linhas The number of rows of the matrix.
- * @param colunas The number of columns of the matrix.
- * @return The complexMatrix object representing the allocated complex matrix.
- */
-complexMatrix allocateComplexMatrix(int linhas, int colunas);
+///****************************************** DECLARATION OF COMPLEX FUNCTIONS ****************************************************/
+///
+///-----> The functions below are being implemented in 'matrizes.c'.
+///-----> Below we have only the signatures of the respective functions.
+///
+complexMatrix allocateComplexMaatrix(int linhas, int colunas);
 
 /**
  * @brief Calculates the transpose of a complex matrix.

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Projetos II: src/matrizes.h Source File</title>
+<title>Projetos de Engenharia II: src/matrizes.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,8 +26,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="ufpa.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Projetos II
+   <div id="projectname">Projetos de Engenharia II
    </div>
+   <div id="projectbrief">2023</div>
   </td>
  </tr>
  </tbody>
@@ -92,13 +93,13 @@ $(document).ready(function(){initNavTree('matrizes_8h_source.html',''); initResi
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl_linalg.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structcomplex.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">float</span> Re, Im; <span class="comment">// Campos para armazenar a parte real(Re) e imaginária (Im)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">float</span> Re, Im; <span class="comment">// Fields to store the real (Re) and imaginary (Im) parts</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;} <a class="code" href="structcomplex.html">complex</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structcomplexMatrix.html">   13</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> linhas, colunas; <span class="comment">// Campos para armazenar o número de linhas e de colunas</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structcomplex.html">complex</a> **mtx;       <span class="comment">// Definição de um ponteiro de ponteiros &#39;mtx&#39; para uma matriz de números complexos</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> linhas, colunas; <span class="comment">// Fields to store the number of rows and columns</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structcomplex.html">complex</a> **mtx;       <span class="comment">// Defining a pointer of &#39;mtx&#39; pointers to an matrix of complex numbers</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;} <a class="code" href="structcomplexMatrix.html">complexMatrix</a>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="structcomplexMatrix.html">complexMatrix</a> allocateComplexMaatrix(<span class="keywordtype">int</span> linhas, <span class="keywordtype">int</span> colunas);</div>
@@ -112,15 +113,15 @@ $(document).ready(function(){initNavTree('matrizes_8h_source.html',''); initResi
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="structcomplexMatrix.html">complexMatrix</a> <a class="code" href="matrizes_8h.html#a9a5644f8a0b3d22886d2a12a9a02904f">matrixProduto</a>(<a class="code" href="structcomplexMatrix.html">complexMatrix</a> matrix1, <a class="code" href="structcomplexMatrix.html">complexMatrix</a> matrix2);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="amatrizes_8h_html_a514f2d37098a5998b470ee699a47b5b4"><div class="ttname"><a href="matrizes_8h.html#a514f2d37098a5998b470ee699a47b5b4">matrixSubtracao</a></div><div class="ttdeci">complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2)</div><div class="ttdoc">Criando uma funÃ§Ã£o para realizar a subtraÃ§Ã£o entre matrix1 e matrix2.</div><div class="ttdef"><b>Definition:</b> matrizes.c:387</div></div>
-<div class="ttc" id="amatrizes_8h_html_a72c4d38ae400800b2454ffc1832d4fd3"><div class="ttname"><a href="matrizes_8h.html#a72c4d38ae400800b2454ffc1832d4fd3">matrix_produtoEscalar</a></div><div class="ttdeci">complexMatrix matrix_produtoEscalar(complexMatrix matrix, float num)</div><div class="ttdoc">Criando uma funÃ§Ã£o para realizar a multiplicaÃ§Ã£o de um nÃºmero escalar com cada elemento da matri...</div><div class="ttdef"><b>Definition:</b> matrizes.c:416</div></div>
-<div class="ttc" id="amatrizes_8h_html_a854c02c0a6cc0a7050ae05807a77ff79"><div class="ttname"><a href="matrizes_8h.html#a854c02c0a6cc0a7050ae05807a77ff79">matrixConjugada</a></div><div class="ttdeci">complexMatrix matrixConjugada(complexMatrix matrix)</div><div class="ttdoc">Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da conjugada.</div><div class="ttdef"><b>Definition:</b> matrizes.c:302</div></div>
-<div class="ttc" id="amatrizes_8h_html_a9244b625fef12d954d2f74501f912f5f"><div class="ttname"><a href="matrizes_8h.html#a9244b625fef12d954d2f74501f912f5f">matrixSoma</a></div><div class="ttdeci">complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2)</div><div class="ttdoc">Criando uma funÃ§Ã£o para realizar a soma da matrix A e B, que estou apelidando de matrix1 e matrix2.</div><div class="ttdef"><b>Definition:</b> matrizes.c:358</div></div>
-<div class="ttc" id="amatrizes_8h_html_a9a5644f8a0b3d22886d2a12a9a02904f"><div class="ttname"><a href="matrizes_8h.html#a9a5644f8a0b3d22886d2a12a9a02904f">matrixProduto</a></div><div class="ttdeci">complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2)</div><div class="ttdoc">Criando uma funÃ§Ã£o para realizar o produto entre matrix1 e matrix2.</div><div class="ttdef"><b>Definition:</b> matrizes.c:445</div></div>
-<div class="ttc" id="amatrizes_8h_html_aad2a628e5c9b317136cfaabb9b0e303b"><div class="ttname"><a href="matrizes_8h.html#aad2a628e5c9b317136cfaabb9b0e303b">matrixTransposta</a></div><div class="ttdeci">complexMatrix matrixTransposta(complexMatrix matrix)</div><div class="ttdoc">Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da transposta.</div><div class="ttdef"><b>Definition:</b> matrizes.c:275</div></div>
-<div class="ttc" id="amatrizes_8h_html_ab36fa6eaa22c321ccd734a9141652107"><div class="ttname"><a href="matrizes_8h.html#ab36fa6eaa22c321ccd734a9141652107">matrixHermitiana</a></div><div class="ttdeci">complexMatrix matrixHermitiana(complexMatrix transposta)</div><div class="ttdoc">Criando uma funÃ§Ã£o para realizar o cÃ¡lculo da hermitiana.</div><div class="ttdef"><b>Definition:</b> matrizes.c:329</div></div>
-<div class="ttc" id="astructcomplexMatrix_html"><div class="ttname"><a href="structcomplexMatrix.html">complexMatrix</a></div><div class="ttdoc">Definição da estrutura complexMatrix.</div><div class="ttdef"><b>Definition:</b> matrizes.h:14</div></div>
-<div class="ttc" id="astructcomplex_html"><div class="ttname"><a href="structcomplex.html">complex</a></div><div class="ttdoc">Definição da estrutura complexa.</div><div class="ttdef"><b>Definition:</b> matrizes.h:8</div></div>
+<div class="ttc" id="amatrizes_8h_html_a514f2d37098a5998b470ee699a47b5b4"><div class="ttname"><a href="matrizes_8h.html#a514f2d37098a5998b470ee699a47b5b4">matrixSubtracao</a></div><div class="ttdeci">complexMatrix matrixSubtracao(complexMatrix matrix1, complexMatrix matrix2)</div><div class="ttdoc">Creating a function to perform the subtraction between matrix1 and matrix2.</div><div class="ttdef"><b>Definition:</b> matrizes.c:387</div></div>
+<div class="ttc" id="amatrizes_8h_html_a72c4d38ae400800b2454ffc1832d4fd3"><div class="ttname"><a href="matrizes_8h.html#a72c4d38ae400800b2454ffc1832d4fd3">matrix_produtoEscalar</a></div><div class="ttdeci">complexMatrix matrix_produtoEscalar(complexMatrix matrix, float num)</div><div class="ttdoc">Creating a function to perform the multiplication of a scalar number with each element of the origina...</div><div class="ttdef"><b>Definition:</b> matrizes.c:416</div></div>
+<div class="ttc" id="amatrizes_8h_html_a854c02c0a6cc0a7050ae05807a77ff79"><div class="ttname"><a href="matrizes_8h.html#a854c02c0a6cc0a7050ae05807a77ff79">matrixConjugada</a></div><div class="ttdeci">complexMatrix matrixConjugada(complexMatrix matrix)</div><div class="ttdoc">Creating a function to perform the calculation of the conjugate matrix.</div><div class="ttdef"><b>Definition:</b> matrizes.c:302</div></div>
+<div class="ttc" id="amatrizes_8h_html_a9244b625fef12d954d2f74501f912f5f"><div class="ttname"><a href="matrizes_8h.html#a9244b625fef12d954d2f74501f912f5f">matrixSoma</a></div><div class="ttdeci">complexMatrix matrixSoma(complexMatrix matrix1, complexMatrix matrix2)</div><div class="ttdoc">Creating a function to perform the sum of matrix A and B, which I'm calling matrix1 and matrix2.</div><div class="ttdef"><b>Definition:</b> matrizes.c:358</div></div>
+<div class="ttc" id="amatrizes_8h_html_a9a5644f8a0b3d22886d2a12a9a02904f"><div class="ttname"><a href="matrizes_8h.html#a9a5644f8a0b3d22886d2a12a9a02904f">matrixProduto</a></div><div class="ttdeci">complexMatrix matrixProduto(complexMatrix matrix1, complexMatrix matrix2)</div><div class="ttdoc">Creating a function to perform the product between matrix1 and matrix2.</div><div class="ttdef"><b>Definition:</b> matrizes.c:445</div></div>
+<div class="ttc" id="amatrizes_8h_html_aad2a628e5c9b317136cfaabb9b0e303b"><div class="ttname"><a href="matrizes_8h.html#aad2a628e5c9b317136cfaabb9b0e303b">matrixTransposta</a></div><div class="ttdeci">complexMatrix matrixTransposta(complexMatrix matrix)</div><div class="ttdoc">Creating a function to perform the calculation of the transposed matrix.</div><div class="ttdef"><b>Definition:</b> matrizes.c:275</div></div>
+<div class="ttc" id="amatrizes_8h_html_ab36fa6eaa22c321ccd734a9141652107"><div class="ttname"><a href="matrizes_8h.html#ab36fa6eaa22c321ccd734a9141652107">matrixHermitiana</a></div><div class="ttdeci">complexMatrix matrixHermitiana(complexMatrix transposta)</div><div class="ttdoc">Creating a function to calculate the Hermitian Matrix.</div><div class="ttdef"><b>Definition:</b> matrizes.c:329</div></div>
+<div class="ttc" id="astructcomplexMatrix_html"><div class="ttname"><a href="structcomplexMatrix.html">complexMatrix</a></div><div class="ttdoc">Definition of the complexMatrix structure.</div><div class="ttdef"><b>Definition:</b> matrizes.h:14</div></div>
+<div class="ttc" id="astructcomplex_html"><div class="ttname"><a href="structcomplex.html">complex</a></div><div class="ttdoc">Definition of complex structure.</div><div class="ttdef"><b>Definition:</b> matrizes.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

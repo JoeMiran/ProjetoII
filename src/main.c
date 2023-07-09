@@ -5,16 +5,16 @@
 #include <gsl/gsl_matrix.h>
 #include <gsl/gsl_vector.h>
 
-/// incluindo o arquivos onde está contido a estrutura
+/// Including the files where the structure is contained
 #include "matrizes.h"
 
-/// Criando p protótipo da função que será chamada no escolpo da main e foi definida em matrizes.c
+/// Creating the prototype of the function that will be called in the scope of main and was defined in matrizes.c
 void teste_todos();
 
 int main()
 {
 
-    /// Chamando a função que irá imprimir todas as funções de teste
+    /// Calling the function that will print all test functions
     teste_todos();
 
     return 0;
