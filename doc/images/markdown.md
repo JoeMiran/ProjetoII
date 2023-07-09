@@ -1,12 +1,12 @@
 # Projetos de Engenharia II
-## Integrantes da equipe:
+## Team members:
 
 - *David Pinheiro*
 - *Joel Tavares*
 - *Leonam Bronze*
 - *Nicolas Ranniery*
 
-## Disciplina 'Projetos de Engenharia II' ministrada por:
+## 'Projetos de Engenharia II' class taught by:
 
 - *Aldebaro Klautau Junior*
 - *Leonardo Lira Ramalho*
