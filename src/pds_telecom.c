@@ -1,155 +1,139 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "matrizes.h"
+#include "pds_telecom.h"
 
-int* tx_data_read(const char* filename, long* file_size) {
-    // Abrindo o arquivo no modo leitura binária
-    FILE* file = fopen(filename, "rb");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        return NULL;
-    }
+typedef struct {
+    float real;
+    float img;
+} complexo;
 
-    // Descobrindo o tamanho do arquivo para saber o quanto de memória deve ser alocada
-    fseek(file, 0, SEEK_END); // Posicionando o ponteiro no final do arquivo
-    *file_size = ftell(file); // Retornando a posição atual do ponteiro para obter o tamanho do arquivo em bytes
-    fseek(file, 0, SEEK_SET); // Marcando o ponteiro no início do arquivo para que todas as leituras aconteçam a partir do início
-
-    // Alocando memória para armazenar o conteúdo do arquivo
-    unsigned char* content = (unsigned char*)malloc(*file_size);
-    if (content == NULL) {
-        printf("Erro ao alocar memória.\n");
+int * tx_data_read(FILE *file, long int sequencia_bytes) {
+    
+    // Aloca memória para o array de inteiros
+    int *s = (int *)malloc(sequencia_bytes * 4 * sizeof(int));
+    if (s == NULL) {
+        printf("Erro na alocação de memória\n");
         fclose(file);
         return NULL;
     }
+    // Lê os bytes do arquivo e converte em inteiros de 2 bits
+    for (int i = 0; i < sequencia_bytes; i++) {
+        char byte;
+        fread(&byte, sizeof(byte), 1, file);
 
-    // Lendo o arquivo completo
-    fread(content, 1, *file_size, file);
-    fclose(file);
+        for (int j = 0; j <= 7; j = j + 2) {
+            int bit = (byte >> j) & 3;
+            s[(i * 4) + (j / 2)] = bit;
+        }
+    }
+    return s;
+}
 
-    // Calculando o tamanho da sequência de dígitos
-    int sequence_length = *file_size * 4;
+void rx_data_write(int *s, long int sequencia_bytes, char *filename) {
+    FILE *out = fopen(filename, "wb");
+    if (out == NULL) {
+        printf("Erro ao abrir o arquivo %s.\n", filename);
+        return;
+    } else {
+        printf("\nArquivo %s criado.\n\n", filename);
+    }
 
-    // Alocando memória para armazenar os números inteiros resultantes
-    int* decimal_sequence = (int*)malloc(sequence_length * sizeof(int));
-    if (decimal_sequence == NULL) {
-        printf("Erro ao alocar memória.\n");
-        free(content);
+    for (int i = 0; i < sequencia_bytes; i++) {
+        unsigned char byte = 0;
+        for (int j = 0; j < 4; j++) {
+            unsigned int bit = s[(i * 4) + j];
+            byte |= (bit << (2 * j));
+        }
+        fwrite(&byte, sizeof(byte), 1, out);
+    }
+
+    fclose(out);
+}
+
+complexo *tx_qam_mapper(int *s, long int qam) {
+    
+    // Aloca memória para o vetor de complexos
+    complexo *simbolo = (complexo *)malloc(qam * sizeof(complexo));
+    
+    if (simbolo == NULL) {
+        printf("Erro na alocação de memória\n");
         return NULL;
     }
 
-    // Convertendo os bytes em sequência de dígitos
-    int index = 0;
-    for (int i = 0; i < *file_size; i++) {
-        decimal_sequence[index++] = (content[i] >> 6) & 0x03;
-        decimal_sequence[index++] = (content[i] >> 4) & 0x03;
-        decimal_sequence[index++] = (content[i] >> 2) & 0x03;
-        decimal_sequence[index++] = content[i] & 0x03;
+    for (int i = 0; i < qam; i++) {
+    
+        switch (s[i]) {
+            case 0:
+                simbolo[i].real = -1;
+                simbolo[i].img = 1;
+                break;
+            case 1:
+                simbolo[i].real = -1;
+                simbolo[i].img = -1;
+                break;
+            case 2:
+                simbolo[i].real = 1;
+                simbolo[i].img = 1;
+                break;
+            case 3:
+                simbolo[i].real = 1;
+                simbolo[i].img = -1;
+                break;
+            default:
+                simbolo[i].real = 0;
+                simbolo[i].img = 0;
+            break;
+        }
     }
-
-    // Liberando a memória alocada para o conteúdo do arquivo
-    free(content);
-
-    return decimal_sequence;
-}
-
-void rx_data_write(const char* filename, const int* decimal_sequence, int sequence_length) {
-    // Abrindo o arquivo no modo escrita binária
-    FILE* file = fopen(filename, "wb");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        return;
-    }
-
-    // Convertendo a sequência de dígitos de volta para bytes e escrevendo no arquivo
-    for (int i = 0; i < sequence_length; i += 4) {
-        unsigned char byte = 
-        (decimal_sequence[i] << 6) |
-        (decimal_sequence[i + 1] << 4) |
-        (decimal_sequence[i + 2] << 2) |
-        decimal_sequence[i + 3];
-        fwrite(&byte, sizeof(unsigned char), 1, file);
-    }
-
-    fclose(file);
-}
-
-complexMatrix* tx_qam_mapper(const int* indices, int lenght) {
-    //Alocando memoria para armazenar a matriz de numeros complexos resultantes
-    complexMatrix* symbols = (complexMatrix*)malloc(sizeof(complexMatrix));
-    if (symbols == NULL) {
-        printf("Erro na alocacao de memoria\n");
-        return;
-    }
-
-    //Definindo um numero de linhas e colunas para uma matriz unidimensional
-    symbols->linhas = lenght;
-    symbols->colunas = 1;
-
-    //Alocar memoria para armazenar os numeros complexos
-    symbols->mtx = (complex**)malloc(lenght * sizeof(complex*));
-    if (symbols->mtx == NULL) {
-        printf("Erro ao alocar memoria\n");
-        return;
-    }
-
-    //Vendo os cada um dos casos possíveis do índice a atribuindo os valores das partes reais e imaginárias com base nisso
-    switch (indices[i]) {
-        caso 0:
-            symbols->mtx[i]->Re = -1;
-            symbols->mtx[i]->Im =  1;
-        break;
-        
-        caso 1:
-            symbols->mtx[i]->Re = -1;
-            symbols->mtx[i]->Im = -1;
-        break;
-        
-        caso 2:
-            symbols->mtx[i]->Re = 1;
-            symbols->mtx[i]->Im = 1;
-        break;
-        
-        caso 3:
-            symbols->mtx[i]->Re =  1;
-            symbols->mtx[i]->Im = -1;
-        break;
-    default    
-    }
-
-    return symbols;
-
+    return simbolo;
 }
 
 int main() {
-    const char* filename = "MIMO.txt";
-    long file_size;
 
+    char *filename = "in";
+    char *filename_saida = "out";
+
+    FILE *file = fopen(filename, "rb");
+    
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo %s\n", filename);
+        return 1;
+    } else {
+        printf("O arquivo foi aberto\n\n");
+    }
+
+    fseek(file, 0, SEEK_END);
+    long int file_size = ftell(file);
+    fseek(file, 0, SEEK_SET);
+    
     // Realiza a leitura do arquivo e obtém a sequência de dígitos
-    int* resultado = tx_data_read(filename, &file_size);
+    int *resultado = tx_data_read(file, file_size);
 
     if (resultado != NULL) {
+        
         // Imprime o vetor resultante
         for (int i = 0; i < file_size * 4; i++) {
-            printf("%d ", resultado[i]);
+            printf("%d, ", resultado[i]);
         }
+        
         printf("\n");
 
         // Escreve a sequência de dígitos no arquivo binário
-        rx_data_write("MIMO_output.bin", resultado, file_size * 4);
-
-        //Mapeia os indices para os numeros complexos da constelacao qam
-        complexMatrix* symbols = qam_mapper(resultado, file_size * 4);
-        if (symbols != NULL){
-            //Imprime os numeros complexos
-            for(int i = 0; i < symbols->linhas; i++) {
-                printf("O numero complexo %d: %f + %fj\n", i, symbols->mtx[i]->Re, symbols->myx[i]->Im);
+        rx_data_write(resultado, file_size, filename_saida);
+        
+        // Mapeia os indices para os numeros complexos da constelacao qam
+        complexo *map = tx_qam_mapper(resultado, file_size * 4);
+        
+        if (map != NULL) {
+            
+            // Imprime os numeros complexos
+            for (int i = 0; i < file_size * 4; i++) {
+                printf("Índice %d: %.2f%+.2fj\n", i, map[i].real, map[i].img);
             }
+        
         }
-
-        // Libera a memória alocada
-        free(resultado);
     }
 
+    fclose(file);
     return 0;
 }
