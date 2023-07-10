@@ -7,3 +7,4 @@ int * tx_data_read(FILE *file, long int sequencia_bytes);
 void rx_data_write(int *s, long int sequencia_bytes, char *filename);
 complex *tx_qam_mapper(int *s, long int qam);
 complex **tx_layer_mapper(complex *v, int Nstream, long int Nsymbol);
+float gerar_float_aleatorio();
