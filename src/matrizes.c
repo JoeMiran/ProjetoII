@@ -314,7 +314,7 @@ void teste_calc_svd() {
         for (int j = 0; j < matrixC.colunas; j++) {
             if (j == 0) {
                 printf("|%.1f\t", matrixC.mtx[i][j].Re);
-            } else if (j == matrixCcolunas - 1) {
+            } else if (j == matrixC.colunas - 1) {
                 printf("%.1f|\t", matrixC.mtx[i][j].Re);
             } else {
                 printf("%.1f\t", matrixC.mtx[i][j].Re);
@@ -940,7 +940,7 @@ void teste_todos()
     complexMatrix subtracao = matrixSubtracao(matrix1, matrix2);
     complexMatrix produtoEscalar = matrix_produtoEscalar(matrix, num);
     complexMatrix produto = matrixProduto(matrix1, matrix2);
-}
+
 
     /******************** PRINTING THE TESTING FUNCTIONS *********************/
 
@@ -948,7 +948,7 @@ void teste_todos()
     * @brief Printing the team members
     */  
     printf("\n ============ Equipe ============ \n");
-    printf("Joel Tavares Miranda(aka mango joe)     \n");
+    printf("Joel Tavares Miranda\n");
     printf("David Pinheiro \n");
     printf("Leonam Bronze\n");
     printf("Nicolas Ranniery\n");
